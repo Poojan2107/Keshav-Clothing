@@ -39,10 +39,10 @@ Admin → Settings → Notifications → Webhooks (or Apps → custom app):
 
 | Event | URL |
 |-------|-----|
-| Order creation | `https://HOST/webhooks/shopify/orders-create` |
-| Fulfillment creation | `https://HOST/webhooks/shopify/fulfillments-create` |
-| Fulfillment update | `https://HOST/webhooks/shopify/fulfillments-update` |
-| Order cancellation | `https://HOST/webhooks/shopify/orders-cancelled` |
+| Order creation | `https://inbox.keshavclothing.com/webhooks/shopify/orders-create` |
+| Fulfillment creation | `https://inbox.keshavclothing.com/webhooks/shopify/fulfillments-create` |
+| Fulfillment update | `https://inbox.keshavclothing.com/webhooks/shopify/fulfillments-update` |
+| Order cancellation | `https://inbox.keshavclothing.com/webhooks/shopify/orders-cancelled` |
 
 Format: JSON. Copy signing secret → `SHOPIFY_WEBHOOK_SECRET`.
 

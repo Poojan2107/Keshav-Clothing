@@ -541,8 +541,8 @@ app.post('/api/otp/request', otpLimiter, async (req, res) => {
   }
 });
 
-app.post('/api/otp/verify', otpLimiter, (req, res) => {
-  const result = otp.verifyOtp(req.body?.phone || req.body?.mobile, req.body?.otp || req.body?.code);
+app.post('/api/otp/verify', otpLimiter, async (req, res) => {
+  const result = await otp.verifyOtp(req.body?.phone || req.body?.mobile, req.body?.otp || req.body?.code);
   if (!result.ok) return res.status(400).json(result);
   return res.json({
     ok: true,

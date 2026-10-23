@@ -1,37 +1,59 @@
-# Shopify webhooks — wire now (tunnel live)
+# Shopify → WhatsApp auto updates (live)
 
-**Public host (keep PC awake; tunnel + `npm start` must stay running):**  
-`https://attitudes-exploration-tvs-former.trycloudflare.com`
+**Host:** `https://inbox.keshavclothing.com`
 
-> Quick tunnel URL changes if you restart cloudflared. For always-on, deploy Render (`render.yaml`) and replace HOST below.
+These webhooks send WhatsApp templates automatically from **+91 93284 15350**:
 
-## Add in Shopify Admin
+| When (Shopify / Shiprocket) | WhatsApp template |
+|-----------------------------|-------------------|
+| Order created | `kc_order_confirmed` (name, order #, total, invoice link) |
+| Fulfillment created (Shiprocket ships) | `kc_order_shipped` (courier + tracking URL) |
+| Fulfillment update → in transit / OFD | `kc_order_in_transit` |
+| Fulfillment update → delivered | `kc_order_delivered` |
+| Order cancelled | `kc_order_cancelled` |
 
-**Settings → Notifications → Webhooks** (or custom app webhooks). Format: **JSON**.
+Shiprocket does **not** need a separate WhatsApp connection. Connect Shiprocket → Shopify so tracking lands on the Shopify fulfillment; our webhooks do the rest.
+
+## Shopify Admin — add webhooks
+
+**Settings → Notifications → Webhooks** (JSON format):
 
 | Event | Callback URL |
 |-------|----------------|
-| Order creation | `https://attitudes-exploration-tvs-former.trycloudflare.com/webhooks/shopify/orders-create` |
-| Fulfillment creation | `https://attitudes-exploration-tvs-former.trycloudflare.com/webhooks/shopify/fulfillments-create` |
-| Fulfillment update | `https://attitudes-exploration-tvs-former.trycloudflare.com/webhooks/shopify/fulfillments-update` |
-| Order cancellation | `https://attitudes-exploration-tvs-former.trycloudflare.com/webhooks/shopify/orders-cancelled` |
+| Order creation | `https://inbox.keshavclothing.com/webhooks/shopify/orders-create` |
+| Fulfillment creation | `https://inbox.keshavclothing.com/webhooks/shopify/fulfillments-create` |
+| Fulfillment update | `https://inbox.keshavclothing.com/webhooks/shopify/fulfillments-update` |
+| Order cancellation | `https://inbox.keshavclothing.com/webhooks/shopify/orders-cancelled` |
 
-After creating, copy the **signing secret** into `.env`:
+Copy the webhook **signing secret** into Render Environment:
 
 ```
 SHOPIFY_WEBHOOK_SECRET=whsec_...
 SKIP_WEBHOOK_HMAC=0
 ```
 
-Until the secret is set, local/tunnel tests use `SKIP_WEBHOOK_HMAC=1` (already on).
+(If HMAC is still skipped in Render, set `SKIP_WEBHOOK_HMAC=0` after the secret is saved.)
 
-## Smoke test without Shopify
+## Shiprocket checklist
+
+1. Shiprocket channel = your Shopify store (orders sync).  
+2. When you ship in Shiprocket, Shopify fulfillment gets **tracking number + tracking URL**.  
+3. That triggers **Fulfillment creation / update** → WhatsApp shipped / in-transit / delivered.
+
+## Phone requirement
+
+WhatsApp goes to the **phone on the Shopify order** (shipping address preferred). Orders without a valid mobile will be skipped.
+
+## Test
+
+1. Place a small order with your WhatsApp number on the address.  
+2. You should get **order confirmed**.  
+3. Create fulfillment / ship via Shiprocket with tracking.  
+4. You should get **shipped** (then in-transit / delivered as status updates).
+
+Or simulate confirmed only:
 
 ```bash
 cd integrations/customer-ops
 node scripts/simulate_order_webhook.js 91XXXXXXXXXX
 ```
-
-## Live test
-
-Place a small / KCZERO order with a real WhatsApp phone on the address. Customer should get **kc_order_confirmed** from `+91 93284 15350`.
