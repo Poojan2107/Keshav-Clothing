@@ -16,7 +16,7 @@ They open the link → enter **name** + **team password** → see chats → repl
 
 ```
 INBOX_ENABLED=1
-INBOX_PASSWORD=<strong shared password>
+INBOX_PASSWORD=keshav123
 INBOX_TOKEN_SECRET=<random string>
 PUBLIC_BASE_URL=https://keshav-clothing.onrender.com
 META_WEBHOOK_VERIFY_TOKEN=kc_wa_verify_change_me

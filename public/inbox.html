@@ -286,10 +286,10 @@
 
     .composer {
       background: var(--wa-panel-2);
-      padding: 10px 16px;
+      padding: 10px 12px;
       display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 10px;
+      grid-template-columns: auto auto 1fr auto;
+      gap: 8px;
       align-items: end;
     }
     .composer textarea {
@@ -305,26 +305,48 @@
       outline: none;
       background: #fff;
     }
-    .composer button.send {
+    .icon-btn, .composer button.send {
       width: 46px;
       height: 46px;
       border: none;
       border-radius: 50%;
-      background: var(--wa-teal-2);
-      color: #fff;
+      background: transparent;
+      color: #54656f;
       cursor: pointer;
       display: grid;
       place-items: center;
       flex-shrink: 0;
+      padding: 0;
     }
-    .composer button.send:disabled { opacity: 0.45; cursor: not-allowed; }
-    .composer button.send svg { width: 22px; height: 22px; fill: currentColor; }
+    .icon-btn:hover { color: var(--wa-teal-2); }
+    .icon-btn:disabled, .composer button.send:disabled { opacity: 0.45; cursor: not-allowed; }
+    .composer button.send {
+      background: var(--wa-teal-2);
+      color: #fff;
+    }
+    .composer button.send svg, .icon-btn svg { width: 22px; height: 22px; fill: currentColor; }
     .hint {
       grid-column: 1 / -1;
       color: var(--wa-muted);
       font-size: 0.75rem;
       padding: 0 4px 2px;
     }
+    .bubble img.media, .bubble video.media {
+      display: block;
+      max-width: 100%;
+      max-height: 280px;
+      border-radius: 6px;
+      margin-bottom: 4px;
+    }
+    .bubble a.doc {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #027eb5;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .bubble audio { width: min(240px, 100%); margin-bottom: 4px; }
     .placeholder-main {
       display: flex;
       align-items: center;
@@ -391,6 +413,14 @@
         <div id="thread"></div>
         <div class="composer">
           <div class="hint" id="sessionHint"></div>
+          <button type="button" class="icon-btn" id="attachBtn" title="Attach file">
+            <svg viewBox="0 0 24 24"><path d="M16.5 6v11.5c0 2.21-1.79 4-4 4s-4-1.79-4-4V5a2.5 2.5 0 0 1 5 0v10.5c0 .55-.45 1-1 1s-1-.45-1-1V6H10v9.5a2.5 2.5 0 0 0 5 0V5c0-2.21-1.79-4-4-4S7 2.79 7 5v12.5c0 3.04 2.46 5.5 5.5 5.5s5.5-2.46 5.5-5.5V6h-1.5z"/></svg>
+          </button>
+          <button type="button" class="icon-btn" id="cameraBtn" title="Camera / photo">
+            <svg viewBox="0 0 24 24"><path d="M12 15.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4zM9 2 7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg>
+          </button>
+          <input type="file" id="fileInput" hidden />
+          <input type="file" id="cameraInput" accept="image/*" capture="environment" hidden />
           <textarea id="reply" rows="1" placeholder="Type a message"></textarea>
           <button type="button" class="send" id="sendBtn" title="Send" aria-label="Send">
             <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
@@ -535,6 +565,8 @@
         ? 'Online · Customer service window open (24h)'
         : 'Waiting for customer message · 24h window closed';
       document.getElementById('sendBtn').disabled = !sessionOk;
+      document.getElementById('attachBtn').disabled = !sessionOk;
+      document.getElementById('cameraBtn').disabled = !sessionOk;
 
       const thread = document.getElementById('thread');
       const msgs = c.messages || [];
@@ -548,11 +580,34 @@
           html += `<div class="day"><span>${label}</span></div>`;
         }
         const side = m.direction === 'inbound' ? 'in' : 'out';
-        html += `<div class="row ${side}"><div class="bubble">${escapeHtml(m.text)}<span class="time">${fmtTime(m.at)}</span></div></div>`;
+        html += `<div class="row ${side}"><div class="bubble">${renderBubbleBody(m)}<span class="time">${fmtTime(m.at)}</span></div></div>`;
       }
       thread.innerHTML = html || '<div class="empty">No messages in this chat</div>';
       thread.scrollTop = thread.scrollHeight;
       renderList();
+    }
+
+    function mediaUrl(mediaId) {
+      return '/inbox/api/media/' + encodeURIComponent(mediaId) + '?token=' + encodeURIComponent(token);
+    }
+
+    function renderBubbleBody(m) {
+      const type = m.type || 'text';
+      const cap = m.caption || m.text || '';
+      if (m.mediaId && (type === 'image' || type === 'sticker')) {
+        return `<img class="media" src="${mediaUrl(m.mediaId)}" alt="photo" />${cap && type === 'image' ? `<div>${escapeHtml(cap)}</div>` : ''}`;
+      }
+      if (m.mediaId && type === 'video') {
+        return `<video class="media" controls src="${mediaUrl(m.mediaId)}"></video>${cap ? `<div>${escapeHtml(cap)}</div>` : ''}`;
+      }
+      if (m.mediaId && type === 'audio') {
+        return `<audio controls src="${mediaUrl(m.mediaId)}"></audio>`;
+      }
+      if (m.mediaId && type === 'document') {
+        const name = m.filename || m.text || 'Document';
+        return `<a class="doc" href="${mediaUrl(m.mediaId)}" target="_blank" rel="noopener">📄 ${escapeHtml(name)}</a>${m.caption ? `<div>${escapeHtml(m.caption)}</div>` : ''}`;
+      }
+      return escapeHtml(m.text || '');
     }
 
     document.getElementById('sendBtn').onclick = sendReply;
@@ -562,6 +617,23 @@
         sendReply();
       }
     });
+
+    document.getElementById('attachBtn').onclick = () => {
+      const input = document.getElementById('fileInput');
+      input.accept = 'image/*,video/*,audio/*,.pdf,.doc,.docx,.xls,.xlsx,.zip,.txt';
+      input.click();
+    };
+    document.getElementById('cameraBtn').onclick = () => document.getElementById('cameraInput').click();
+    document.getElementById('fileInput').onchange = (e) => {
+      const f = e.target.files && e.target.files[0];
+      e.target.value = '';
+      if (f) sendMediaFile(f);
+    };
+    document.getElementById('cameraInput').onchange = (e) => {
+      const f = e.target.files && e.target.files[0];
+      e.target.value = '';
+      if (f) sendMediaFile(f);
+    };
 
     async function sendReply() {
       const text = document.getElementById('reply').value.trim();
@@ -578,6 +650,38 @@
       }
       document.getElementById('reply').value = '';
       openChat(activePhone);
+    }
+
+    async function sendMediaFile(file) {
+      if (!activePhone || !file) return;
+      const caption = document.getElementById('reply').value.trim();
+      document.getElementById('sendBtn').disabled = true;
+      document.getElementById('attachBtn').disabled = true;
+      document.getElementById('cameraBtn').disabled = true;
+      const fd = new FormData();
+      fd.append('file', file);
+      fd.append('phone', activePhone);
+      fd.append('who', who);
+      if (caption) fd.append('caption', caption);
+      try {
+        const res = await fetch('/inbox/api/media', {
+          method: 'POST',
+          headers: { Authorization: 'Bearer ' + token },
+          body: fd
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || !data.ok) {
+          alert(data.error?.message || data.error || 'Upload failed');
+        } else {
+          document.getElementById('reply').value = '';
+          openChat(activePhone);
+        }
+      } catch (err) {
+        alert(err.message || 'Upload failed');
+      }
+      document.getElementById('sendBtn').disabled = false;
+      document.getElementById('attachBtn').disabled = false;
+      document.getElementById('cameraBtn').disabled = false;
     }
 
     function escapeHtml(s) {

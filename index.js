@@ -2,6 +2,7 @@ const crypto = require('crypto');
 const path = require('path');
 const express = require('express');
 const cors = require('cors');
+const multer = require('multer');
 const rateLimit = require('express-rate-limit');
 const config = require('./config');
 const wa = require('./lib/whatsapp');
@@ -13,6 +14,20 @@ const { maskPhone, normalizePhone } = require('./lib/phone');
 
 const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
+
+const upload = multer({
+  storage: multer.memoryStorage(),
+  limits: { fileSize: 64 * 1024 * 1024 }
+});
+
+function waTypeFromMime(mime, forced) {
+  if (forced) return forced;
+  const m = String(mime || '');
+  if (m.startsWith('image/')) return 'image';
+  if (m.startsWith('video/')) return 'video';
+  if (m.startsWith('audio/')) return 'audio';
+  return 'document';
+}
 
 app.use(
   express.json({
@@ -82,7 +97,8 @@ function signInboxToken(who) {
 
 function readInboxToken(req) {
   const hdr = req.get('Authorization') || '';
-  const token = hdr.startsWith('Bearer ') ? hdr.slice(7) : '';
+  const token =
+    (hdr.startsWith('Bearer ') ? hdr.slice(7) : '') || String(req.query?.token || '');
   if (!token || !token.includes('.')) return null;
   const [body, sig] = token.split('.');
   const expect = crypto.createHmac('sha256', config.inbox.tokenSecret).update(body).digest('base64url');
@@ -151,11 +167,74 @@ app.post('/inbox/api/reply', requireInbox, async (req, res) => {
     }
     const result = await wa.sendText(phone, text);
     if (!result.ok) return res.status(502).json(result);
-    inbox.recordOutbound(phone, text, {
+    inbox.recordOutbound(phone, {
+      type: 'text',
+      text,
       id: result.data?.messages?.[0]?.id,
       by: req.body?.who || req.inboxUser
     });
     return res.json({ ok: true, result });
+  } catch (err) {
+    return res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+app.post('/inbox/api/media', requireInbox, upload.single('file'), async (req, res) => {
+  try {
+    const phone = normalizePhone(req.body?.phone);
+    const caption = String(req.body?.caption || '').trim();
+    if (!phone) return res.status(400).json({ ok: false, error: 'phone required' });
+    if (!req.file) return res.status(400).json({ ok: false, error: 'file required' });
+    if (!inbox.canSendSession(phone)) {
+      return res.status(400).json({
+        ok: false,
+        error: 'Customer must message first (24h window closed)'
+      });
+    }
+
+    const mimeType = req.file.mimetype || 'application/octet-stream';
+    const filename = req.file.originalname || 'file';
+    const type = waTypeFromMime(mimeType, req.body?.type);
+
+    const uploaded = await wa.uploadMedia(req.file.buffer, {
+      filename,
+      mimeType,
+      type: mimeType
+    });
+    if (!uploaded.ok) return res.status(502).json(uploaded);
+
+    const result = await wa.sendMedia(phone, {
+      type,
+      mediaId: uploaded.id,
+      caption: caption || undefined,
+      filename: type === 'document' ? filename : undefined
+    });
+    if (!result.ok) return res.status(502).json(result);
+
+    inbox.recordOutbound(phone, {
+      type,
+      text: caption || filename,
+      caption: caption || null,
+      filename,
+      mediaId: uploaded.id,
+      mimeType,
+      id: result.data?.messages?.[0]?.id,
+      by: req.body?.who || req.inboxUser
+    });
+    return res.json({ ok: true, result, mediaId: uploaded.id, type });
+  } catch (err) {
+    console.error('[inbox media]', err.message);
+    return res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+app.get('/inbox/api/media/:mediaId', requireInbox, async (req, res) => {
+  try {
+    const downloaded = await wa.downloadMedia(req.params.mediaId);
+    if (!downloaded.ok) return res.status(404).json(downloaded);
+    res.setHeader('Content-Type', downloaded.mimeType);
+    res.setHeader('Cache-Control', 'private, max-age=3600');
+    return res.send(downloaded.buffer);
   } catch (err) {
     return res.status(500).json({ ok: false, error: err.message });
   }
