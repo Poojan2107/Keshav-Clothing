@@ -391,6 +391,62 @@ app.post('/inbox/api/start', requireInbox, async (req, res) => {
   }
 });
 
+const inboxSettings = require('./lib/inbox-settings');
+
+app.get('/inbox/api/settings', requireInbox, async (_req, res) => {
+  try {
+    const settings = await inboxSettings.getSettings();
+    return res.json({ ok: true, settings });
+  } catch (err) {
+    return res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+app.put('/inbox/api/settings', requireInbox, async (req, res) => {
+  try {
+    const settings = await inboxSettings.saveSettings(req.body || {});
+    return res.json({ ok: true, settings });
+  } catch (err) {
+    return res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+/** Send an approved Meta template from the inbox (works outside 24h). */
+app.post('/inbox/api/send-template', requireInbox, async (req, res) => {
+  try {
+    const phone = normalizePhone(req.body?.phone);
+    const templateName = String(req.body?.template || req.body?.name || '').trim();
+    const params = Array.isArray(req.body?.params)
+      ? req.body.params.map((p) => String(p ?? '').slice(0, 200))
+      : [];
+    const who = req.body?.who || req.inboxUser;
+    if (!phone || !templateName) {
+      return res.status(400).json({ ok: false, error: 'phone and template required' });
+    }
+    await inbox.ensureConversation(phone, req.body?.name || '');
+    const result = await wa.sendTemplate(
+      phone,
+      templateName,
+      params,
+      config.templates.language,
+      { by: who }
+    );
+    if (!result.ok) {
+      return res.status(502).json({
+        ...result,
+        errorHint: 'Template must be Approved in Meta WhatsApp Manager.'
+      });
+    }
+    return res.json({
+      ok: true,
+      result,
+      canReplySession: await inbox.canSendSession(phone)
+    });
+  } catch (err) {
+    return res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
 app.post('/inbox/api/media', requireInbox, upload.single('file'), async (req, res) => {
   try {
     const phone = normalizePhone(req.body?.phone);
@@ -605,7 +661,21 @@ app.post('/webhooks/meta', async (req, res) => {
   res.sendStatus(200);
   try {
     const saved = await inbox.ingestMetaWebhook(req.body || {});
-    if (saved.length) console.log(`[Meta inbox] ${saved.length} inbound message(s)`);
+    if (saved.length) console.log(`[Meta inbox] ${saved.length} message(s)`);
+    const autoReply = require('./lib/auto-reply');
+    for (const row of saved) {
+      if (row.direction !== 'inbound') continue;
+      try {
+        const ar = await autoReply.handleInbound({
+          phone: row.phone,
+          text: row.text,
+          name: row.name
+        });
+        if (ar?.ok) console.log(`[auto-reply] ${row.phone} reason=${ar.reason}`);
+      } catch (err) {
+        console.error('[auto-reply]', err.message);
+      }
+    }
   } catch (err) {
     console.error('[Meta inbox]', err.message);
   }

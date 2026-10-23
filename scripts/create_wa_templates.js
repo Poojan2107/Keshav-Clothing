@@ -98,6 +98,48 @@ const TEMPLATES = [
         }
       }
     ]
+  },
+  {
+    name: 'kc_support_ack',
+    category: 'UTILITY',
+    language: lang,
+    components: [
+      {
+        type: 'BODY',
+        text: 'Hi {{1}}, we received your message about {{2}}. The Keshav Clothing team will assist you on this chat shortly.',
+        example: {
+          body_text: [['Rahul', 'order tracking']]
+        }
+      }
+    ]
+  },
+  {
+    name: 'kc_return_guide',
+    category: 'UTILITY',
+    language: lang,
+    components: [
+      {
+        type: 'BODY',
+        text: 'Hi {{1}}, regarding order {{2}}: please share photos of the product and the issue (size, fit, or damage). Our Keshav Clothing team will guide you on return or exchange as per policy.',
+        example: {
+          body_text: [['Rahul', '#1005']]
+        }
+      }
+    ]
+  },
+  {
+    name: 'kc_store_info',
+    category: 'UTILITY',
+    language: lang,
+    components: [
+      {
+        type: 'BODY',
+        text: 'Hi {{1}}, thank you for choosing Keshav Clothing. Shop online at https://keshavclothing.com — reply here for order help, sizing, tracking, or returns.',
+        example: {
+          body_text: [['Rahul']]
+        }
+      }
+    ]
   }
 ];
 

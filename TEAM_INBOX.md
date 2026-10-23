@@ -100,9 +100,20 @@ Inbox UI matches **Keshav Clothing** site cues:
 - **New chat** — message any WhatsApp number from the inbox  
 - **Customer CRUD** — tap chat header → edit name, WhatsApp number (migrate), email, order ref, tags, internal notes, pin, archive, mark unread, clear history, delete  
 - Active / Archived tabs  
+- **Auto-replies** — welcome, away (IST hours), keyword rules (tap **Auto** to edit)  
+- **Quick replies** — canned professional responses in the composer  
+- **Templates** — send approved Meta templates from the chat (works outside 24h)  
 - Text replies, attach, camera (media needs open 24h window)  
-- Outside 24h: sends via approved template `kc_inbox_hello` (Meta must show **Approved**)  
+- Outside 24h cold outreach: `kc_inbox_hello` (+ other utility templates once Approved)  
 - View inbound photos/files  
+
+### Templates to keep Approved in Meta
+
+Order: `kc_order_confirmed`, `kc_order_shipped`, `kc_order_in_transit`, `kc_order_delivered`, `kc_order_cancelled`  
+Desk: `kc_inbox_hello`, `kc_support_ack`, `kc_return_guide`, `kc_store_info`  
+
+Submit new ones: `npm run templates:create` (needs Meta token + WABA id).  
+
 
 ### Message anyone (Meta rule)
 
