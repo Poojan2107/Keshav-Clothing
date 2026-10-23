@@ -564,6 +564,7 @@
       <textarea id="qrJson" style="min-height:120px;font-family:ui-monospace,monospace;font-size:12px"></textarea>
       <div class="err" id="settingsErr"></div>
       <div class="modal-actions">
+        <button type="button" class="cancel" id="settingsReset">Reset defaults</button>
         <button type="button" class="cancel" id="settingsCancel">Close</button>
         <button type="button" class="go" id="settingsSave">Save</button>
       </div>
@@ -777,6 +778,18 @@
       settingsModal.classList.add('on');
     };
     document.getElementById('settingsCancel').onclick = () => settingsModal.classList.remove('on');
+    document.getElementById('settingsReset').onclick = async () => {
+      if (!confirm('Reset auto-replies and quick replies to Keshav Clothing defaults?')) return;
+      const r = await api('/inbox/api/settings/reset', { method: 'POST', body: '{}' });
+      if (!r?.ok) {
+        document.getElementById('settingsErr').textContent = r?.data?.error || 'Reset failed';
+        return;
+      }
+      deskSettings = r.data.settings;
+      await loadDeskSettings();
+      settingsModal.classList.remove('on');
+      alert('Automation defaults restored. Customers now get the numbered menu + FAQ auto-replies.');
+    };
     settingsModal.addEventListener('click', (e) => {
       if (e.target === settingsModal) settingsModal.classList.remove('on');
     });

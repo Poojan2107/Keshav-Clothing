@@ -100,9 +100,10 @@ Inbox UI matches **Keshav Clothing** site cues:
 - **New chat** — message any WhatsApp number from the inbox  
 - **Customer CRUD** — tap chat header → edit name, WhatsApp number (migrate), email, order ref, tags, internal notes, pin, archive, mark unread, clear history, delete  
 - Active / Archived tabs  
-- **Auto-replies** — welcome, away (IST hours), keyword rules (tap **Auto** to edit)  
+- **Auto-replies** — numbered menu (1–5), FAQ keywords, order-number detect, away hours (tap **Auto** → Reset defaults if needed)  
 - **Quick replies** — canned professional responses in the composer  
-- **Templates** — send approved Meta templates from the chat (works outside 24h)  
+- **Templates** — send approved Meta templates from the chat (works outside 24h). Use short notes only for `kc_inbox_hello` — do not paste a full greeting  
+
 - Text replies, attach, camera (media needs open 24h window)  
 - Outside 24h cold outreach: `kc_inbox_hello` (+ other utility templates once Approved)  
 - View inbound photos/files  

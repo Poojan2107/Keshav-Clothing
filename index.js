@@ -411,6 +411,15 @@ app.put('/inbox/api/settings', requireInbox, async (req, res) => {
   }
 });
 
+app.post('/inbox/api/settings/reset', requireInbox, async (_req, res) => {
+  try {
+    const settings = await inboxSettings.resetAutomationDefaults();
+    return res.json({ ok: true, settings });
+  } catch (err) {
+    return res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
 /** Send an approved Meta template from the inbox (works outside 24h). */
 app.post('/inbox/api/send-template', requireInbox, async (req, res) => {
   try {
