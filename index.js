@@ -213,9 +213,10 @@ app.post('/inbox/api/google-login', async (req, res) => {
   }
 });
 
-app.get('/inbox/api/conversations', requireInbox, async (_req, res) => {
+app.get('/inbox/api/conversations', requireInbox, async (req, res) => {
   try {
-    res.json({ ok: true, conversations: await inbox.listConversations() });
+    const archived = String(req.query.archived || '') === '1' || req.query.archived === 'true';
+    res.json({ ok: true, conversations: await inbox.listConversations({ archived }) });
   } catch (err) {
     console.error('[inbox list]', err.message);
     res.status(500).json({ ok: false, error: err.message });
@@ -227,7 +228,7 @@ app.get('/inbox/api/conversations/:phone', requireInbox, async (req, res) => {
     const phone = normalizePhone(req.params.phone);
     const conversation = await inbox.getConversation(phone);
     if (!conversation) return res.status(404).json({ ok: false, error: 'Not found' });
-    await inbox.markRead(phone);
+    if (String(req.query.markRead || '1') !== '0') await inbox.markRead(phone);
     res.json({
       ok: true,
       conversation: await inbox.getConversation(phone),
@@ -236,6 +237,60 @@ app.get('/inbox/api/conversations/:phone', requireInbox, async (req, res) => {
   } catch (err) {
     console.error('[inbox get]', err.message);
     res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+/** Update customer profile (name, notes, tags, pin, archive, …) */
+app.patch('/inbox/api/conversations/:phone', requireInbox, async (req, res) => {
+  try {
+    const phone = normalizePhone(req.params.phone);
+    const conversation = await inbox.updateConversation(phone, req.body || {});
+    return res.json({ ok: true, conversation });
+  } catch (err) {
+    return res.status(err.status || 500).json({ ok: false, error: err.message });
+  }
+});
+
+/** Change WhatsApp number for a contact (moves / merges chat history) */
+app.post('/inbox/api/conversations/:phone/migrate', requireInbox, async (req, res) => {
+  try {
+    const from = normalizePhone(req.params.phone);
+    const to = normalizePhone(req.body?.phone || req.body?.to);
+    if (!to) return res.status(400).json({ ok: false, error: 'New phone required' });
+    const conversation = await inbox.migratePhone(from, to);
+    return res.json({ ok: true, phone: conversation.phone, conversation });
+  } catch (err) {
+    return res.status(err.status || 500).json({ ok: false, error: err.message });
+  }
+});
+
+app.post('/inbox/api/conversations/:phone/unread', requireInbox, async (req, res) => {
+  try {
+    const phone = normalizePhone(req.params.phone);
+    const conversation = await inbox.markUnread(phone);
+    return res.json({ ok: true, conversation });
+  } catch (err) {
+    return res.status(err.status || 500).json({ ok: false, error: err.message });
+  }
+});
+
+app.post('/inbox/api/conversations/:phone/clear', requireInbox, async (req, res) => {
+  try {
+    const phone = normalizePhone(req.params.phone);
+    const conversation = await inbox.clearHistory(phone);
+    return res.json({ ok: true, conversation });
+  } catch (err) {
+    return res.status(err.status || 500).json({ ok: false, error: err.message });
+  }
+});
+
+app.delete('/inbox/api/conversations/:phone', requireInbox, async (req, res) => {
+  try {
+    const phone = normalizePhone(req.params.phone);
+    await inbox.deleteConversation(phone);
+    return res.json({ ok: true });
+  } catch (err) {
+    return res.status(err.status || 500).json({ ok: false, error: err.message });
   }
 });
 

@@ -380,6 +380,64 @@
     .modal-actions .cancel { background: var(--kc-gray-100); color: var(--kc-gray-600); border: 1px solid var(--kc-gray-200); }
     .modal-actions .go { background: var(--kc-black); color: #fff; }
     .modal .err { color: #b91c1c; font-size: 12px; min-height: 1.2em; margin-top: 8px; }
+    .tabs {
+      display: flex; gap: 0; border-bottom: 1px solid var(--kc-gray-200); background: #fff;
+    }
+    .tabs button {
+      flex: 1; border: none; background: transparent; padding: 10px;
+      font-family: var(--font-display); font-size: 11px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1px; color: var(--kc-gray-500); cursor: pointer;
+      border-bottom: 2px solid transparent;
+    }
+    .tabs button.on { color: var(--kc-black); border-bottom-color: var(--kc-black); }
+    .chat-head { cursor: pointer; }
+    .chat-head .head-main { flex: 1; min-width: 0; }
+    .chat-head .edit-hint { font-size: 11px; color: var(--kc-gray-500); margin-top: 2px; }
+    .pin-mark { color: var(--kc-wa-dark); font-size: 11px; margin-right: 4px; }
+    .tag-chip {
+      display: inline-block; font-size: 10px; padding: 2px 6px; margin-right: 4px;
+      background: var(--kc-gray-100); border: 1px solid var(--kc-gray-200); border-radius: 3px;
+      text-transform: uppercase; letter-spacing: 0.5px; color: var(--kc-gray-600);
+    }
+    .drawer-bg {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 60;
+      justify-content: flex-end;
+    }
+    .drawer-bg.on { display: flex; }
+    .drawer {
+      width: min(400px, 100%); height: 100%; background: #fff; border-left: 1px solid var(--kc-gray-200);
+      display: flex; flex-direction: column; box-shadow: -8px 0 30px rgba(0,0,0,.08);
+    }
+    .drawer-head {
+      padding: 16px 18px; border-bottom: 1px solid var(--kc-gray-200); display: flex;
+      align-items: center; justify-content: space-between; background: #fafafa;
+    }
+    .drawer-head h3 {
+      margin: 0; font-family: var(--font-display); text-transform: uppercase;
+      letter-spacing: 1.5px; font-size: 16px;
+    }
+    .drawer-body { flex: 1; overflow: auto; padding: 16px 18px 28px; }
+    .drawer label {
+      display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
+      color: var(--kc-gray-500); margin: 12px 0 4px;
+    }
+    .drawer input, .drawer textarea {
+      width: 100%; border: 1px solid var(--kc-gray-200); border-radius: 4px;
+      padding: 10px 12px; font: inherit; font-size: 14px; outline: none;
+    }
+    .drawer textarea { min-height: 90px; resize: vertical; }
+    .drawer .row-check { display: flex; gap: 16px; margin-top: 14px; font-size: 13px; }
+    .drawer .row-check label { text-transform: none; letter-spacing: 0; color: var(--kc-black); margin: 0; display: flex; align-items: center; gap: 6px; font-size: 13px; }
+    .drawer-actions { display: grid; gap: 8px; margin-top: 18px; }
+    .drawer-actions button {
+      border: 1px solid var(--kc-gray-200); background: #fff; border-radius: 4px;
+      padding: 11px; cursor: pointer; font-family: var(--font-display); font-size: 11px;
+      font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+    }
+    .drawer-actions .primary { background: var(--kc-black); color: #fff; border-color: var(--kc-black); }
+    .drawer-actions .danger { color: #b91c1c; border-color: #fecaca; }
+    .drawer .err { color: #b91c1c; font-size: 12px; min-height: 1.1em; margin-top: 8px; }
+    .drawer .ok { color: #15803d; font-size: 12px; min-height: 1.1em; margin-top: 8px; }
   </style>
 </head>
 <body>
@@ -413,8 +471,12 @@
           <button type="button" id="logoutBtn">Logout</button>
         </div>
       </div>
+      <div class="tabs">
+        <button type="button" class="on" data-tab="active" id="tabActive">Active</button>
+        <button type="button" data-tab="archived" id="tabArchived">Archived</button>
+      </div>
       <div class="search">
-        <input id="filter" placeholder="Search chats" />
+        <input id="filter" placeholder="Search name, phone, tags…" />
       </div>
       <div id="list"></div>
     </aside>
@@ -426,11 +488,12 @@
         </div>
       </div>
       <div id="chatPane" style="display:none;flex-direction:column;height:100%;min-height:0">
-        <div class="chat-head">
+        <div class="chat-head" id="chatHeadBtn" title="Edit customer">
           <div class="avatar sm wa" id="chatAvatar">?</div>
-          <div>
+          <div class="head-main">
             <div class="title" id="chatTitle">Chat</div>
             <div class="sub" id="chatSub"></div>
+            <div class="edit-hint">Tap to edit customer · notes · tags · archive</div>
           </div>
         </div>
         <div id="thread"></div>
@@ -471,6 +534,42 @@
     </div>
   </div>
 
+  <div class="drawer-bg" id="profileDrawer">
+    <div class="drawer" role="dialog" aria-label="Customer profile">
+      <div class="drawer-head">
+        <h3>Customer</h3>
+        <button type="button" id="profileClose" style="border:1px solid var(--kc-gray-200);background:#fff;padding:8px 10px;border-radius:4px;cursor:pointer;font-family:var(--font-display);font-size:11px;text-transform:uppercase;letter-spacing:1px;font-weight:600">Close</button>
+      </div>
+      <div class="drawer-body">
+        <label for="profName">Name</label>
+        <input id="profName" type="text" placeholder="Customer name" />
+        <label for="profPhone">WhatsApp number</label>
+        <input id="profPhone" type="tel" placeholder="91…" />
+        <label for="profEmail">Email</label>
+        <input id="profEmail" type="email" placeholder="optional@" />
+        <label for="profOrder">Order / ref</label>
+        <input id="profOrder" type="text" placeholder="#1005 or Shiprocket id" />
+        <label for="profTags">Tags (comma)</label>
+        <input id="profTags" type="text" placeholder="VIP, return, wholesale" />
+        <label for="profNotes">Internal notes</label>
+        <textarea id="profNotes" placeholder="Team-only notes — not sent on WhatsApp"></textarea>
+        <div class="row-check">
+          <label><input type="checkbox" id="profPinned" /> Pin chat</label>
+          <label><input type="checkbox" id="profArchived" /> Archived</label>
+        </div>
+        <div class="err" id="profErr"></div>
+        <div class="ok" id="profOk"></div>
+        <div class="drawer-actions">
+          <button type="button" class="primary" id="profSave">Save customer</button>
+          <button type="button" id="profCopy">Copy WhatsApp link</button>
+          <button type="button" id="profUnread">Mark unread</button>
+          <button type="button" id="profClear">Clear chat history</button>
+          <button type="button" class="danger" id="profDelete">Delete contact</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
     const tokenKey = 'kc_inbox_token';
     const whoKey = 'kc_inbox_who';
@@ -479,8 +578,10 @@
     let who = localStorage.getItem(whoKey) || '';
     let email = localStorage.getItem(emailKey) || '';
     let activePhone = null;
+    let activeConversation = null;
     let allConversations = [];
     let googleClientId = null;
+    let listTab = 'active'; // active | archived
 
     async function loadLoginConfig() {
       try {
@@ -580,6 +681,15 @@
       location.reload();
     };
     document.getElementById('filter').oninput = () => renderList();
+    document.getElementById('tabActive').onclick = () => setListTab('active');
+    document.getElementById('tabArchived').onclick = () => setListTab('archived');
+
+    function setListTab(tab) {
+      listTab = tab;
+      document.getElementById('tabActive').classList.toggle('on', tab === 'active');
+      document.getElementById('tabArchived').classList.toggle('on', tab === 'archived');
+      refreshList();
+    }
 
     const newModal = document.getElementById('newChatModal');
     document.getElementById('newChatBtn').onclick = () => {
@@ -609,7 +719,8 @@
 
     async function refreshList() {
       if (!token) return;
-      const r = await api('/inbox/api/conversations');
+      const q = listTab === 'archived' ? '?archived=1' : '';
+      const r = await api('/inbox/api/conversations' + q);
       if (!r?.ok) return;
       allConversations = r.data.conversations || [];
       renderList();
@@ -618,27 +729,32 @@
     function renderList() {
       const q = (document.getElementById('filter').value || '').toLowerCase();
       const rows = allConversations.filter((c) => {
-        const hay = ((c.name || '') + ' ' + c.phone).toLowerCase();
+        const hay = ((c.name || '') + ' ' + c.phone + ' ' + (c.tags || []).join(' ') + ' ' + (c.notes || '') + ' ' + (c.orderRef || '')).toLowerCase();
         return !q || hay.includes(q);
       });
       const el = document.getElementById('list');
       if (!rows.length) {
-        el.innerHTML = '<div class="empty">No chats yet. Customer messages and order WhatsApps will appear here and stay in history.</div>';
+        el.innerHTML = listTab === 'archived'
+          ? '<div class="empty">No archived chats.</div>'
+          : '<div class="empty">No chats yet. Tap New to message anyone, or wait for customer / order WhatsApps.</div>';
         return;
       }
       el.innerHTML = rows.map((c) => {
         const title = c.name || ('+' + c.phone);
         const last = (c.messages || []).slice(-1)[0];
-        const preview = last ? last.text : '';
+        const preview = last ? last.text : (c.notes || '');
         const unread = c.unread ? `<span class="badge">${c.unread}</span>` : '';
+        const pin = c.pinned ? '<span class="pin-mark">📌</span>' : '';
+        const tags = (c.tags || []).slice(0, 2).map((t) => `<span class="tag-chip">${escapeHtml(t)}</span>`).join('');
         return `<div class="conv ${c.phone === activePhone ? 'active' : ''}" data-phone="${c.phone}">
           <div class="avatar sm wa">${escapeHtml(initials(c.name, c.phone))}</div>
           <div>
             <div class="meta-row">
-              <span class="name">${escapeHtml(title)}</span>
+              <span class="name">${pin}${escapeHtml(title)}</span>
               <span class="time">${fmtTime(c.lastAt)}</span>
             </div>
             <div class="preview"><span style="flex:1;overflow:hidden;text-overflow:ellipsis">${escapeHtml(preview)}</span>${unread}</div>
+            ${tags ? `<div style="margin-top:4px">${tags}</div>` : ''}
           </div>
         </div>`;
       }).join('');
@@ -654,9 +770,11 @@
       const r = await api('/inbox/api/conversations/' + phone);
       if (!r?.ok) return;
       const c = r.data.conversation;
+      activeConversation = c;
       const sessionOk = r.data.canReplySession;
-      document.getElementById('chatTitle').textContent = c.name || ('+' + c.phone);
-      document.getElementById('chatSub').textContent = '+' + c.phone + ' · WhatsApp';
+      const tagLine = (c.tags || []).length ? ' · ' + c.tags.join(', ') : '';
+      document.getElementById('chatTitle').textContent = (c.pinned ? '📌 ' : '') + (c.name || ('+' + c.phone));
+      document.getElementById('chatSub').textContent = '+' + c.phone + ' · WhatsApp' + tagLine;
       document.getElementById('chatAvatar').textContent = initials(c.name, c.phone);
       document.getElementById('sessionHint').textContent = sessionOk
         ? '24h window open · reply & media enabled'
@@ -778,9 +896,145 @@
       document.getElementById('newPhone').value = '';
       document.getElementById('newName').value = '';
       document.getElementById('newText').value = '';
-      await refreshList();
+      setListTab('active');
       openChat(r.data.phone);
     }
+
+    const profileDrawer = document.getElementById('profileDrawer');
+    document.getElementById('chatHeadBtn').onclick = () => openProfile();
+    document.getElementById('profileClose').onclick = () => profileDrawer.classList.remove('on');
+    profileDrawer.addEventListener('click', (e) => {
+      if (e.target === profileDrawer) profileDrawer.classList.remove('on');
+    });
+
+    function openProfile() {
+      if (!activePhone || !activeConversation) return;
+      const c = activeConversation;
+      document.getElementById('profName').value = c.name || '';
+      document.getElementById('profPhone').value = c.phone || activePhone;
+      document.getElementById('profEmail').value = c.email || '';
+      document.getElementById('profOrder').value = c.orderRef || '';
+      document.getElementById('profTags').value = (c.tags || []).join(', ');
+      document.getElementById('profNotes').value = c.notes || '';
+      document.getElementById('profPinned').checked = Boolean(c.pinned);
+      document.getElementById('profArchived').checked = Boolean(c.archived);
+      document.getElementById('profErr').textContent = '';
+      document.getElementById('profOk').textContent = '';
+      profileDrawer.classList.add('on');
+    }
+
+    document.getElementById('profSave').onclick = async () => {
+      if (!activePhone) return;
+      const errEl = document.getElementById('profErr');
+      const okEl = document.getElementById('profOk');
+      errEl.textContent = '';
+      okEl.textContent = '';
+      const newPhone = document.getElementById('profPhone').value.trim();
+      const patch = {
+        name: document.getElementById('profName').value.trim(),
+        email: document.getElementById('profEmail').value.trim(),
+        orderRef: document.getElementById('profOrder').value.trim(),
+        tags: document.getElementById('profTags').value,
+        notes: document.getElementById('profNotes').value,
+        pinned: document.getElementById('profPinned').checked,
+        archived: document.getElementById('profArchived').checked
+      };
+      let phone = activePhone;
+      const oldDigits = String(activePhone).replace(/\D/g, '');
+      const newDigits = newPhone.replace(/\D/g, '');
+      if (newDigits && newDigits !== oldDigits) {
+        const mig = await api('/inbox/api/conversations/' + activePhone + '/migrate', {
+          method: 'POST',
+          body: JSON.stringify({ phone: newPhone })
+        });
+        if (!mig?.ok) {
+          errEl.textContent = mig?.data?.error || 'Could not change number';
+          return;
+        }
+        phone = mig.data.phone;
+        activePhone = phone;
+      }
+      const r = await api('/inbox/api/conversations/' + phone, {
+        method: 'PATCH',
+        body: JSON.stringify(patch)
+      });
+      if (!r?.ok) {
+        errEl.textContent = r?.data?.error || 'Save failed';
+        return;
+      }
+      activeConversation = r.data.conversation;
+      okEl.textContent = 'Saved';
+      if (patch.archived) {
+        profileDrawer.classList.remove('on');
+        setListTab('archived');
+      } else if (listTab === 'archived') {
+        profileDrawer.classList.remove('on');
+        setListTab('active');
+        openChat(phone);
+      } else {
+        await refreshList();
+        openChat(phone);
+      }
+    };
+
+    document.getElementById('profCopy').onclick = () => {
+      const phone = (document.getElementById('profPhone').value.replace(/\D/g, '') || activePhone);
+      const link = 'https://wa.me/' + phone;
+      if (navigator.clipboard?.writeText) {
+        navigator.clipboard.writeText(link).then(
+          () => { document.getElementById('profOk').textContent = 'Copied ' + link; },
+          () => { document.getElementById('profOk').textContent = link; }
+        );
+      } else {
+        document.getElementById('profOk').textContent = link;
+      }
+    };
+
+    document.getElementById('profUnread').onclick = async () => {
+      if (!activePhone) return;
+      const r = await api('/inbox/api/conversations/' + activePhone + '/unread', {
+        method: 'POST',
+        body: '{}'
+      });
+      if (!r?.ok) {
+        document.getElementById('profErr').textContent = r?.data?.error || 'Failed';
+        return;
+      }
+      document.getElementById('profOk').textContent = 'Marked unread';
+      refreshList();
+    };
+
+    document.getElementById('profClear').onclick = async () => {
+      if (!activePhone) return;
+      if (!confirm('Clear all messages for this contact? Profile stays.')) return;
+      const r = await api('/inbox/api/conversations/' + activePhone + '/clear', {
+        method: 'POST',
+        body: '{}'
+      });
+      if (!r?.ok) {
+        document.getElementById('profErr').textContent = r?.data?.error || 'Failed';
+        return;
+      }
+      activeConversation = r.data.conversation;
+      document.getElementById('profOk').textContent = 'History cleared';
+      openChat(activePhone);
+    };
+
+    document.getElementById('profDelete').onclick = async () => {
+      if (!activePhone) return;
+      if (!confirm('Delete this contact and all chat history? This cannot be undone.')) return;
+      const r = await api('/inbox/api/conversations/' + activePhone, { method: 'DELETE' });
+      if (!r?.ok) {
+        document.getElementById('profErr').textContent = r?.data?.error || 'Delete failed';
+        return;
+      }
+      profileDrawer.classList.remove('on');
+      activePhone = null;
+      activeConversation = null;
+      document.getElementById('chatPane').style.display = 'none';
+      document.getElementById('placeholder').style.display = 'flex';
+      refreshList();
+    };
 
     async function sendMediaFile(file) {
       if (!activePhone || !file) return;

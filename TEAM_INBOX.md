@@ -98,6 +98,8 @@ Inbox UI matches **Keshav Clothing** site cues:
 
 - Full chat history per customer (Turso = forever on Free plan)  
 - **New chat** — message any WhatsApp number from the inbox  
+- **Customer CRUD** — tap chat header → edit name, WhatsApp number (migrate), email, order ref, tags, internal notes, pin, archive, mark unread, clear history, delete  
+- Active / Archived tabs  
 - Text replies, attach, camera (media needs open 24h window)  
 - Outside 24h: sends via approved template `kc_inbox_hello` (Meta must show **Approved**)  
 - View inbound photos/files  
