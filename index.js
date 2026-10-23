@@ -483,8 +483,10 @@ app.post('/debug/send-wa', async (req, res) => {
 
 if (require.main === module) {
   app.listen(config.port, () => {
+    const { DATA_DIR } = require('./lib/store');
     console.log(`[KC Customer Ops] http://localhost:${config.port}`);
     console.log(`[KC Customer Ops] WhatsApp configured: ${wa.isConfigured()}`);
+    console.log(`[KC Customer Ops] Inbox data dir: ${DATA_DIR}`);
     console.log(`[KC Customer Ops] POST /api/otp/request  /api/otp/verify  /api/returns`);
     console.log(`[KC Customer Ops] POST /webhooks/shopify/orders-create|fulfillments-create|fulfillments-update|orders-cancelled`);
     console.log(`[KC Customer Ops] Team inbox: http://localhost:${config.port}/inbox`);
