@@ -574,9 +574,13 @@ app.post('/api/returns', async (req, res) => {
   }
 });
 
-app.get('/api/returns', (_req, res) => {
-  const db = loadReturns();
-  res.json({ ok: true, count: db.requests.length, requests: db.requests.slice(0, 50) });
+app.get('/api/returns', async (_req, res) => {
+  try {
+    const db = await loadReturns();
+    res.json({ ok: true, count: db.requests.length, requests: db.requests.slice(0, 50) });
+  } catch (err) {
+    res.status(500).json({ ok: false, error: err.message });
+  }
 });
 
 // ----- Shopify webhooks → WhatsApp -----

@@ -37,6 +37,7 @@ module.exports = {
     inboxHello: process.env.WA_TEMPLATE_INBOX_HELLO || 'kc_inbox_hello',
     /** Cleaner opener (preferred once Approved): Hi {{1}}, Keshav Clothing here — {{2}} */
     teamNote: process.env.WA_TEMPLATE_TEAM_NOTE || 'kc_team_note',
+    supportAck: process.env.WA_TEMPLATE_SUPPORT_ACK || 'kc_support_ack',
     language: process.env.WA_TEMPLATE_LANGUAGE || 'en'
   },
 
