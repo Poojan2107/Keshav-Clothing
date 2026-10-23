@@ -165,14 +165,8 @@ app.post('/inbox/api/reply', requireInbox, async (req, res) => {
         error: 'Customer must message first (24h window closed)'
       });
     }
-    const result = await wa.sendText(phone, text);
+    const result = await wa.sendText(phone, text, { by: req.body?.who || req.inboxUser });
     if (!result.ok) return res.status(502).json(result);
-    inbox.recordOutbound(phone, {
-      type: 'text',
-      text,
-      id: result.data?.messages?.[0]?.id,
-      by: req.body?.who || req.inboxUser
-    });
     return res.json({ ok: true, result });
   } catch (err) {
     return res.status(500).json({ ok: false, error: err.message });
@@ -203,24 +197,17 @@ app.post('/inbox/api/media', requireInbox, upload.single('file'), async (req, re
     });
     if (!uploaded.ok) return res.status(502).json(uploaded);
 
-    const result = await wa.sendMedia(phone, {
-      type,
-      mediaId: uploaded.id,
-      caption: caption || undefined,
-      filename: type === 'document' ? filename : undefined
-    });
+    const result = await wa.sendMedia(
+      phone,
+      {
+        type,
+        mediaId: uploaded.id,
+        caption: caption || undefined,
+        filename: type === 'document' ? filename : undefined
+      },
+      { by: req.body?.who || req.inboxUser }
+    );
     if (!result.ok) return res.status(502).json(result);
-
-    inbox.recordOutbound(phone, {
-      type,
-      text: caption || filename,
-      caption: caption || null,
-      filename,
-      mediaId: uploaded.id,
-      mimeType,
-      id: result.data?.messages?.[0]?.id,
-      by: req.body?.who || req.inboxUser
-    });
     return res.json({ ok: true, result, mediaId: uploaded.id, type });
   } catch (err) {
     console.error('[inbox media]', err.message);
