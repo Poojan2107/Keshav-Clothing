@@ -140,6 +140,20 @@ const TEMPLATES = [
         }
       }
     ]
+  },
+  {
+    name: 'kc_team_note',
+    category: 'UTILITY',
+    language: lang,
+    components: [
+      {
+        type: 'BODY',
+        text: 'Hi {{1}}, Keshav Clothing here — {{2}}',
+        example: {
+          body_text: [['Rahul', 'How can we help you today?']]
+        }
+      }
+    ]
   }
 ];
 

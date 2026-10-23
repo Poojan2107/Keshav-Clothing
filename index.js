@@ -314,19 +314,13 @@ app.post('/inbox/api/reply', requireInbox, async (req, res) => {
 
     const existing = await inbox.getConversation(phone);
     const greetName = wa.greetNameFrom(req.body?.name || existing?.name);
-    const note = text.slice(0, 200);
-    const result = await wa.sendTemplate(
-      phone,
-      config.templates.inboxHello,
-      [greetName, note],
-      config.templates.language,
-      { by: who }
-    );
+    const note = wa.sanitizeInboxNote(text);
+    const result = await sendInboxOpener(phone, greetName, note, who);
     if (!result.ok) {
       return res.status(502).json({
         ...result,
         errorHint:
-          'Template send failed. Ensure kc_inbox_hello is Approved in Meta, or wait until the customer messages first.'
+          'Template send failed. Ensure kc_inbox_hello (or kc_team_note) is Approved in Meta, or wait until the customer messages first.'
       });
     }
     return res.json({ ok: true, mode: 'template', result });
@@ -334,6 +328,29 @@ app.post('/inbox/api/reply', requireInbox, async (req, res) => {
     return res.status(500).json({ ok: false, error: err.message });
   }
 });
+
+/** Prefer clean kc_team_note; fall back to kc_inbox_hello */
+async function sendInboxOpener(phone, greetName, note, who) {
+  const cleanNote = wa.sanitizeInboxNote(note);
+  const primary = config.templates.teamNote || 'kc_team_note';
+  const fallback = config.templates.inboxHello || 'kc_inbox_hello';
+  let result = await wa.sendTemplate(
+    phone,
+    primary,
+    [greetName, cleanNote],
+    config.templates.language,
+    { by: who }
+  );
+  if (result.ok) return { ...result, templateUsed: primary };
+  result = await wa.sendTemplate(
+    phone,
+    fallback,
+    [greetName, cleanNote],
+    config.templates.language,
+    { by: who }
+  );
+  return { ...result, templateUsed: fallback };
+}
 
 /** Start a chat with any WhatsApp number (creates thread + optional first message). */
 app.post('/inbox/api/start', requireInbox, async (req, res) => {
@@ -362,13 +379,7 @@ app.post('/inbox/api/start', requireInbox, async (req, res) => {
       result = await wa.sendText(phone, text, { by: who });
       mode = 'session';
     } else {
-      result = await wa.sendTemplate(
-        phone,
-        config.templates.inboxHello,
-        [wa.greetNameFrom(name), text.slice(0, 200)],
-        config.templates.language,
-        { by: who }
-      );
+      result = await sendInboxOpener(phone, wa.greetNameFrom(name), text, who);
       mode = 'template';
     }
     if (!result.ok) {
@@ -376,7 +387,7 @@ app.post('/inbox/api/start', requireInbox, async (req, res) => {
         ...result,
         phone,
         errorHint:
-          'Could not send. Outside 24h needs approved template kc_inbox_hello. Run npm run templates:create or approve it in Meta.'
+          'Could not send. Outside 24h needs an approved opener template (kc_team_note / kc_inbox_hello).'
       });
     }
     return res.json({

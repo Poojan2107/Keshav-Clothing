@@ -35,6 +35,8 @@ module.exports = {
     otp: process.env.WA_TEMPLATE_OTP || 'kc_otp',
     /** Team inbox: message anyone / reopen outside 24h window */
     inboxHello: process.env.WA_TEMPLATE_INBOX_HELLO || 'kc_inbox_hello',
+    /** Cleaner opener (preferred once Approved): Hi {{1}}, Keshav Clothing here — {{2}} */
+    teamNote: process.env.WA_TEMPLATE_TEAM_NOTE || 'kc_team_note',
     language: process.env.WA_TEMPLATE_LANGUAGE || 'en'
   },
 
