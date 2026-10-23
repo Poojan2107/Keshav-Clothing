@@ -148,7 +148,7 @@ const TEMPLATES = [
     components: [
       {
         type: 'BODY',
-        text: 'Hi {{1}}, Keshav Clothing here — {{2}}',
+        text: 'Hi {{1}}, Keshav Clothing here — {{2}}. Reply on this chat and we will help.',
         example: {
           body_text: [['Rahul', 'How can we help you today?']]
         }
