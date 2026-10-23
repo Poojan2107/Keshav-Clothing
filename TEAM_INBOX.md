@@ -41,8 +41,16 @@ META_WEBHOOK_VERIFY_TOKEN=kc_wa_verify_change_me
 | Team reply | `/inbox` → Cloud API (within 24h of last customer message) |
 | Order templates | Shopify → Render (unchanged) |
 
+## Features
+
+- Text replies  
+- **Attach** images, video, audio, PDF/docs  
+- **Camera** / photo capture (mobile)  
+- View inbound photos/files from customers  
+
 ## Limits
 
-- Free-form reply only inside WhatsApp **24-hour** customer service window (customer must message first, or after they reply to an order template).  
+- Free-form reply + media only inside WhatsApp **24-hour** customer service window (customer must message first, or after they reply to an order template).  
+- Not full WhatsApp app (no Status, Communities, etc.) — core chat + media for the team.  
 - Render free disk is ephemeral — old chats may reset on redeploy; fine for live ops, not a forever archive.  
 - Change `INBOX_PASSWORD` anytime in Render → Environment → Save.
