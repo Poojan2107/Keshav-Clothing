@@ -1,15 +1,18 @@
 const crypto = require('crypto');
+const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const config = require('./config');
 const wa = require('./lib/whatsapp');
 const otp = require('./lib/otp');
+const inbox = require('./lib/inbox');
 const { notify } = require('./lib/orders-notify');
 const { createReturnRequest, loadReturns } = require('./lib/returns');
-const { maskPhone } = require('./lib/phone');
+const { maskPhone, normalizePhone } = require('./lib/phone');
 
 const app = express();
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(
   express.json({
@@ -60,12 +63,102 @@ app.get('/health', (_req, res) => {
   res.json({
     status: 'online',
     service: 'Keshav Clothing Customer Ops',
-    version: '1.0.0',
+    version: '1.1.0',
     whatsappConfigured: wa.isConfigured(),
     shopifyConfigured: Boolean(config.shopify.shop && config.shopify.adminToken),
+    inboxEnabled: Boolean(config.inbox.enabled && config.inbox.password),
     returnWindowDays: config.returnWindowDays,
     timestamp: new Date().toISOString()
   });
+});
+
+function signInboxToken(who) {
+  const body = Buffer.from(JSON.stringify({ who, exp: Date.now() + 7 * 24 * 60 * 60 * 1000 })).toString(
+    'base64url'
+  );
+  const sig = crypto.createHmac('sha256', config.inbox.tokenSecret).update(body).digest('base64url');
+  return `${body}.${sig}`;
+}
+
+function readInboxToken(req) {
+  const hdr = req.get('Authorization') || '';
+  const token = hdr.startsWith('Bearer ') ? hdr.slice(7) : '';
+  if (!token || !token.includes('.')) return null;
+  const [body, sig] = token.split('.');
+  const expect = crypto.createHmac('sha256', config.inbox.tokenSecret).update(body).digest('base64url');
+  if (sig !== expect) return null;
+  try {
+    const payload = JSON.parse(Buffer.from(body, 'base64url').toString('utf8'));
+    if (!payload.exp || payload.exp < Date.now()) return null;
+    return payload;
+  } catch {
+    return null;
+  }
+}
+
+function requireInbox(req, res, next) {
+  if (!config.inbox.enabled || !config.inbox.password) {
+    return res.status(503).json({ ok: false, error: 'Inbox not configured (INBOX_PASSWORD)' });
+  }
+  const session = readInboxToken(req);
+  if (!session) return res.status(401).json({ ok: false, error: 'Unauthorized' });
+  req.inboxUser = session.who || 'team';
+  return next();
+}
+
+app.get('/inbox', (_req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'inbox.html'));
+});
+
+app.post('/inbox/api/login', (req, res) => {
+  if (!config.inbox.enabled || !config.inbox.password) {
+    return res.status(503).json({ ok: false, error: 'Inbox not configured' });
+  }
+  const password = String(req.body?.password || '');
+  if (password !== config.inbox.password) {
+    return res.status(401).json({ ok: false, error: 'Wrong password' });
+  }
+  const who = String(req.body?.who || 'team').slice(0, 40);
+  return res.json({ ok: true, token: signInboxToken(who), who });
+});
+
+app.get('/inbox/api/conversations', requireInbox, (_req, res) => {
+  res.json({ ok: true, conversations: inbox.listConversations() });
+});
+
+app.get('/inbox/api/conversations/:phone', requireInbox, (req, res) => {
+  const phone = normalizePhone(req.params.phone);
+  const conversation = inbox.getConversation(phone);
+  if (!conversation) return res.status(404).json({ ok: false, error: 'Not found' });
+  inbox.markRead(phone);
+  res.json({
+    ok: true,
+    conversation: inbox.getConversation(phone),
+    canReplySession: inbox.canSendSession(phone)
+  });
+});
+
+app.post('/inbox/api/reply', requireInbox, async (req, res) => {
+  try {
+    const phone = normalizePhone(req.body?.phone);
+    const text = String(req.body?.text || '').trim();
+    if (!phone || !text) return res.status(400).json({ ok: false, error: 'phone and text required' });
+    if (!inbox.canSendSession(phone)) {
+      return res.status(400).json({
+        ok: false,
+        error: 'Customer must message first (24h window closed)'
+      });
+    }
+    const result = await wa.sendText(phone, text);
+    if (!result.ok) return res.status(502).json(result);
+    inbox.recordOutbound(phone, text, {
+      id: result.data?.messages?.[0]?.id,
+      by: req.body?.who || req.inboxUser
+    });
+    return res.json({ ok: true, result });
+  } catch (err) {
+    return res.status(500).json({ ok: false, error: err.message });
+  }
 });
 
 // ----- OTP (Meta WhatsApp) -----
@@ -224,7 +317,12 @@ app.get('/webhooks/meta', (req, res) => {
 });
 
 app.post('/webhooks/meta', (req, res) => {
-  // Acknowledge delivery receipts / inbound messages
+  try {
+    const saved = inbox.ingestMetaWebhook(req.body || {});
+    if (saved.length) console.log(`[Meta inbox] ${saved.length} inbound message(s)`);
+  } catch (err) {
+    console.error('[Meta inbox]', err.message);
+  }
   res.sendStatus(200);
 });
 
@@ -251,6 +349,7 @@ if (require.main === module) {
     console.log(`[KC Customer Ops] WhatsApp configured: ${wa.isConfigured()}`);
     console.log(`[KC Customer Ops] POST /api/otp/request  /api/otp/verify  /api/returns`);
     console.log(`[KC Customer Ops] POST /webhooks/shopify/orders-create|fulfillments-create|fulfillments-update|orders-cancelled`);
+    console.log(`[KC Customer Ops] Team inbox: http://localhost:${config.port}/inbox`);
   });
 }
 

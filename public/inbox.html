@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KC WhatsApp Inbox</title>
+  <style>
+    :root {
+      --bg: #0f1419;
+      --panel: #1a2332;
+      --line: #2a3548;
+      --text: #e7ecf3;
+      --muted: #8b9bb4;
+      --accent: #25d366;
+      --danger: #f07178;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      height: 100vh;
+    }
+    .login {
+      max-width: 360px;
+      margin: 12vh auto;
+      background: var(--panel);
+      padding: 28px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+    }
+    .login h1 { font-size: 1.2rem; margin: 0 0 8px; }
+    .login p { color: var(--muted); font-size: 0.9rem; margin: 0 0 18px; }
+    input, button, textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #0f1419;
+      color: var(--text);
+      font: inherit;
+    }
+    button {
+      background: var(--accent);
+      color: #053b1a;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    .err { color: var(--danger); font-size: 0.85rem; margin-top: 8px; }
+    .app { display: none; height: 100vh; grid-template-columns: 320px 1fr; }
+    .app.on { display: grid; }
+    aside {
+      border-right: 1px solid var(--line);
+      background: var(--panel);
+      display: flex;
+      flex-direction: column;
+    }
+    .top {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+    .top strong { font-size: 0.95rem; }
+    .top button { width: auto; margin: 0; padding: 8px 12px; background: transparent; color: var(--muted); border: 1px solid var(--line); }
+    #list { overflow: auto; flex: 1; }
+    .conv {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--line);
+      cursor: pointer;
+    }
+    .conv:hover, .conv.active { background: #243044; }
+    .conv .name { font-weight: 600; }
+    .conv .preview { color: var(--muted); font-size: 0.82rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #053b1a;
+      border-radius: 999px;
+      padding: 0 7px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-left: 6px;
+    }
+    main { display: flex; flex-direction: column; min-width: 0; }
+    #thread {
+      flex: 1;
+      overflow: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .bubble {
+      max-width: 75%;
+      padding: 10px 12px;
+      border-radius: 12px;
+      line-height: 1.4;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .in { align-self: flex-start; background: #243044; }
+    .out { align-self: flex-end; background: #1f5c3a; }
+    .meta { font-size: 0.72rem; color: var(--muted); margin-top: 4px; }
+    .composer {
+      border-top: 1px solid var(--line);
+      padding: 12px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      background: var(--panel);
+    }
+    .composer textarea { min-height: 54px; resize: vertical; }
+    .composer button { width: auto; min-width: 100px; margin: 0; }
+    .hint { grid-column: 1 / -1; color: var(--muted); font-size: 0.8rem; }
+    .empty { color: var(--muted); margin: auto; text-align: center; padding: 40px; }
+    @media (max-width: 800px) {
+      .app.on { grid-template-columns: 1fr; }
+      aside { max-height: 40vh; }
+    }
+  </style>
+</head>
+<body>
+  <div class="login" id="login">
+    <h1>Keshav Clothing WhatsApp</h1>
+    <p>Team inbox — reply to customers on +91 93284 15350</p>
+    <input id="who" placeholder="Your name (e.g. Parth)" />
+    <input id="pass" type="password" placeholder="Team password" style="margin-top:8px" />
+    <button id="loginBtn">Open inbox</button>
+    <div class="err" id="loginErr"></div>
+  </div>
+
+  <div class="app" id="app">
+    <aside>
+      <div class="top">
+        <strong>Chats</strong>
+        <button id="logoutBtn" type="button">Logout</button>
+      </div>
+      <div id="list"></div>
+    </aside>
+    <main>
+      <div id="thread"><div class="empty">Select a chat</div></div>
+      <div class="composer" id="composer" style="display:none">
+        <textarea id="reply" placeholder="Type a reply…"></textarea>
+        <button id="sendBtn">Send</button>
+        <div class="hint" id="sessionHint"></div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const tokenKey = 'kc_inbox_token';
+    const whoKey = 'kc_inbox_who';
+    let token = localStorage.getItem(tokenKey) || '';
+    let who = localStorage.getItem(whoKey) || '';
+    let activePhone = null;
+
+    async function api(path, opts = {}) {
+      const res = await fetch(path, {
+        ...opts,
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + token,
+          ...(opts.headers || {})
+        }
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.status === 401) {
+        localStorage.removeItem(tokenKey);
+        location.reload();
+        return;
+      }
+      return { ok: res.ok, status: res.status, data };
+    }
+
+    function showApp() {
+      document.getElementById('login').style.display = 'none';
+      document.getElementById('app').classList.add('on');
+      refreshList();
+      setInterval(refreshList, 8000);
+    }
+
+    document.getElementById('loginBtn').onclick = async () => {
+      const password = document.getElementById('pass').value;
+      who = document.getElementById('who').value.trim() || 'team';
+      const r = await fetch('/inbox/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password, who })
+      }).then((x) => x.json());
+      if (!r.ok) {
+        document.getElementById('loginErr').textContent = r.error || 'Login failed';
+        return;
+      }
+      token = r.token;
+      localStorage.setItem(tokenKey, token);
+      localStorage.setItem(whoKey, who);
+      showApp();
+    };
+
+    document.getElementById('logoutBtn').onclick = () => {
+      localStorage.removeItem(tokenKey);
+      location.reload();
+    };
+
+    async function refreshList() {
+      if (!token) return;
+      const r = await api('/inbox/api/conversations');
+      if (!r?.ok) return;
+      const el = document.getElementById('list');
+      const rows = r.data.conversations || [];
+      if (!rows.length) {
+        el.innerHTML = '<div class="empty">No chats yet. When a customer messages the business number, it shows here.</div>';
+        return;
+      }
+      el.innerHTML = rows.map((c) => {
+        const title = c.name || c.phone;
+        const last = (c.messages || []).slice(-1)[0];
+        const preview = last ? last.text : '';
+        const unread = c.unread ? `<span class="badge">${c.unread}</span>` : '';
+        return `<div class="conv ${c.phone === activePhone ? 'active' : ''}" data-phone="${c.phone}">
+          <div class="name">${escapeHtml(title)} ${unread}</div>
+          <div class="preview">${escapeHtml(preview)}</div>
+        </div>`;
+      }).join('');
+      el.querySelectorAll('.conv').forEach((node) => {
+        node.onclick = () => openChat(node.dataset.phone);
+      });
+    }
+
+    async function openChat(phone) {
+      activePhone = phone;
+      const r = await api('/inbox/api/conversations/' + phone);
+      if (!r?.ok) return;
+      const c = r.data.conversation;
+      const thread = document.getElementById('thread');
+      document.getElementById('composer').style.display = 'grid';
+      const sessionOk = r.data.canReplySession;
+      document.getElementById('sessionHint').textContent = sessionOk
+        ? 'Customer messaged in the last 24h — free-form reply OK.'
+        : 'Outside 24h window — customer must message first, or use an approved template later.';
+      document.getElementById('sendBtn').disabled = !sessionOk;
+      thread.innerHTML = (c.messages || []).map((m) => {
+        const cls = m.direction === 'inbound' ? 'in' : 'out';
+        const label = m.direction === 'inbound' ? (c.name || c.phone) : (m.by || 'team');
+        return `<div class="bubble ${cls}">${escapeHtml(m.text)}<div class="meta">${escapeHtml(label)} · ${new Date(m.at).toLocaleString()}</div></div>`;
+      }).join('') || '<div class="empty">No messages</div>';
+      thread.scrollTop = thread.scrollHeight;
+      refreshList();
+    }
+
+    document.getElementById('sendBtn').onclick = async () => {
+      const text = document.getElementById('reply').value.trim();
+      if (!text || !activePhone) return;
+      document.getElementById('sendBtn').disabled = true;
+      const r = await api('/inbox/api/reply', {
+        method: 'POST',
+        body: JSON.stringify({ phone: activePhone, text, who })
+      });
+      document.getElementById('sendBtn').disabled = false;
+      if (!r?.ok) {
+        alert(r?.data?.error || 'Send failed');
+        return;
+      }
+      document.getElementById('reply').value = '';
+      openChat(activePhone);
+    };
+
+    function escapeHtml(s) {
+      return String(s || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    if (token) showApp();
+  </script>
+</body>
+</html>
