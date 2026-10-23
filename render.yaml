@@ -1,0 +1,14 @@
+# Optional: Render Blueprint — create Web Service from this folder
+services:
+  - type: web
+    name: kc-customer-ops
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3002
+      # Set the rest in Render dashboard from .env.example (secrets)

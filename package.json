@@ -1,0 +1,22 @@
+{
+  "name": "kc-customer-ops",
+  "version": "1.0.0",
+  "description": "Keshav Clothing — WhatsApp order updates (Meta Cloud API), OTP, returns/exchanges",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test:wa": "node scripts/test_whatsapp.js",
+    "templates:create": "node scripts/create_wa_templates.js",
+    "tunnel": "cloudflared tunnel --url http://localhost:3002"
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
