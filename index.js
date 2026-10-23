@@ -258,10 +258,7 @@ app.post('/inbox/api/reply', requireInbox, async (req, res) => {
     }
 
     const existing = await inbox.getConversation(phone);
-    const greetName =
-      String(req.body?.name || existing?.name || 'there')
-        .trim()
-        .slice(0, 40) || 'there';
+    const greetName = wa.greetNameFrom(req.body?.name || existing?.name);
     const note = text.slice(0, 200);
     const result = await wa.sendTemplate(
       phone,
@@ -310,11 +307,10 @@ app.post('/inbox/api/start', requireInbox, async (req, res) => {
       result = await wa.sendText(phone, text, { by: who });
       mode = 'session';
     } else {
-      const greetName = (name || 'there').slice(0, 40);
       result = await wa.sendTemplate(
         phone,
         config.templates.inboxHello,
-        [greetName, text.slice(0, 200)],
+        [wa.greetNameFrom(name), text.slice(0, 200)],
         config.templates.language,
         { by: who }
       );
