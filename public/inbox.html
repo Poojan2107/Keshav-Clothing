@@ -526,13 +526,13 @@
   <div class="modal-bg" id="newChatModal">
     <div class="modal">
       <h3>New chat</h3>
-      <p class="note">WhatsApp wraps your note in our KC template:<br/>“Hi <em>Name</em>, this is Keshav Clothing. <strong>your note</strong> Please reply…” — type only the middle note, not the full greeting.</p>
+      <p class="note">Note is optional. Leave blank to open the chat only. If you add a note, WhatsApp sends: “Hi Name, this is Keshav Clothing. <strong>your note</strong> Please reply…”</p>
       <label for="newPhone">Phone</label>
       <input id="newPhone" type="tel" placeholder="98765 43210 or +91…" autocomplete="tel" />
       <label for="newName">Name (optional)</label>
       <input id="newName" type="text" placeholder="Parth" />
-      <label for="newText">Your note</label>
-      <textarea id="newText" placeholder="We wanted to connect with you about your enquiry."></textarea>
+      <label for="newText">Your note <span style="text-transform:none;letter-spacing:0;color:var(--kc-gray-500)">(optional)</span></label>
+      <textarea id="newText" placeholder="Optional — e.g. How can we help you today?"></textarea>
       <div class="err" id="newChatErr"></div>
       <div class="modal-actions">
         <button type="button" class="cancel" id="newChatCancel">Cancel</button>
@@ -1093,15 +1093,12 @@
         errEl.textContent = 'Enter a phone number';
         return;
       }
-      if (!text) {
-        errEl.textContent = 'Enter a first message';
-        return;
-      }
       const btn = document.getElementById('newChatSend');
       btn.disabled = true;
+      // Empty note = open chat only (no WhatsApp yet). Filled note = send template/text.
       const r = await api('/inbox/api/start', {
         method: 'POST',
-        body: JSON.stringify({ phone, name, text, who })
+        body: JSON.stringify({ phone, name, text: text || undefined, who })
       });
       btn.disabled = false;
       if (!r?.ok) {
