@@ -60,6 +60,10 @@ module.exports = {
   inbox: {
     enabled: bool(process.env.INBOX_ENABLED, true),
     password: process.env.INBOX_PASSWORD || '',
-    tokenSecret: process.env.INBOX_TOKEN_SECRET || process.env.INBOX_PASSWORD || 'kc-inbox-dev'
+    tokenSecret: process.env.INBOX_TOKEN_SECRET || process.env.INBOX_PASSWORD || 'kc-inbox-dev',
+    allowedEmails: list(
+      process.env.INBOX_ALLOWED_EMAILS || 'keshavclothingkc@gmail.com'
+    ).map((e) => e.toLowerCase()),
+    googleClientId: process.env.INBOX_GOOGLE_CLIENT_ID || ''
   }
 };

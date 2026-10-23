@@ -4,13 +4,15 @@ Built into customer-ops (no Chatwoot / no work email needed).
 
 **URL:** https://keshav-clothing.onrender.com/inbox
 
-## Who
+## Who (restricted)
 
-Share with:
-- keshavclothingkc@gmail.com (Parth / KC)
-- Parth (and anyone else who should reply)
+Only this email can access (allowlist):
+- `keshavclothingkc@gmail.com`
 
-They open the link → enter **name** + **team password** → see chats → reply.
+Login: that **email** + inbox password.  
+Optional: **Sign in with Google** (same Gmail only) when `INBOX_GOOGLE_CLIENT_ID` is set.
+
+Anyone else gets **403 / not allowed**.
 
 ## Render env (required)
 
@@ -18,6 +20,8 @@ They open the link → enter **name** + **team password** → see chats → repl
 INBOX_ENABLED=1
 INBOX_PASSWORD=keshav123
 INBOX_TOKEN_SECRET=<random string>
+INBOX_ALLOWED_EMAILS=keshavclothingkc@gmail.com
+INBOX_GOOGLE_CLIENT_ID=<optional Google OAuth client id>
 PUBLIC_BASE_URL=https://keshav-clothing.onrender.com
 META_WEBHOOK_VERIFY_TOKEN=kc_wa_verify_change_me
 ```

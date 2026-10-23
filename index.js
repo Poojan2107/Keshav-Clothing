@@ -81,16 +81,28 @@ app.get('/health', (_req, res) => {
     version: '1.1.0',
     whatsappConfigured: wa.isConfigured(),
     shopifyConfigured: Boolean(config.shopify.shop && config.shopify.adminToken),
-    inboxEnabled: Boolean(config.inbox.enabled && config.inbox.password),
+    inboxEnabled: Boolean(config.inbox.enabled && config.inbox.password && config.inbox.allowedEmails.length),
     returnWindowDays: config.returnWindowDays,
     timestamp: new Date().toISOString()
   });
 });
 
-function signInboxToken(who) {
-  const body = Buffer.from(JSON.stringify({ who, exp: Date.now() + 7 * 24 * 60 * 60 * 1000 })).toString(
-    'base64url'
-  );
+function isAllowedInboxEmail(email) {
+  const e = String(email || '')
+    .trim()
+    .toLowerCase();
+  if (!e || !e.includes('@')) return false;
+  return config.inbox.allowedEmails.includes(e);
+}
+
+function signInboxToken({ who, email }) {
+  const body = Buffer.from(
+    JSON.stringify({
+      who: String(who || 'team').slice(0, 40),
+      email: String(email || '').toLowerCase(),
+      exp: Date.now() + 7 * 24 * 60 * 60 * 1000
+    })
+  ).toString('base64url');
   const sig = crypto.createHmac('sha256', config.inbox.tokenSecret).update(body).digest('base64url');
   return `${body}.${sig}`;
 }
@@ -117,8 +129,11 @@ function requireInbox(req, res, next) {
     return res.status(503).json({ ok: false, error: 'Inbox not configured (INBOX_PASSWORD)' });
   }
   const session = readInboxToken(req);
-  if (!session) return res.status(401).json({ ok: false, error: 'Unauthorized' });
-  req.inboxUser = session.who || 'team';
+  if (!session || !isAllowedInboxEmail(session.email)) {
+    return res.status(401).json({ ok: false, error: 'Unauthorized' });
+  }
+  req.inboxUser = session.who || session.email;
+  req.inboxEmail = session.email;
   return next();
 }
 
@@ -126,16 +141,73 @@ app.get('/inbox', (_req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'inbox.html'));
 });
 
+app.get('/inbox/api/config', (_req, res) => {
+  res.json({
+    ok: true,
+    googleClientId: config.inbox.googleClientId || null,
+    allowedHint: config.inbox.allowedEmails.length === 1 ? config.inbox.allowedEmails[0] : 'authorized KC email'
+  });
+});
+
 app.post('/inbox/api/login', (req, res) => {
   if (!config.inbox.enabled || !config.inbox.password) {
     return res.status(503).json({ ok: false, error: 'Inbox not configured' });
   }
+  const email = String(req.body?.email || '')
+    .trim()
+    .toLowerCase();
   const password = String(req.body?.password || '');
+  if (!isAllowedInboxEmail(email)) {
+    return res.status(403).json({ ok: false, error: 'This email is not allowed to access the inbox' });
+  }
   if (password !== config.inbox.password) {
     return res.status(401).json({ ok: false, error: 'Wrong password' });
   }
-  const who = String(req.body?.who || 'team').slice(0, 40);
-  return res.json({ ok: true, token: signInboxToken(who), who });
+  const who = String(req.body?.who || email.split('@')[0]).slice(0, 40);
+  return res.json({
+    ok: true,
+    token: signInboxToken({ who, email }),
+    who,
+    email
+  });
+});
+
+app.post('/inbox/api/google-login', async (req, res) => {
+  try {
+    if (!config.inbox.enabled || !config.inbox.googleClientId) {
+      return res.status(503).json({ ok: false, error: 'Google Sign-In not configured' });
+    }
+    const credential = String(req.body?.credential || '');
+    if (!credential) return res.status(400).json({ ok: false, error: 'Missing Google credential' });
+
+    const { OAuth2Client } = require('google-auth-library');
+    const client = new OAuth2Client(config.inbox.googleClientId);
+    const ticket = await client.verifyIdToken({
+      idToken: credential,
+      audience: config.inbox.googleClientId
+    });
+    const payload = ticket.getPayload() || {};
+    const email = String(payload.email || '').toLowerCase();
+    if (!payload.email_verified) {
+      return res.status(403).json({ ok: false, error: 'Google email not verified' });
+    }
+    if (!isAllowedInboxEmail(email)) {
+      return res.status(403).json({
+        ok: false,
+        error: 'Only the authorized Keshav Clothing Google account can access this inbox'
+      });
+    }
+    const who = String(payload.name || email.split('@')[0]).slice(0, 40);
+    return res.json({
+      ok: true,
+      token: signInboxToken({ who, email }),
+      who,
+      email
+    });
+  } catch (err) {
+    console.error('[inbox google-login]', err.message);
+    return res.status(401).json({ ok: false, error: 'Google Sign-In failed' });
+  }
 });
 
 app.get('/inbox/api/conversations', requireInbox, (_req, res) => {

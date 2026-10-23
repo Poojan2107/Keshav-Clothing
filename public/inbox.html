@@ -370,13 +370,16 @@
     <div class="login-card">
       <div class="login-logo">KC</div>
       <h1>Keshav Clothing</h1>
-      <p>WhatsApp business chats for the KC team.<br/>Use your name + team password.</p>
-      <input id="who" placeholder="Your name (e.g. Parth)" autocomplete="username" />
-      <input id="pass" type="password" placeholder="Team password" autocomplete="current-password" />
+      <p>Restricted WhatsApp inbox.<br/>Only the authorized KC Google account can sign in.</p>
+      <div id="googleBtnWrap" style="display:none;margin:16px 0;min-height:44px"></div>
+      <div id="orLine" style="display:none;color:#667781;font-size:0.8rem;margin:12px 0">or email + password</div>
+      <input id="email" type="email" placeholder="keshavclothingkc@gmail.com" autocomplete="username" />
+      <input id="pass" type="password" placeholder="Inbox password" autocomplete="current-password" style="margin-top:8px" />
       <button type="button" id="loginBtn">Continue</button>
       <div class="err" id="loginErr"></div>
     </div>
   </div>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
 
   <div class="app" id="app">
     <aside>
@@ -433,10 +436,56 @@
   <script>
     const tokenKey = 'kc_inbox_token';
     const whoKey = 'kc_inbox_who';
+    const emailKey = 'kc_inbox_email';
     let token = localStorage.getItem(tokenKey) || '';
     let who = localStorage.getItem(whoKey) || '';
+    let email = localStorage.getItem(emailKey) || '';
     let activePhone = null;
     let allConversations = [];
+    let googleClientId = null;
+
+    async function loadLoginConfig() {
+      try {
+        const r = await fetch('/inbox/api/config').then((x) => x.json());
+        googleClientId = r.googleClientId || null;
+        if (googleClientId) {
+          document.getElementById('googleBtnWrap').style.display = 'block';
+          document.getElementById('orLine').style.display = 'block';
+          const boot = () => {
+            if (!window.google?.accounts?.id) return setTimeout(boot, 200);
+            window.google.accounts.id.initialize({
+              client_id: googleClientId,
+              callback: async (resp) => {
+                const r = await fetch('/inbox/api/google-login', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ credential: resp.credential })
+                }).then((x) => x.json());
+                if (!r.ok) {
+                  document.getElementById('loginErr').textContent = r.error || 'Google Sign-In failed';
+                  return;
+                }
+                token = r.token;
+                who = r.who;
+                email = r.email;
+                localStorage.setItem(tokenKey, token);
+                localStorage.setItem(whoKey, who);
+                localStorage.setItem(emailKey, email);
+                showApp();
+              }
+            });
+            window.google.accounts.id.renderButton(document.getElementById('googleBtnWrap'), {
+              theme: 'outline',
+              size: 'large',
+              width: 320,
+              text: 'signin_with'
+            });
+          };
+          boot();
+        }
+      } catch (_) {}
+    }
+    loadLoginConfig();
 
     async function api(path, opts = {}) {
       const res = await fetch(path, {
@@ -459,26 +508,29 @@
     function showApp() {
       document.getElementById('login').style.display = 'none';
       document.getElementById('app').classList.add('on');
-      document.getElementById('whoLabel').textContent = who;
+      document.getElementById('whoLabel').textContent = email || who;
       refreshList();
       setInterval(refreshList, 7000);
     }
 
     document.getElementById('loginBtn').onclick = async () => {
       const password = document.getElementById('pass').value;
-      who = document.getElementById('who').value.trim() || 'team';
+      email = document.getElementById('email').value.trim().toLowerCase();
       const r = await fetch('/inbox/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password, who })
+        body: JSON.stringify({ password, email })
       }).then((x) => x.json());
       if (!r.ok) {
         document.getElementById('loginErr').textContent = r.error || 'Login failed';
         return;
       }
       token = r.token;
+      who = r.who;
+      email = r.email;
       localStorage.setItem(tokenKey, token);
       localStorage.setItem(whoKey, who);
+      localStorage.setItem(emailKey, email);
       showApp();
     };
 
@@ -488,6 +540,8 @@
 
     document.getElementById('logoutBtn').onclick = () => {
       localStorage.removeItem(tokenKey);
+      localStorage.removeItem(whoKey);
+      localStorage.removeItem(emailKey);
       location.reload();
     };
 
