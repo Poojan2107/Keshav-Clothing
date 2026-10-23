@@ -15,6 +15,33 @@ Optional: **Sign in with Google** (same Gmail only) when `INBOX_GOOGLE_CLIENT_ID
 
 Anyone else gets **403 / not allowed**.
 
+## Forever chat history (FREE — required on Render Free)
+
+Render Free has **no disks**. Without a remote store, every redeploy / sleep wipes chats.  
+We use **Turso** (free SQLite cloud — no credit card).
+
+### One-time setup (~5 min)
+
+1. Open [https://turso.tech](https://turso.tech) → **Sign up** with GitHub (Free plan).
+2. Create a database, e.g. name `kc-inbox`, region closest to India (or default).
+3. Open the database → **Tokens** → create a token (or use “Connect” / CLI output).
+4. Copy:
+   - **Database URL** — looks like `libsql://kc-inbox-xxxx.turso.io`
+   - **Auth token** — long secret string
+5. Render → **Keshav-Clothing** → **Environment** → add:
+
+```
+TURSO_DATABASE_URL=libsql://kc-inbox-xxxx.turso.io
+TURSO_AUTH_TOKEN=eyJ...your-token...
+```
+
+6. **Save** → wait for redeploy.
+
+After that, chats stay forever (refresh, redeploy, sleep — all fine).  
+Logs should show: `Inbox persistence: turso (Turso — survives redeploys)`.
+
+You do **not** need Render Starter / Disks.
+
 ## Render env (required)
 
 ```
@@ -25,57 +52,36 @@ INBOX_ALLOWED_EMAILS=keshavclothingkc@gmail.com
 INBOX_GOOGLE_CLIENT_ID=<optional Google OAuth client id>
 PUBLIC_BASE_URL=https://keshav-clothing.onrender.com
 META_WEBHOOK_VERIFY_TOKEN=kc_wa_verify_change_me
-DATA_DIR=/var/data
+TURSO_DATABASE_URL=libsql://...
+TURSO_AUTH_TOKEN=...
 ```
 
 (Plus existing Meta token / phone ID.)
 
-`DATA_DIR` stores chat history on disk (`inbox-conversations.json`). Without a persistent disk, redeploys can wipe history.
-
-## Keep history (WhatsApp-like)
-
-1. Render → your **Web Service** → **Disks**
-2. Add a disk, mount path: `/var/data` (1 GB is enough)
-3. Set env `DATA_DIR=/var/data`
-4. Redeploy
-
-Chats keep up to ~4000–5000 messages per contact with atomic writes + `.bak` backup. Inbound customer messages, team replies, media captions, and order template sends all land in the same thread.
-
 ## Brand / visuals
 
 Inbox UI matches **Keshav Clothing** site cues:
-- Display: **Oswald** (uppercase / letter-spacing like store headings)
+- Display: **Oswald** (uppercase / letter-spacing)
 - Body: **Inter**
 - Palette: `#171717` black, gray borders, white panels
 - Chat layout stays WhatsApp-like (list + bubbles + 24h session)
 
 ## GoDaddy → unified subdomain (when DNS access is ready)
 
-Wire so store + inbox feel like one brand:
-
 1. GoDaddy → **DNS** for `keshavclothing.com`
 2. Add **CNAME**:
    - **Host:** `inbox`
    - **Points to:** `keshav-clothing.onrender.com`
-   - TTL: default / 1 hour
-3. Render → Web Service → **Custom Domains** → add `inbox.keshavclothing.com` → wait for SSL
-4. Update env:
-   ```
-   PUBLIC_BASE_URL=https://inbox.keshavclothing.com
-   ```
-5. Meta webhook Callback URL (optional but cleaner):
-   `https://inbox.keshavclothing.com/webhooks/meta`  
-   (same verify token; can keep the onrender.com URL if already verified)
-6. Team bookmark: **https://inbox.keshavclothing.com/inbox**
-
-Do **not** change Meta phone number or WABA — only the hostname in front of the same app.
+3. Render → **Custom Domains** → `inbox.keshavclothing.com` → wait for SSL
+4. Set `PUBLIC_BASE_URL=https://inbox.keshavclothing.com`
+5. Optionally point Meta webhook to `https://inbox.keshavclothing.com/webhooks/meta`
+6. Bookmark: **https://inbox.keshavclothing.com/inbox**
 
 ## Meta webhook (required for inbound chats)
 
 1. [developers.facebook.com](https://developers.facebook.com) → your WhatsApp app  
 2. WhatsApp → **Configuration** → Webhook  
 3. **Callback URL:** `https://keshav-clothing.onrender.com/webhooks/meta`  
-   *(or `https://inbox.keshavclothing.com/webhooks/meta` after custom domain)*  
 4. **Verify token:** same as `META_WEBHOOK_VERIFY_TOKEN`  
 5. Verify and save  
 6. Subscribe to **messages** (and optionally `message_template_status_update`)
@@ -84,20 +90,18 @@ Do **not** change Meta phone number or WABA — only the hostname in front of th
 
 | Direction | Path |
 |-----------|------|
-| Customer → business | Meta webhook → `/inbox` |
-| Team reply | `/inbox` → Cloud API (within 24h of last customer message) |
-| Order templates | Shopify → Render (unchanged; also logged into chat history) |
+| Customer → business | Meta webhook → Turso → `/inbox` |
+| Team reply | `/inbox` → Cloud API (within 24h) |
+| Order templates | Shopify → Render → logged into same chat history |
 
 ## Features
 
-- Full chat history per customer (persisted when `DATA_DIR` + disk is set)  
-- Text replies  
-- **Attach** images, video, audio, PDF/docs  
-- **Camera** / photo capture (mobile)  
-- View inbound photos/files from customers  
+- Full chat history per customer (Turso = forever on Free plan)  
+- Text replies, attach, camera  
+- View inbound photos/files  
 
 ## Limits
 
-- Free-form reply + media only inside WhatsApp **24-hour** customer service window (customer must message first, or after they reply to an order template).  
-- Not full WhatsApp app (no Status, Communities, etc.) — core chat + media for the team.  
+- Free-form reply + media only inside WhatsApp **24-hour** window.  
+- Not full WhatsApp app — core team chat + media.  
 - Change `INBOX_PASSWORD` anytime in Render → Environment → Save.

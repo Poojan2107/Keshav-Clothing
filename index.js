@@ -142,10 +142,13 @@ app.get('/inbox', (_req, res) => {
 });
 
 app.get('/inbox/api/config', (_req, res) => {
+  const store = require('./lib/store');
   res.json({
     ok: true,
     googleClientId: config.inbox.googleClientId || null,
-    allowedHint: config.inbox.allowedEmails.length === 1 ? config.inbox.allowedEmails[0] : 'authorized KC email'
+    allowedHint: config.inbox.allowedEmails.length === 1 ? config.inbox.allowedEmails[0] : 'authorized KC email',
+    persistence: store.persistenceMode(),
+    historyForever: store.isRemote()
   });
 });
 
@@ -210,20 +213,30 @@ app.post('/inbox/api/google-login', async (req, res) => {
   }
 });
 
-app.get('/inbox/api/conversations', requireInbox, (_req, res) => {
-  res.json({ ok: true, conversations: inbox.listConversations() });
+app.get('/inbox/api/conversations', requireInbox, async (_req, res) => {
+  try {
+    res.json({ ok: true, conversations: await inbox.listConversations() });
+  } catch (err) {
+    console.error('[inbox list]', err.message);
+    res.status(500).json({ ok: false, error: err.message });
+  }
 });
 
-app.get('/inbox/api/conversations/:phone', requireInbox, (req, res) => {
-  const phone = normalizePhone(req.params.phone);
-  const conversation = inbox.getConversation(phone);
-  if (!conversation) return res.status(404).json({ ok: false, error: 'Not found' });
-  inbox.markRead(phone);
-  res.json({
-    ok: true,
-    conversation: inbox.getConversation(phone),
-    canReplySession: inbox.canSendSession(phone)
-  });
+app.get('/inbox/api/conversations/:phone', requireInbox, async (req, res) => {
+  try {
+    const phone = normalizePhone(req.params.phone);
+    const conversation = await inbox.getConversation(phone);
+    if (!conversation) return res.status(404).json({ ok: false, error: 'Not found' });
+    await inbox.markRead(phone);
+    res.json({
+      ok: true,
+      conversation: await inbox.getConversation(phone),
+      canReplySession: await inbox.canSendSession(phone)
+    });
+  } catch (err) {
+    console.error('[inbox get]', err.message);
+    res.status(500).json({ ok: false, error: err.message });
+  }
 });
 
 app.post('/inbox/api/reply', requireInbox, async (req, res) => {
@@ -231,7 +244,7 @@ app.post('/inbox/api/reply', requireInbox, async (req, res) => {
     const phone = normalizePhone(req.body?.phone);
     const text = String(req.body?.text || '').trim();
     if (!phone || !text) return res.status(400).json({ ok: false, error: 'phone and text required' });
-    if (!inbox.canSendSession(phone)) {
+    if (!(await inbox.canSendSession(phone))) {
       return res.status(400).json({
         ok: false,
         error: 'Customer must message first (24h window closed)'
@@ -251,7 +264,7 @@ app.post('/inbox/api/media', requireInbox, upload.single('file'), async (req, re
     const caption = String(req.body?.caption || '').trim();
     if (!phone) return res.status(400).json({ ok: false, error: 'phone required' });
     if (!req.file) return res.status(400).json({ ok: false, error: 'file required' });
-    if (!inbox.canSendSession(phone)) {
+    if (!(await inbox.canSendSession(phone))) {
       return res.status(400).json({
         ok: false,
         error: 'Customer must message first (24h window closed)'
@@ -454,14 +467,15 @@ app.get('/webhooks/meta', (req, res) => {
   return res.sendStatus(403);
 });
 
-app.post('/webhooks/meta', (req, res) => {
+app.post('/webhooks/meta', async (req, res) => {
+  // Respond fast; persist after ack so Meta does not retry on slow Turso writes
+  res.sendStatus(200);
   try {
-    const saved = inbox.ingestMetaWebhook(req.body || {});
+    const saved = await inbox.ingestMetaWebhook(req.body || {});
     if (saved.length) console.log(`[Meta inbox] ${saved.length} inbound message(s)`);
   } catch (err) {
     console.error('[Meta inbox]', err.message);
   }
-  res.sendStatus(200);
 });
 
 // Debug: send a test WA message
@@ -483,10 +497,14 @@ app.post('/debug/send-wa', async (req, res) => {
 
 if (require.main === module) {
   app.listen(config.port, () => {
-    const { DATA_DIR } = require('./lib/store');
+    const store = require('./lib/store');
     console.log(`[KC Customer Ops] http://localhost:${config.port}`);
     console.log(`[KC Customer Ops] WhatsApp configured: ${wa.isConfigured()}`);
-    console.log(`[KC Customer Ops] Inbox data dir: ${DATA_DIR}`);
+    console.log(
+      `[KC Customer Ops] Inbox persistence: ${store.persistenceMode()}` +
+        (store.isRemote() ? ' (Turso — survives redeploys)' : ' (local only — set TURSO_* for forever history)')
+    );
+    console.log(`[KC Customer Ops] Inbox data dir: ${store.DATA_DIR}`);
     console.log(`[KC Customer Ops] POST /api/otp/request  /api/otp/verify  /api/returns`);
     console.log(`[KC Customer Ops] POST /webhooks/shopify/orders-create|fulfillments-create|fulfillments-update|orders-cancelled`);
     console.log(`[KC Customer Ops] Team inbox: http://localhost:${config.port}/inbox`);

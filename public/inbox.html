@@ -434,6 +434,12 @@
     async function loadLoginConfig() {
       try {
         const r = await fetch('/inbox/api/config').then((x) => x.json());
+        if (r.historyForever === false) {
+          const warn = document.createElement('p');
+          warn.style.cssText = 'margin:0 0 16px;padding:10px 12px;background:#fff7ed;border:1px solid #fed7aa;border-radius:4px;color:#9a3412;font-size:12px;text-align:left;line-height:1.4';
+          warn.textContent = 'History is not yet durable. Add free Turso keys on Render (see TEAM_INBOX.md) so chats survive redeploys.';
+          document.querySelector('.login-card h1')?.after(warn);
+        }
         googleClientId = r.googleClientId || null;
         if (googleClientId) {
           document.getElementById('googleBtnWrap').style.display = 'block';
