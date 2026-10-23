@@ -97,8 +97,20 @@ Inbox UI matches **Keshav Clothing** site cues:
 ## Features
 
 - Full chat history per customer (Turso = forever on Free plan)  
-- Text replies, attach, camera  
+- **New chat** — message any WhatsApp number from the inbox  
+- Text replies, attach, camera (media needs open 24h window)  
+- Outside 24h: sends via approved template `kc_inbox_hello` (Meta must show **Approved**)  
 - View inbound photos/files  
+
+### Message anyone (Meta rule)
+
+| Situation | What you can send |
+|-----------|-------------------|
+| Customer messaged in last 24h | Free text + media |
+| New number / window closed | Template `kc_inbox_hello` first; after they reply → free chat |
+
+Check template: Meta WhatsApp Manager → Message templates → `kc_inbox_hello`.  
+
 
 ## Limits
 

@@ -239,20 +239,102 @@ app.get('/inbox/api/conversations/:phone', requireInbox, async (req, res) => {
   }
 });
 
+/**
+ * Reply in an open chat.
+ * Inside 24h → free text. Outside 24h → approved kc_inbox_hello template (can message anyone).
+ */
 app.post('/inbox/api/reply', requireInbox, async (req, res) => {
   try {
     const phone = normalizePhone(req.body?.phone);
     const text = String(req.body?.text || '').trim();
+    const who = req.body?.who || req.inboxUser;
     if (!phone || !text) return res.status(400).json({ ok: false, error: 'phone and text required' });
-    if (!(await inbox.canSendSession(phone))) {
-      return res.status(400).json({
-        ok: false,
-        error: 'Customer must message first (24h window closed)'
+
+    const sessionOk = await inbox.canSendSession(phone);
+    if (sessionOk) {
+      const result = await wa.sendText(phone, text, { by: who });
+      if (!result.ok) return res.status(502).json(result);
+      return res.json({ ok: true, mode: 'session', result });
+    }
+
+    const existing = await inbox.getConversation(phone);
+    const greetName =
+      String(req.body?.name || existing?.name || 'there')
+        .trim()
+        .slice(0, 40) || 'there';
+    const note = text.slice(0, 200);
+    const result = await wa.sendTemplate(
+      phone,
+      config.templates.inboxHello,
+      [greetName, note],
+      config.templates.language,
+      { by: who }
+    );
+    if (!result.ok) {
+      return res.status(502).json({
+        ...result,
+        errorHint:
+          'Template send failed. Ensure kc_inbox_hello is Approved in Meta, or wait until the customer messages first.'
       });
     }
-    const result = await wa.sendText(phone, text, { by: req.body?.who || req.inboxUser });
-    if (!result.ok) return res.status(502).json(result);
-    return res.json({ ok: true, result });
+    return res.json({ ok: true, mode: 'template', result });
+  } catch (err) {
+    return res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+/** Start a chat with any WhatsApp number (creates thread + optional first message). */
+app.post('/inbox/api/start', requireInbox, async (req, res) => {
+  try {
+    const phone = normalizePhone(req.body?.phone);
+    const name = String(req.body?.name || '').trim().slice(0, 80);
+    const text = String(req.body?.text || '').trim();
+    const who = req.body?.who || req.inboxUser;
+    if (!phone) return res.status(400).json({ ok: false, error: 'Valid phone required (e.g. 9876543210)' });
+
+    await inbox.ensureConversation(phone, name);
+
+    if (!text) {
+      return res.json({
+        ok: true,
+        phone,
+        mode: 'opened',
+        canReplySession: await inbox.canSendSession(phone)
+      });
+    }
+
+    const sessionOk = await inbox.canSendSession(phone);
+    let result;
+    let mode;
+    if (sessionOk) {
+      result = await wa.sendText(phone, text, { by: who });
+      mode = 'session';
+    } else {
+      const greetName = (name || 'there').slice(0, 40);
+      result = await wa.sendTemplate(
+        phone,
+        config.templates.inboxHello,
+        [greetName, text.slice(0, 200)],
+        config.templates.language,
+        { by: who }
+      );
+      mode = 'template';
+    }
+    if (!result.ok) {
+      return res.status(502).json({
+        ...result,
+        phone,
+        errorHint:
+          'Could not send. Outside 24h needs approved template kc_inbox_hello. Run npm run templates:create or approve it in Meta.'
+      });
+    }
+    return res.json({
+      ok: true,
+      phone,
+      mode,
+      result,
+      canReplySession: await inbox.canSendSession(phone)
+    });
   } catch (err) {
     return res.status(500).json({ ok: false, error: err.message });
   }

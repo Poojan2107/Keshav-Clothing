@@ -33,6 +33,8 @@ module.exports = {
     orderDelivered: process.env.WA_TEMPLATE_ORDER_DELIVERED || 'kc_order_delivered',
     orderCancelled: process.env.WA_TEMPLATE_ORDER_CANCELLED || 'kc_order_cancelled',
     otp: process.env.WA_TEMPLATE_OTP || 'kc_otp',
+    /** Team inbox: message anyone / reopen outside 24h window */
+    inboxHello: process.env.WA_TEMPLATE_INBOX_HELLO || 'kc_inbox_hello',
     language: process.env.WA_TEMPLATE_LANGUAGE || 'en'
   },
 

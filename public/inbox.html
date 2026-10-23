@@ -350,6 +350,36 @@
       font-size: 28px;
     }
     .placeholder-main p { color: var(--kc-gray-500); font-size: 14px; margin: 0; max-width: 420px; }
+    .aside-actions { display: flex; gap: 6px; align-items: center; }
+    .modal-bg {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,.45);
+      z-index: 50; align-items: center; justify-content: center; padding: 20px;
+    }
+    .modal-bg.on { display: flex; }
+    .modal {
+      width: 100%; max-width: 420px; background: #fff; border-radius: 8px;
+      border: 1px solid var(--kc-gray-200); padding: 24px; box-shadow: 0 12px 40px rgba(0,0,0,.15);
+    }
+    .modal h3 {
+      margin: 0 0 6px; font-family: var(--font-display); text-transform: uppercase;
+      letter-spacing: 1.5px; font-size: 18px;
+    }
+    .modal p.note { margin: 0 0 16px; color: var(--kc-gray-500); font-size: 12px; line-height: 1.4; }
+    .modal label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--kc-gray-500); margin: 10px 0 4px; }
+    .modal input, .modal textarea {
+      width: 100%; border: 1px solid var(--kc-gray-200); border-radius: 4px;
+      padding: 11px 12px; font: inherit; font-size: 14px; outline: none;
+    }
+    .modal textarea { min-height: 80px; resize: vertical; }
+    .modal-actions { display: flex; gap: 8px; margin-top: 16px; }
+    .modal-actions button {
+      flex: 1; border: none; border-radius: 4px; padding: 12px; cursor: pointer;
+      font-family: var(--font-display); font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1px; font-size: 12px;
+    }
+    .modal-actions .cancel { background: var(--kc-gray-100); color: var(--kc-gray-600); border: 1px solid var(--kc-gray-200); }
+    .modal-actions .go { background: var(--kc-black); color: #fff; }
+    .modal .err { color: #b91c1c; font-size: 12px; min-height: 1.2em; margin-top: 8px; }
   </style>
 </head>
 <body>
@@ -378,7 +408,10 @@
             <div class="brand-sub" id="whoLabel"></div>
           </div>
         </div>
-        <button type="button" id="logoutBtn">Logout</button>
+        <div class="aside-actions">
+          <button type="button" id="newChatBtn" title="Message anyone">New</button>
+          <button type="button" id="logoutBtn">Logout</button>
+        </div>
       </div>
       <div class="search">
         <input id="filter" placeholder="Search chats" />
@@ -389,7 +422,7 @@
       <div class="placeholder-main" id="placeholder">
         <div>
           <h2>Keshav Clothing</h2>
-          <p>Select a chat to reply. Messages sync with WhatsApp on +91 93284 15350 — history is kept for the team.</p>
+          <p>Select a chat or tap <strong>New</strong> to message any WhatsApp number from +91 93284 15350.</p>
         </div>
       </div>
       <div id="chatPane" style="display:none;flex-direction:column;height:100%;min-height:0">
@@ -418,6 +451,24 @@
         </div>
       </div>
     </main>
+  </div>
+
+  <div class="modal-bg" id="newChatModal">
+    <div class="modal">
+      <h3>New chat</h3>
+      <p class="note">Message any WhatsApp number. Outside the 24h window we send via the approved KC template — they reply, then free chat + media unlock.</p>
+      <label for="newPhone">Phone</label>
+      <input id="newPhone" type="tel" placeholder="98765 43210 or +91…" autocomplete="tel" />
+      <label for="newName">Name (optional)</label>
+      <input id="newName" type="text" placeholder="Customer name" />
+      <label for="newText">First message</label>
+      <textarea id="newText" placeholder="We are following up on your enquiry…"></textarea>
+      <div class="err" id="newChatErr"></div>
+      <div class="modal-actions">
+        <button type="button" class="cancel" id="newChatCancel">Cancel</button>
+        <button type="button" class="go" id="newChatSend">Send</button>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -530,6 +581,18 @@
     };
     document.getElementById('filter').oninput = () => renderList();
 
+    const newModal = document.getElementById('newChatModal');
+    document.getElementById('newChatBtn').onclick = () => {
+      document.getElementById('newChatErr').textContent = '';
+      newModal.classList.add('on');
+      document.getElementById('newPhone').focus();
+    };
+    document.getElementById('newChatCancel').onclick = () => newModal.classList.remove('on');
+    newModal.addEventListener('click', (e) => {
+      if (e.target === newModal) newModal.classList.remove('on');
+    });
+    document.getElementById('newChatSend').onclick = startNewChat;
+
     function initials(name, phone) {
       const s = (name || phone || '?').trim();
       const parts = s.split(/\s+/);
@@ -597,10 +660,13 @@
       document.getElementById('chatAvatar').textContent = initials(c.name, c.phone);
       document.getElementById('sessionHint').textContent = sessionOk
         ? '24h window open · reply & media enabled'
-        : '24h window closed · wait for customer message';
-      document.getElementById('sendBtn').disabled = !sessionOk;
+        : '24h closed · text still sends via KC template · media after they reply';
+      document.getElementById('sendBtn').disabled = false;
       document.getElementById('attachBtn').disabled = !sessionOk;
       document.getElementById('cameraBtn').disabled = !sessionOk;
+      document.getElementById('reply').placeholder = sessionOk
+        ? 'Type a message'
+        : 'Type a note — sends as KC template to reopen chat';
 
       const thread = document.getElementById('thread');
       const msgs = c.messages || [];
@@ -667,12 +733,53 @@
         body: JSON.stringify({ phone: activePhone, text, who })
       });
       if (!r?.ok) {
-        alert(r?.data?.error || 'Send failed');
+        const err = r?.data?.error;
+        alert(
+          (typeof err === 'string' ? err : err?.message) ||
+            r?.data?.errorHint ||
+            'Send failed'
+        );
         document.getElementById('sendBtn').disabled = false;
         return;
       }
       document.getElementById('reply').value = '';
       openChat(activePhone);
+    }
+
+    async function startNewChat() {
+      const phone = document.getElementById('newPhone').value.trim();
+      const name = document.getElementById('newName').value.trim();
+      const text = document.getElementById('newText').value.trim();
+      const errEl = document.getElementById('newChatErr');
+      errEl.textContent = '';
+      if (!phone) {
+        errEl.textContent = 'Enter a phone number';
+        return;
+      }
+      if (!text) {
+        errEl.textContent = 'Enter a first message';
+        return;
+      }
+      const btn = document.getElementById('newChatSend');
+      btn.disabled = true;
+      const r = await api('/inbox/api/start', {
+        method: 'POST',
+        body: JSON.stringify({ phone, name, text, who })
+      });
+      btn.disabled = false;
+      if (!r?.ok) {
+        errEl.textContent =
+          (typeof r?.data?.error === 'string' ? r.data.error : r?.data?.error?.message) ||
+          r?.data?.errorHint ||
+          'Could not start chat';
+        return;
+      }
+      newModal.classList.remove('on');
+      document.getElementById('newPhone').value = '';
+      document.getElementById('newName').value = '';
+      document.getElementById('newText').value = '';
+      await refreshList();
+      openChat(r.data.phone);
     }
 
     async function sendMediaFile(file) {

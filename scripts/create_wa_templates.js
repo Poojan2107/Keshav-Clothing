@@ -82,6 +82,22 @@ const TEMPLATES = [
         }
       }
     ]
+  },
+  {
+    name: 'kc_inbox_hello',
+    category: 'UTILITY',
+    language: lang,
+    components: [
+      {
+        type: 'BODY',
+        text: 'Hi {{1}}, this is Keshav Clothing. {{2}} Please reply to continue chatting with our team.',
+        example: {
+          body_text: [
+            ['Rahul', 'We are following up on your enquiry with our team.']
+          ]
+        }
+      }
+    ]
   }
 ];
 

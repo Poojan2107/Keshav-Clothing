@@ -7,6 +7,7 @@
     "start": "node index.js",
     "test:wa": "node scripts/test_whatsapp.js",
     "templates:create": "node scripts/create_wa_templates.js",
+    "templates:inbox": "node scripts/create_wa_templates.js",
     "tunnel": "cloudflared tunnel --url http://localhost:3002"
   },
   "dependencies": {
