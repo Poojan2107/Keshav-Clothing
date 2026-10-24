@@ -60,7 +60,7 @@ module.exports = {
 
   otpTtlSeconds: Number(process.env.OTP_TTL_SECONDS || 300),
   otpLength: Number(process.env.OTP_LENGTH || 6),
-  returnWindowDays: Number(process.env.RETURN_WINDOW_DAYS || 15),
+  returnWindowDays: Number(process.env.RETURN_WINDOW_DAYS || 7),
 
   inbox: {
     enabled: bool(process.env.INBOX_ENABLED, true),
