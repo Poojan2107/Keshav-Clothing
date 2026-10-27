@@ -1,0 +1,3618 @@
+{
+  "pulledAt": "2026-10-19T12:44:29.978Z",
+  "count": 24,
+  "products": [
+    {
+      "shopifyProductId": 9036245958813,
+      "title": "Air Force",
+      "handle": "air-force",
+      "status": "active",
+      "productType": "",
+      "vendor": "Keshav Clothing",
+      "tags": "",
+      "hsn": null,
+      "gst": null,
+      "variants": [
+        {
+          "shopifyVariantId": 48981803663517,
+          "sku": "KC-SIG-HYB-AIR-MBLU-XS",
+          "title": "XS",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 10
+        },
+        {
+          "shopifyVariantId": 48862344315037,
+          "sku": "KC-SIG-HYB-AIR-MBLU-S",
+          "title": "S",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 0
+        },
+        {
+          "shopifyVariantId": 48862344773789,
+          "sku": "KC-SIG-HYB-AIR-MBLU-M",
+          "title": "M",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 4
+        },
+        {
+          "shopifyVariantId": 48862345232541,
+          "sku": "KC-SIG-HYB-AIR-MBLU-L",
+          "title": "L",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 7
+        },
+        {
+          "shopifyVariantId": 48862345691293,
+          "sku": "KC-SIG-HYB-AIR-MBLU-XL",
+          "title": "XL",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 10
+        }
+      ]
+    },
+    {
+      "shopifyProductId": 9036316901533,
+      "title": "Break The Rules Black",
+      "handle": "break-the-rules",
+      "status": "active",
+      "productType": "",
+      "vendor": "Keshav Clothing",
+      "tags": "",
+      "hsn": null,
+      "gst": null,
+      "variants": [
+        {
+          "shopifyVariantId": 48862865359005,
+          "sku": "KC-BR-BLK-S",
+          "title": "S",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": -2
+        },
+        {
+          "shopifyVariantId": 48862865817757,
+          "sku": "KC-BR-BLK-M",
+          "title": "M",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 5
+        },
+        {
+          "shopifyVariantId": 48862866276509,
+          "sku": "KC-BR-BLK-L",
+          "title": "L",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 5
+        },
+        {
+          "shopifyVariantId": 48862866735261,
+          "sku": "KC-BR-BLK-XL",
+          "title": "XL",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 2
+        }
+      ]
+    },
+    {
+      "shopifyProductId": 9058713862301,
+      "title": "Break The Rules Navy",
+      "handle": "break-the-rules-navy",
+      "status": "active",
+      "productType": "",
+      "vendor": "Keshav Clothing",
+      "tags": "",
+      "hsn": null,
+      "gst": null,
+      "variants": [
+        {
+          "shopifyVariantId": 48971797954717,
+          "sku": "KC-BR-NB-S",
+          "title": "S",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 3
+        },
+        {
+          "shopifyVariantId": 48971797987485,
+          "sku": "KC-BR-NB-M",
+          "title": "M",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 4
+        },
+        {
+          "shopifyVariantId": 48971798020253,
+          "sku": "KC-BR-NB-L",
+          "title": "L",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 2
+        },
+        {
+          "shopifyVariantId": 48971798053021,
+          "sku": "KC-BR-NB-XL",
+          "title": "XL",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 2
+        }
+      ]
+    },
+    {
+      "shopifyProductId": 9058720481437,
+      "title": "Break The Rules Sage Green",
+      "handle": "break-the-rules-pista",
+      "status": "active",
+      "productType": "",
+      "vendor": "Keshav Clothing",
+      "tags": "",
+      "hsn": null,
+      "gst": null,
+      "variants": [
+        {
+          "shopifyVariantId": 48971799789725,
+          "sku": "KC-BR-SGRN-S",
+          "title": "S",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 6
+        },
+        {
+          "shopifyVariantId": 48971799822493,
+          "sku": "KC-BR-SGRN-M",
+          "title": "M",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 6
+        },
+        {
+          "shopifyVariantId": 48971799855261,
+          "sku": "KC-BR-SGRN-L",
+          "title": "L",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 6
+        },
+        {
+          "shopifyVariantId": 48971799888029,
+          "sku": "KC-BR-SGRN-XL",
+          "title": "XL",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 8
+        }
+      ]
+    },
+    {
+      "shopifyProductId": 9058701213853,
+      "title": "Break The Rules Terracotta",
+      "handle": "break-the-rules-brown",
+      "status": "active",
+      "productType": "",
+      "vendor": "Keshav Clothing",
+      "tags": "",
+      "hsn": null,
+      "gst": null,
+      "variants": [
+        {
+          "shopifyVariantId": 48971797266589,
+          "sku": "KC-BR-TRC-S",
+          "title": "S",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 3
+        },
+        {
+          "shopifyVariantId": 48971797299357,
+          "sku": "KC-BR-TRC-M",
+          "title": "M",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 1
+        },
+        {
+          "shopifyVariantId": 48971797332125,
+          "sku": "KC-BR-TRC-L",
+          "title": "L",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 2
+        },
+        {
+          "shopifyVariantId": 48971797364893,
+          "sku": "KC-BR-TRC-XL",
+          "title": "XL",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 3
+        }
+      ]
+    },
+    {
+      "shopifyProductId": 9036269912221,
+      "title": "Classic India Beige",
+      "handle": "india-gate",
+      "status": "active",
+      "productType": "",
+      "vendor": "Keshav Clothing",
+      "tags": "",
+      "hsn": null,
+      "gst": null,
+      "variants": [
+        {
+          "shopifyVariantId": 48862453629085,
+          "sku": "KC-CLSIND-BEG-S",
+          "title": "S",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 6
+        },
+        {
+          "shopifyVariantId": 48862454087837,
+          "sku": "KC-CLSIND-BEG-M",
+          "title": "M",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 9
+        },
+        {
+          "shopifyVariantId": 48862454546589,
+          "sku": "KC-CLSIND-BEG-L",
+          "title": "L",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 6
+        },
+        {
+          "shopifyVariantId": 48862455005341,
+          "sku": "KC-CLSIND-BEG-XL",
+          "title": "XL",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 8
+        }
+      ]
+    },
+    {
+      "shopifyProductId": 9058786836637,
+      "title": "Classic India Dusty Rose",
+      "handle": "classic-india-wine",
+      "status": "active",
+      "productType": "",
+      "vendor": "Keshav Clothing",
+      "tags": "",
+      "hsn": null,
+      "gst": null,
+      "variants": [
+        {
+          "shopifyVariantId": 48971992465565,
+          "sku": "KC-CLSIND-DSTRS-S",
+          "title": "S",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 3
+        },
+        {
+          "shopifyVariantId": 48971992531101,
+          "sku": "KC-CLSIND-DSTRS-M",
+          "title": "M",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 4
+        },
+        {
+          "shopifyVariantId": 48971992596637,
+          "sku": "KC-CLSIND-DSTRS-L",
+          "title": "L",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 4
+        },
+        {
+          "shopifyVariantId": 48971992662173,
+          "sku": "KC-CLSIND-DSTRS-XL",
+          "title": "XL",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 4
+        }
+      ]
+    },
+    {
+      "shopifyProductId": 9036225839261,
+      "title": "Costal Motions",
+      "handle": "costal-monica",
+      "status": "active",
+      "productType": "",
+      "vendor": "Keshav Clothing",
+      "tags": "",
+      "hsn": null,
+      "gst": null,
+      "variants": [
+        {
+          "shopifyVariantId": 48981803499677,
+          "sku": "KC-SIG-HYB-CSTM-RD-XS",
+          "title": "XS",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 7
+        },
+        {
+          "shopifyVariantId": 48862192631965,
+          "sku": "KC-SIG-HYB-CSTM-RD-S",
+          "title": "S",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 6
+        },
+        {
+          "shopifyVariantId": 48862192861341,
+          "sku": "KC-SIG-HYB-CSTM-RD-M",
+          "title": "M",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 7
+        },
+        {
+          "shopifyVariantId": 48862193090717,
+          "sku": "KC-SIG-HYB-CSTM-RD-L",
+          "title": "L",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 13
+        },
+        {
+          "shopifyVariantId": 48862193320093,
+          "sku": "KC-SIG-HYB-CSTM-RD-XL",
+          "title": "XL",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 8
+        }
+      ]
+    },
+    {
+      "shopifyProductId": 9060794040477,
+      "title": "CRACKED BUT UNBROKEN",
+      "handle": "cracked-but-unbroken",
+      "status": "active",
+      "productType": "",
+      "vendor": "Keshav Clothing",
+      "tags": "",
+      "hsn": null,
+      "gst": null,
+      "variants": [
+        {
+          "shopifyVariantId": 48987411873949,
+          "sku": "KC-SIG-HYB-UNBK-PRP-XS",
+          "title": "XS",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 4
+        },
+        {
+          "shopifyVariantId": 48981790326941,
+          "sku": "KC-SIG-HYB-UNBK-PRP-S",
+          "title": "S",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 4
+        },
+        {
+          "shopifyVariantId": 48981790359709,
+          "sku": "KC-SIG-HYB-UNBK-PRP-M",
+          "title": "M",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 4
+        },
+        {
+          "shopifyVariantId": 48981790392477,
+          "sku": "KC-SIG-HYB-UNBK-PRP-L",
+          "title": "L",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 10
+        },
+        {
+          "shopifyVariantId": 48981790425245,
+          "sku": "KC-SIG-HYB-UNBK-PRP-XL",
+          "title": "XL",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 9
+        }
+      ]
+    },
+    {
+      "shopifyProductId": 9036218237085,
+      "title": "Distorted",
+      "handle": "distorted",
+      "status": "active",
+      "productType": "",
+      "vendor": "Keshav Clothing",
+      "tags": "",
+      "hsn": null,
+      "gst": null,
+      "variants": [
+        {
+          "shopifyVariantId": 48987413610653,
+          "sku": "KC-SIG-HYB-DIST-CRM-XS",
+          "title": "XS",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 5
+        },
+        {
+          "shopifyVariantId": 48862128504989,
+          "sku": "KC-SIG-HYB-DIST-CRM-S",
+          "title": "S",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 5
+        },
+        {
+          "shopifyVariantId": 48862128767133,
+          "sku": "KC-SIG-HYB-DIST-CRM-M",
+          "title": "M",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 6
+        },
+        {
+          "shopifyVariantId": 48862129029277,
+          "sku": "KC-SIG-HYB-DIST-CRM-L",
+          "title": "L",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 5
+        },
+        {
+          "shopifyVariantId": 48862129291421,
+          "sku": "KC-SIG-HYB-DIST-CRM-XL",
+          "title": "XL",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 4
+        }
+      ]
+    },
+    {
+      "shopifyProductId": 9058771271837,
+      "title": "Flyhigh Street Black",
+      "handle": "flyhigh-street-black",
+      "status": "active",
+      "productType": "",
+      "vendor": "Keshav Clothing",
+      "tags": "",
+      "hsn": null,
+      "gst": null,
+      "variants": [
+        {
+          "shopifyVariantId": 48971988140189,
+          "sku": "KC-FLY-BLK-S",
+          "title": "S",
+          "price": "1499.00",
+          "barcode": "",
+          "inventoryQuantity": 3
+        },
+        {
+          "shopifyVariantId": 48971988172957,
+          "sku": "KC-FLY-BLK-M",
+          "title": "M",
+          "price": "1499.00",
+          "barcode": "",
+          "inventoryQuantity": 4
+        },
+        {
+          "shopifyVariantId": 48971988205725,
+          "sku": "KC-FLY-BLK-L",
+          "title": "L",
+          "price": "1499.00",
+          "barcode": "",
+          "inventoryQuantity": 2
+        },
+        {
+          "shopifyVariantId": 48971988238493,
+          "sku": "KC-FLY-BLK-XL",
+          "title": "XL",
+          "price": "1499.00",
+          "barcode": "",
+          "inventoryQuantity": 25
+        }
+      ]
+    },
+    {
+      "shopifyProductId": 9036315623581,
+      "title": "Flyhigh Street Gray",
+      "handle": "flyhigh-1",
+      "status": "active",
+      "productType": "",
+      "vendor": "Keshav Clothing",
+      "tags": "",
+      "hsn": null,
+      "gst": null,
+      "variants": [
+        {
+          "shopifyVariantId": 48862847533213,
+          "sku": "KC-FLY-GRY-S",
+          "title": "S",
+          "price": "1499.00",
+          "barcode": "",
+          "inventoryQuantity": 2
+        },
+        {
+          "shopifyVariantId": 48862847991965,
+          "sku": "KC-FLY-GRY-M",
+          "title": "M",
+          "price": "1499.00",
+          "barcode": "",
+          "inventoryQuantity": 2
+        },
+        {
+          "shopifyVariantId": 48862848450717,
+          "sku": "KC-FLY-GRY-L",
+          "title": "L",
+          "price": "1499.00",
+          "barcode": "",
+          "inventoryQuantity": 4
+        },
+        {
+          "shopifyVariantId": 48862848909469,
+          "sku": "KC-FLY-GRY-XL",
+          "title": "XL",
+          "price": "1499.00",
+          "barcode": "",
+          "inventoryQuantity": 4
+        }
+      ]
+    },
+    {
+      "shopifyProductId": 9058771075229,
+      "title": "Flyhigh Street Navy",
+      "handle": "flyhigh-street-navy",
+      "status": "active",
+      "productType": "",
+      "vendor": "Keshav Clothing",
+      "tags": "",
+      "hsn": null,
+      "gst": null,
+      "variants": [
+        {
+          "shopifyVariantId": 48971983356061,
+          "sku": "KC-FLY-NB-S",
+          "title": "S",
+          "price": "1499.00",
+          "barcode": "",
+          "inventoryQuantity": 3
+        },
+        {
+          "shopifyVariantId": 48971983388829,
+          "sku": "KC-FLY-NB-M",
+          "title": "M",
+          "price": "1499.00",
+          "barcode": "",
+          "inventoryQuantity": 5
+        },
+        {
+          "shopifyVariantId": 48971983421597,
+          "sku": "KC-FLY-NB-L",
+          "title": "L",
+          "price": "1499.00",
+          "barcode": "",
+          "inventoryQuantity": 2
+        },
+        {
+          "shopifyVariantId": 48971983454365,
+          "sku": "KC-FLY-NB-XL",
+          "title": "XL",
+          "price": "1499.00",
+          "barcode": "",
+          "inventoryQuantity": 3
+        }
+      ]
+    },
+    {
+      "shopifyProductId": 9036268798109,
+      "title": "In My Era",
+      "handle": "in-my-era",
+      "status": "active",
+      "productType": "",
+      "vendor": "Keshav Clothing",
+      "tags": "",
+      "hsn": null,
+      "gst": null,
+      "variants": [
+        {
+          "shopifyVariantId": 48981803729053,
+          "sku": "KC-SIG-HYB-ERA-ORG-XS",
+          "title": "XS",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 6
+        },
+        {
+          "shopifyVariantId": 48862443700381,
+          "sku": "KC-SIG-HYB-ERA-ORG-S",
+          "title": "S",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 5
+        },
+        {
+          "shopifyVariantId": 48862444159133,
+          "sku": "KC-SIG-HYB-ERA-ORG-M",
+          "title": "M",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 9
+        },
+        {
+          "shopifyVariantId": 48862444617885,
+          "sku": "KC-SIG-HYB-ERA-ORG-L",
+          "title": "L",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 8
+        },
+        {
+          "shopifyVariantId": 48862445076637,
+          "sku": "KC-SIG-HYB-ERA-ORG-XL",
+          "title": "XL",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 9
+        }
+      ]
+    },
+    {
+      "shopifyProductId": 9036205818013,
+      "title": "Indian Roacher",
+      "handle": "indian-roacher",
+      "status": "active",
+      "productType": "",
+      "vendor": "Keshav Clothing",
+      "tags": "",
+      "hsn": null,
+      "gst": null,
+      "variants": [
+        {
+          "shopifyVariantId": 48981803958429,
+          "sku": "KC-SIG-HYB-INDR-BLK-XS",
+          "title": "XS",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 9
+        },
+        {
+          "shopifyVariantId": 48862017126557,
+          "sku": "KC-SIG-HYB-INDR-BLK-S",
+          "title": "S",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 4
+        },
+        {
+          "shopifyVariantId": 48862017159325,
+          "sku": "KC-SIG-HYB-INDR-BLK-M",
+          "title": "M",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 5
+        },
+        {
+          "shopifyVariantId": 48862017192093,
+          "sku": "KC-SIG-HYB-INDR-BLK-L",
+          "title": "L",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 13
+        },
+        {
+          "shopifyVariantId": 48862017224861,
+          "sku": "KC-SIG-HYB-INDR-BLK-XL",
+          "title": "XL",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 8
+        }
+      ]
+    },
+    {
+      "shopifyProductId": 9031544733853,
+      "title": "Memory Tee Black",
+      "handle": "memory-tee-black",
+      "status": "active",
+      "productType": "",
+      "vendor": "Keshav Clothing",
+      "tags": "",
+      "hsn": null,
+      "gst": null,
+      "variants": [
+        {
+          "shopifyVariantId": 48844404850845,
+          "sku": "KC-BIKE-BLK-S",
+          "title": "S",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 1
+        },
+        {
+          "shopifyVariantId": 48844404916381,
+          "sku": "KC-BIKE-BLK-M",
+          "title": "M",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 2
+        },
+        {
+          "shopifyVariantId": 48844404981917,
+          "sku": "KC-BIKE-BLK-L",
+          "title": "L",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 3
+        },
+        {
+          "shopifyVariantId": 48844405047453,
+          "sku": "KC-BIKE-BLK-XL",
+          "title": "XL",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 2
+        }
+      ]
+    },
+    {
+      "shopifyProductId": 9058795225245,
+      "title": "Memory Tee Navy",
+      "handle": "memory-tee-navy",
+      "status": "active",
+      "productType": "",
+      "vendor": "Keshav Clothing",
+      "tags": "",
+      "hsn": null,
+      "gst": null,
+      "variants": [
+        {
+          "shopifyVariantId": 48971992924317,
+          "sku": "KC-BIKE-NB-S",
+          "title": "S",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 1
+        },
+        {
+          "shopifyVariantId": 48971992957085,
+          "sku": "KC-BIKE-NB-M",
+          "title": "M",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 4
+        },
+        {
+          "shopifyVariantId": 48971992989853,
+          "sku": "KC-BIKE-NB-L",
+          "title": "L",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 2
+        },
+        {
+          "shopifyVariantId": 48971993022621,
+          "sku": "KC-BIKE-NB-XL",
+          "title": "XL",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 3
+        }
+      ]
+    },
+    {
+      "shopifyProductId": 9036316246173,
+      "title": "Skateboard Urban Beige",
+      "handle": "skateboard-urban",
+      "status": "active",
+      "productType": "",
+      "vendor": "Keshav Clothing",
+      "tags": "",
+      "hsn": null,
+      "gst": null,
+      "variants": [
+        {
+          "shopifyVariantId": 48862858543261,
+          "sku": "KC-SK8-BEG-S",
+          "title": "S",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 2
+        },
+        {
+          "shopifyVariantId": 48862859002013,
+          "sku": "KC-SK8-BEG-M",
+          "title": "M",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 5
+        },
+        {
+          "shopifyVariantId": 48862859460765,
+          "sku": "KC-SK8-BEG-L",
+          "title": "L",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 3
+        },
+        {
+          "shopifyVariantId": 48862859919517,
+          "sku": "KC-SK8-BEG-XL",
+          "title": "XL",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 4
+        }
+      ]
+    },
+    {
+      "shopifyProductId": 9058743484573,
+      "title": "Skateboard Urban Brown",
+      "handle": "skateboard-urban-beige-copy",
+      "status": "active",
+      "productType": "",
+      "vendor": "Keshav Clothing",
+      "tags": "",
+      "hsn": null,
+      "gst": null,
+      "variants": [
+        {
+          "shopifyVariantId": 48971834196125,
+          "sku": "KC-SK8-TRC-S",
+          "title": "S",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 3
+        },
+        {
+          "shopifyVariantId": 48971834228893,
+          "sku": "KC-SK8-TRC-M",
+          "title": "M",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 2
+        },
+        {
+          "shopifyVariantId": 48971834261661,
+          "sku": "KC-SK8-TRC-L",
+          "title": "L",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 3
+        },
+        {
+          "shopifyVariantId": 48971834294429,
+          "sku": "KC-SK8-TRC-XL",
+          "title": "XL",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 4
+        }
+      ]
+    },
+    {
+      "shopifyProductId": 9058770321565,
+      "title": "Skateboard Urban Dusty Rose",
+      "handle": "skateboard-urban-grey-copy",
+      "status": "active",
+      "productType": "",
+      "vendor": "Keshav Clothing",
+      "tags": "",
+      "hsn": null,
+      "gst": null,
+      "variants": [
+        {
+          "shopifyVariantId": 48971981258909,
+          "sku": "KC-SK8-DSTRS-S",
+          "title": "S",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 3
+        },
+        {
+          "shopifyVariantId": 48971981291677,
+          "sku": "KC-SK8-DSTRS-M",
+          "title": "M",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 4
+        },
+        {
+          "shopifyVariantId": 48971981324445,
+          "sku": "KC-SK8-DSTRS-L",
+          "title": "L",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 5
+        },
+        {
+          "shopifyVariantId": 48971981357213,
+          "sku": "KC-SK8-DSTRS-XL",
+          "title": "XL",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 6
+        }
+      ]
+    },
+    {
+      "shopifyProductId": 9058748367005,
+      "title": "Skateboard Urban Grey",
+      "handle": "skateboard-urban-grey",
+      "status": "active",
+      "productType": "",
+      "vendor": "Keshav Clothing",
+      "tags": "",
+      "hsn": null,
+      "gst": null,
+      "variants": [
+        {
+          "shopifyVariantId": 48971913396381,
+          "sku": "KC-SK8-GRY-S",
+          "title": "S",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 1
+        },
+        {
+          "shopifyVariantId": 48971913429149,
+          "sku": "KC-SK8-GRY-M",
+          "title": "M",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 0
+        },
+        {
+          "shopifyVariantId": 48971913461917,
+          "sku": "KC-SK8-GRY-L",
+          "title": "L",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 1
+        },
+        {
+          "shopifyVariantId": 48971913494685,
+          "sku": "KC-SK8-GRY-XL",
+          "title": "XL",
+          "price": "999.00",
+          "barcode": "",
+          "inventoryQuantity": 1
+        }
+      ]
+    },
+    {
+      "shopifyProductId": 9061587484829,
+      "title": "SWANK",
+      "handle": "swank",
+      "status": "active",
+      "productType": "",
+      "vendor": "Keshav Clothing",
+      "tags": "",
+      "hsn": null,
+      "gst": null,
+      "variants": [
+        {
+          "shopifyVariantId": 48987456274589,
+          "sku": "KC-SWANK-WHI-S",
+          "title": "S",
+          "price": "1499.00",
+          "barcode": "",
+          "inventoryQuantity": 13
+        },
+        {
+          "shopifyVariantId": 48987456307357,
+          "sku": "KC-SWANK-WHI-M",
+          "title": "M",
+          "price": "1499.00",
+          "barcode": "",
+          "inventoryQuantity": 11
+        },
+        {
+          "shopifyVariantId": 48987456340125,
+          "sku": "KC-SWANK-WHI-L",
+          "title": "L",
+          "price": "1499.00",
+          "barcode": "",
+          "inventoryQuantity": 12
+        },
+        {
+          "shopifyVariantId": 48987456372893,
+          "sku": "KC-SWANK-WHI-XL",
+          "title": "XL",
+          "price": "1499.00",
+          "barcode": "",
+          "inventoryQuantity": 14
+        }
+      ]
+    },
+    {
+      "shopifyProductId": 9060794499229,
+      "title": "URBAN NOMAD",
+      "handle": "urban-nomad",
+      "status": "active",
+      "productType": "",
+      "vendor": "Keshav Clothing",
+      "tags": "",
+      "hsn": null,
+      "gst": null,
+      "variants": [
+        {
+          "shopifyVariantId": 48981801074845,
+          "sku": "KC-URBAN-BEG-S",
+          "title": "S",
+          "price": "1499.00",
+          "barcode": "",
+          "inventoryQuantity": 4
+        },
+        {
+          "shopifyVariantId": 48981801107613,
+          "sku": "KC-URBAN-BEG-M",
+          "title": "M",
+          "price": "1499.00",
+          "barcode": "",
+          "inventoryQuantity": 7
+        },
+        {
+          "shopifyVariantId": 48981801140381,
+          "sku": "KC-URBAN-BEG-L",
+          "title": "L",
+          "price": "1499.00",
+          "barcode": "",
+          "inventoryQuantity": 5
+        },
+        {
+          "shopifyVariantId": 48981801173149,
+          "sku": "KC-URBAN-BEG-XL",
+          "title": "XL",
+          "price": "1499.00",
+          "barcode": "",
+          "inventoryQuantity": 8
+        }
+      ]
+    },
+    {
+      "shopifyProductId": 9036269224093,
+      "title": "Vacation Vibe",
+      "handle": "vacation-tee",
+      "status": "active",
+      "productType": "",
+      "vendor": "Keshav Clothing",
+      "tags": "",
+      "hsn": null,
+      "gst": null,
+      "variants": [
+        {
+          "shopifyVariantId": 48981803860125,
+          "sku": "KC-HYB-VAC-YL-XS",
+          "title": "XS",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 5
+        },
+        {
+          "shopifyVariantId": 48862447108253,
+          "sku": "KC-HYB-VAC-YL-S",
+          "title": "S",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 6
+        },
+        {
+          "shopifyVariantId": 48862447567005,
+          "sku": "KC-HYB-VAC-YL-M",
+          "title": "M",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 9
+        },
+        {
+          "shopifyVariantId": 48862448025757,
+          "sku": "KC-HYB-VAC-YL-L",
+          "title": "L",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 15
+        },
+        {
+          "shopifyVariantId": 48862448484509,
+          "sku": "KC-HYB-VAC-YL-XL",
+          "title": "XL",
+          "price": "1999.00",
+          "barcode": "",
+          "inventoryQuantity": 8
+        }
+      ]
+    }
+  ],
+  "byVariant": {
+    "48981803663517": {
+      "shopifyProductId": 9036245958813,
+      "shopifyVariantId": 48981803663517,
+      "title": "Air Force",
+      "variantTitle": "XS",
+      "sku": "KC-SIG-HYB-AIR-MBLU-XS",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "air-force"
+    },
+    "48862344315037": {
+      "shopifyProductId": 9036245958813,
+      "shopifyVariantId": 48862344315037,
+      "title": "Air Force",
+      "variantTitle": "S",
+      "sku": "KC-SIG-HYB-AIR-MBLU-S",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "air-force"
+    },
+    "48862344773789": {
+      "shopifyProductId": 9036245958813,
+      "shopifyVariantId": 48862344773789,
+      "title": "Air Force",
+      "variantTitle": "M",
+      "sku": "KC-SIG-HYB-AIR-MBLU-M",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "air-force"
+    },
+    "48862345232541": {
+      "shopifyProductId": 9036245958813,
+      "shopifyVariantId": 48862345232541,
+      "title": "Air Force",
+      "variantTitle": "L",
+      "sku": "KC-SIG-HYB-AIR-MBLU-L",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "air-force"
+    },
+    "48862345691293": {
+      "shopifyProductId": 9036245958813,
+      "shopifyVariantId": 48862345691293,
+      "title": "Air Force",
+      "variantTitle": "XL",
+      "sku": "KC-SIG-HYB-AIR-MBLU-XL",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "air-force"
+    },
+    "48862865359005": {
+      "shopifyProductId": 9036316901533,
+      "shopifyVariantId": 48862865359005,
+      "title": "Break The Rules Black",
+      "variantTitle": "S",
+      "sku": "KC-BR-BLK-S",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules"
+    },
+    "48862865817757": {
+      "shopifyProductId": 9036316901533,
+      "shopifyVariantId": 48862865817757,
+      "title": "Break The Rules Black",
+      "variantTitle": "M",
+      "sku": "KC-BR-BLK-M",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules"
+    },
+    "48862866276509": {
+      "shopifyProductId": 9036316901533,
+      "shopifyVariantId": 48862866276509,
+      "title": "Break The Rules Black",
+      "variantTitle": "L",
+      "sku": "KC-BR-BLK-L",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules"
+    },
+    "48862866735261": {
+      "shopifyProductId": 9036316901533,
+      "shopifyVariantId": 48862866735261,
+      "title": "Break The Rules Black",
+      "variantTitle": "XL",
+      "sku": "KC-BR-BLK-XL",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules"
+    },
+    "48971797954717": {
+      "shopifyProductId": 9058713862301,
+      "shopifyVariantId": 48971797954717,
+      "title": "Break The Rules Navy",
+      "variantTitle": "S",
+      "sku": "KC-BR-NB-S",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules-navy"
+    },
+    "48971797987485": {
+      "shopifyProductId": 9058713862301,
+      "shopifyVariantId": 48971797987485,
+      "title": "Break The Rules Navy",
+      "variantTitle": "M",
+      "sku": "KC-BR-NB-M",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules-navy"
+    },
+    "48971798020253": {
+      "shopifyProductId": 9058713862301,
+      "shopifyVariantId": 48971798020253,
+      "title": "Break The Rules Navy",
+      "variantTitle": "L",
+      "sku": "KC-BR-NB-L",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules-navy"
+    },
+    "48971798053021": {
+      "shopifyProductId": 9058713862301,
+      "shopifyVariantId": 48971798053021,
+      "title": "Break The Rules Navy",
+      "variantTitle": "XL",
+      "sku": "KC-BR-NB-XL",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules-navy"
+    },
+    "48971799789725": {
+      "shopifyProductId": 9058720481437,
+      "shopifyVariantId": 48971799789725,
+      "title": "Break The Rules Sage Green",
+      "variantTitle": "S",
+      "sku": "KC-BR-SGRN-S",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules-pista"
+    },
+    "48971799822493": {
+      "shopifyProductId": 9058720481437,
+      "shopifyVariantId": 48971799822493,
+      "title": "Break The Rules Sage Green",
+      "variantTitle": "M",
+      "sku": "KC-BR-SGRN-M",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules-pista"
+    },
+    "48971799855261": {
+      "shopifyProductId": 9058720481437,
+      "shopifyVariantId": 48971799855261,
+      "title": "Break The Rules Sage Green",
+      "variantTitle": "L",
+      "sku": "KC-BR-SGRN-L",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules-pista"
+    },
+    "48971799888029": {
+      "shopifyProductId": 9058720481437,
+      "shopifyVariantId": 48971799888029,
+      "title": "Break The Rules Sage Green",
+      "variantTitle": "XL",
+      "sku": "KC-BR-SGRN-XL",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules-pista"
+    },
+    "48971797266589": {
+      "shopifyProductId": 9058701213853,
+      "shopifyVariantId": 48971797266589,
+      "title": "Break The Rules Terracotta",
+      "variantTitle": "S",
+      "sku": "KC-BR-TRC-S",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules-brown"
+    },
+    "48971797299357": {
+      "shopifyProductId": 9058701213853,
+      "shopifyVariantId": 48971797299357,
+      "title": "Break The Rules Terracotta",
+      "variantTitle": "M",
+      "sku": "KC-BR-TRC-M",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules-brown"
+    },
+    "48971797332125": {
+      "shopifyProductId": 9058701213853,
+      "shopifyVariantId": 48971797332125,
+      "title": "Break The Rules Terracotta",
+      "variantTitle": "L",
+      "sku": "KC-BR-TRC-L",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules-brown"
+    },
+    "48971797364893": {
+      "shopifyProductId": 9058701213853,
+      "shopifyVariantId": 48971797364893,
+      "title": "Break The Rules Terracotta",
+      "variantTitle": "XL",
+      "sku": "KC-BR-TRC-XL",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules-brown"
+    },
+    "48862453629085": {
+      "shopifyProductId": 9036269912221,
+      "shopifyVariantId": 48862453629085,
+      "title": "Classic India Beige",
+      "variantTitle": "S",
+      "sku": "KC-CLSIND-BEG-S",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "india-gate"
+    },
+    "48862454087837": {
+      "shopifyProductId": 9036269912221,
+      "shopifyVariantId": 48862454087837,
+      "title": "Classic India Beige",
+      "variantTitle": "M",
+      "sku": "KC-CLSIND-BEG-M",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "india-gate"
+    },
+    "48862454546589": {
+      "shopifyProductId": 9036269912221,
+      "shopifyVariantId": 48862454546589,
+      "title": "Classic India Beige",
+      "variantTitle": "L",
+      "sku": "KC-CLSIND-BEG-L",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "india-gate"
+    },
+    "48862455005341": {
+      "shopifyProductId": 9036269912221,
+      "shopifyVariantId": 48862455005341,
+      "title": "Classic India Beige",
+      "variantTitle": "XL",
+      "sku": "KC-CLSIND-BEG-XL",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "india-gate"
+    },
+    "48971992465565": {
+      "shopifyProductId": 9058786836637,
+      "shopifyVariantId": 48971992465565,
+      "title": "Classic India Dusty Rose",
+      "variantTitle": "S",
+      "sku": "KC-CLSIND-DSTRS-S",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "classic-india-wine"
+    },
+    "48971992531101": {
+      "shopifyProductId": 9058786836637,
+      "shopifyVariantId": 48971992531101,
+      "title": "Classic India Dusty Rose",
+      "variantTitle": "M",
+      "sku": "KC-CLSIND-DSTRS-M",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "classic-india-wine"
+    },
+    "48971992596637": {
+      "shopifyProductId": 9058786836637,
+      "shopifyVariantId": 48971992596637,
+      "title": "Classic India Dusty Rose",
+      "variantTitle": "L",
+      "sku": "KC-CLSIND-DSTRS-L",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "classic-india-wine"
+    },
+    "48971992662173": {
+      "shopifyProductId": 9058786836637,
+      "shopifyVariantId": 48971992662173,
+      "title": "Classic India Dusty Rose",
+      "variantTitle": "XL",
+      "sku": "KC-CLSIND-DSTRS-XL",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "classic-india-wine"
+    },
+    "48981803499677": {
+      "shopifyProductId": 9036225839261,
+      "shopifyVariantId": 48981803499677,
+      "title": "Costal Motions",
+      "variantTitle": "XS",
+      "sku": "KC-SIG-HYB-CSTM-RD-XS",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "costal-monica"
+    },
+    "48862192631965": {
+      "shopifyProductId": 9036225839261,
+      "shopifyVariantId": 48862192631965,
+      "title": "Costal Motions",
+      "variantTitle": "S",
+      "sku": "KC-SIG-HYB-CSTM-RD-S",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "costal-monica"
+    },
+    "48862192861341": {
+      "shopifyProductId": 9036225839261,
+      "shopifyVariantId": 48862192861341,
+      "title": "Costal Motions",
+      "variantTitle": "M",
+      "sku": "KC-SIG-HYB-CSTM-RD-M",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "costal-monica"
+    },
+    "48862193090717": {
+      "shopifyProductId": 9036225839261,
+      "shopifyVariantId": 48862193090717,
+      "title": "Costal Motions",
+      "variantTitle": "L",
+      "sku": "KC-SIG-HYB-CSTM-RD-L",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "costal-monica"
+    },
+    "48862193320093": {
+      "shopifyProductId": 9036225839261,
+      "shopifyVariantId": 48862193320093,
+      "title": "Costal Motions",
+      "variantTitle": "XL",
+      "sku": "KC-SIG-HYB-CSTM-RD-XL",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "costal-monica"
+    },
+    "48987411873949": {
+      "shopifyProductId": 9060794040477,
+      "shopifyVariantId": 48987411873949,
+      "title": "CRACKED BUT UNBROKEN",
+      "variantTitle": "XS",
+      "sku": "KC-SIG-HYB-UNBK-PRP-XS",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "cracked-but-unbroken"
+    },
+    "48981790326941": {
+      "shopifyProductId": 9060794040477,
+      "shopifyVariantId": 48981790326941,
+      "title": "CRACKED BUT UNBROKEN",
+      "variantTitle": "S",
+      "sku": "KC-SIG-HYB-UNBK-PRP-S",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "cracked-but-unbroken"
+    },
+    "48981790359709": {
+      "shopifyProductId": 9060794040477,
+      "shopifyVariantId": 48981790359709,
+      "title": "CRACKED BUT UNBROKEN",
+      "variantTitle": "M",
+      "sku": "KC-SIG-HYB-UNBK-PRP-M",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "cracked-but-unbroken"
+    },
+    "48981790392477": {
+      "shopifyProductId": 9060794040477,
+      "shopifyVariantId": 48981790392477,
+      "title": "CRACKED BUT UNBROKEN",
+      "variantTitle": "L",
+      "sku": "KC-SIG-HYB-UNBK-PRP-L",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "cracked-but-unbroken"
+    },
+    "48981790425245": {
+      "shopifyProductId": 9060794040477,
+      "shopifyVariantId": 48981790425245,
+      "title": "CRACKED BUT UNBROKEN",
+      "variantTitle": "XL",
+      "sku": "KC-SIG-HYB-UNBK-PRP-XL",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "cracked-but-unbroken"
+    },
+    "48987413610653": {
+      "shopifyProductId": 9036218237085,
+      "shopifyVariantId": 48987413610653,
+      "title": "Distorted",
+      "variantTitle": "XS",
+      "sku": "KC-SIG-HYB-DIST-CRM-XS",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "distorted"
+    },
+    "48862128504989": {
+      "shopifyProductId": 9036218237085,
+      "shopifyVariantId": 48862128504989,
+      "title": "Distorted",
+      "variantTitle": "S",
+      "sku": "KC-SIG-HYB-DIST-CRM-S",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "distorted"
+    },
+    "48862128767133": {
+      "shopifyProductId": 9036218237085,
+      "shopifyVariantId": 48862128767133,
+      "title": "Distorted",
+      "variantTitle": "M",
+      "sku": "KC-SIG-HYB-DIST-CRM-M",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "distorted"
+    },
+    "48862129029277": {
+      "shopifyProductId": 9036218237085,
+      "shopifyVariantId": 48862129029277,
+      "title": "Distorted",
+      "variantTitle": "L",
+      "sku": "KC-SIG-HYB-DIST-CRM-L",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "distorted"
+    },
+    "48862129291421": {
+      "shopifyProductId": 9036218237085,
+      "shopifyVariantId": 48862129291421,
+      "title": "Distorted",
+      "variantTitle": "XL",
+      "sku": "KC-SIG-HYB-DIST-CRM-XL",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "distorted"
+    },
+    "48971988140189": {
+      "shopifyProductId": 9058771271837,
+      "shopifyVariantId": 48971988140189,
+      "title": "Flyhigh Street Black",
+      "variantTitle": "S",
+      "sku": "KC-FLY-BLK-S",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "flyhigh-street-black"
+    },
+    "48971988172957": {
+      "shopifyProductId": 9058771271837,
+      "shopifyVariantId": 48971988172957,
+      "title": "Flyhigh Street Black",
+      "variantTitle": "M",
+      "sku": "KC-FLY-BLK-M",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "flyhigh-street-black"
+    },
+    "48971988205725": {
+      "shopifyProductId": 9058771271837,
+      "shopifyVariantId": 48971988205725,
+      "title": "Flyhigh Street Black",
+      "variantTitle": "L",
+      "sku": "KC-FLY-BLK-L",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "flyhigh-street-black"
+    },
+    "48971988238493": {
+      "shopifyProductId": 9058771271837,
+      "shopifyVariantId": 48971988238493,
+      "title": "Flyhigh Street Black",
+      "variantTitle": "XL",
+      "sku": "KC-FLY-BLK-XL",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "flyhigh-street-black"
+    },
+    "48862847533213": {
+      "shopifyProductId": 9036315623581,
+      "shopifyVariantId": 48862847533213,
+      "title": "Flyhigh Street Gray",
+      "variantTitle": "S",
+      "sku": "KC-FLY-GRY-S",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "flyhigh-1"
+    },
+    "48862847991965": {
+      "shopifyProductId": 9036315623581,
+      "shopifyVariantId": 48862847991965,
+      "title": "Flyhigh Street Gray",
+      "variantTitle": "M",
+      "sku": "KC-FLY-GRY-M",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "flyhigh-1"
+    },
+    "48862848450717": {
+      "shopifyProductId": 9036315623581,
+      "shopifyVariantId": 48862848450717,
+      "title": "Flyhigh Street Gray",
+      "variantTitle": "L",
+      "sku": "KC-FLY-GRY-L",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "flyhigh-1"
+    },
+    "48862848909469": {
+      "shopifyProductId": 9036315623581,
+      "shopifyVariantId": 48862848909469,
+      "title": "Flyhigh Street Gray",
+      "variantTitle": "XL",
+      "sku": "KC-FLY-GRY-XL",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "flyhigh-1"
+    },
+    "48971983356061": {
+      "shopifyProductId": 9058771075229,
+      "shopifyVariantId": 48971983356061,
+      "title": "Flyhigh Street Navy",
+      "variantTitle": "S",
+      "sku": "KC-FLY-NB-S",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "flyhigh-street-navy"
+    },
+    "48971983388829": {
+      "shopifyProductId": 9058771075229,
+      "shopifyVariantId": 48971983388829,
+      "title": "Flyhigh Street Navy",
+      "variantTitle": "M",
+      "sku": "KC-FLY-NB-M",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "flyhigh-street-navy"
+    },
+    "48971983421597": {
+      "shopifyProductId": 9058771075229,
+      "shopifyVariantId": 48971983421597,
+      "title": "Flyhigh Street Navy",
+      "variantTitle": "L",
+      "sku": "KC-FLY-NB-L",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "flyhigh-street-navy"
+    },
+    "48971983454365": {
+      "shopifyProductId": 9058771075229,
+      "shopifyVariantId": 48971983454365,
+      "title": "Flyhigh Street Navy",
+      "variantTitle": "XL",
+      "sku": "KC-FLY-NB-XL",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "flyhigh-street-navy"
+    },
+    "48981803729053": {
+      "shopifyProductId": 9036268798109,
+      "shopifyVariantId": 48981803729053,
+      "title": "In My Era",
+      "variantTitle": "XS",
+      "sku": "KC-SIG-HYB-ERA-ORG-XS",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "in-my-era"
+    },
+    "48862443700381": {
+      "shopifyProductId": 9036268798109,
+      "shopifyVariantId": 48862443700381,
+      "title": "In My Era",
+      "variantTitle": "S",
+      "sku": "KC-SIG-HYB-ERA-ORG-S",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "in-my-era"
+    },
+    "48862444159133": {
+      "shopifyProductId": 9036268798109,
+      "shopifyVariantId": 48862444159133,
+      "title": "In My Era",
+      "variantTitle": "M",
+      "sku": "KC-SIG-HYB-ERA-ORG-M",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "in-my-era"
+    },
+    "48862444617885": {
+      "shopifyProductId": 9036268798109,
+      "shopifyVariantId": 48862444617885,
+      "title": "In My Era",
+      "variantTitle": "L",
+      "sku": "KC-SIG-HYB-ERA-ORG-L",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "in-my-era"
+    },
+    "48862445076637": {
+      "shopifyProductId": 9036268798109,
+      "shopifyVariantId": 48862445076637,
+      "title": "In My Era",
+      "variantTitle": "XL",
+      "sku": "KC-SIG-HYB-ERA-ORG-XL",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "in-my-era"
+    },
+    "48981803958429": {
+      "shopifyProductId": 9036205818013,
+      "shopifyVariantId": 48981803958429,
+      "title": "Indian Roacher",
+      "variantTitle": "XS",
+      "sku": "KC-SIG-HYB-INDR-BLK-XS",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "indian-roacher"
+    },
+    "48862017126557": {
+      "shopifyProductId": 9036205818013,
+      "shopifyVariantId": 48862017126557,
+      "title": "Indian Roacher",
+      "variantTitle": "S",
+      "sku": "KC-SIG-HYB-INDR-BLK-S",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "indian-roacher"
+    },
+    "48862017159325": {
+      "shopifyProductId": 9036205818013,
+      "shopifyVariantId": 48862017159325,
+      "title": "Indian Roacher",
+      "variantTitle": "M",
+      "sku": "KC-SIG-HYB-INDR-BLK-M",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "indian-roacher"
+    },
+    "48862017192093": {
+      "shopifyProductId": 9036205818013,
+      "shopifyVariantId": 48862017192093,
+      "title": "Indian Roacher",
+      "variantTitle": "L",
+      "sku": "KC-SIG-HYB-INDR-BLK-L",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "indian-roacher"
+    },
+    "48862017224861": {
+      "shopifyProductId": 9036205818013,
+      "shopifyVariantId": 48862017224861,
+      "title": "Indian Roacher",
+      "variantTitle": "XL",
+      "sku": "KC-SIG-HYB-INDR-BLK-XL",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "indian-roacher"
+    },
+    "48844404850845": {
+      "shopifyProductId": 9031544733853,
+      "shopifyVariantId": 48844404850845,
+      "title": "Memory Tee Black",
+      "variantTitle": "S",
+      "sku": "KC-BIKE-BLK-S",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "memory-tee-black"
+    },
+    "48844404916381": {
+      "shopifyProductId": 9031544733853,
+      "shopifyVariantId": 48844404916381,
+      "title": "Memory Tee Black",
+      "variantTitle": "M",
+      "sku": "KC-BIKE-BLK-M",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "memory-tee-black"
+    },
+    "48844404981917": {
+      "shopifyProductId": 9031544733853,
+      "shopifyVariantId": 48844404981917,
+      "title": "Memory Tee Black",
+      "variantTitle": "L",
+      "sku": "KC-BIKE-BLK-L",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "memory-tee-black"
+    },
+    "48844405047453": {
+      "shopifyProductId": 9031544733853,
+      "shopifyVariantId": 48844405047453,
+      "title": "Memory Tee Black",
+      "variantTitle": "XL",
+      "sku": "KC-BIKE-BLK-XL",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "memory-tee-black"
+    },
+    "48971992924317": {
+      "shopifyProductId": 9058795225245,
+      "shopifyVariantId": 48971992924317,
+      "title": "Memory Tee Navy",
+      "variantTitle": "S",
+      "sku": "KC-BIKE-NB-S",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "memory-tee-navy"
+    },
+    "48971992957085": {
+      "shopifyProductId": 9058795225245,
+      "shopifyVariantId": 48971992957085,
+      "title": "Memory Tee Navy",
+      "variantTitle": "M",
+      "sku": "KC-BIKE-NB-M",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "memory-tee-navy"
+    },
+    "48971992989853": {
+      "shopifyProductId": 9058795225245,
+      "shopifyVariantId": 48971992989853,
+      "title": "Memory Tee Navy",
+      "variantTitle": "L",
+      "sku": "KC-BIKE-NB-L",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "memory-tee-navy"
+    },
+    "48971993022621": {
+      "shopifyProductId": 9058795225245,
+      "shopifyVariantId": 48971993022621,
+      "title": "Memory Tee Navy",
+      "variantTitle": "XL",
+      "sku": "KC-BIKE-NB-XL",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "memory-tee-navy"
+    },
+    "48862858543261": {
+      "shopifyProductId": 9036316246173,
+      "shopifyVariantId": 48862858543261,
+      "title": "Skateboard Urban Beige",
+      "variantTitle": "S",
+      "sku": "KC-SK8-BEG-S",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban"
+    },
+    "48862859002013": {
+      "shopifyProductId": 9036316246173,
+      "shopifyVariantId": 48862859002013,
+      "title": "Skateboard Urban Beige",
+      "variantTitle": "M",
+      "sku": "KC-SK8-BEG-M",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban"
+    },
+    "48862859460765": {
+      "shopifyProductId": 9036316246173,
+      "shopifyVariantId": 48862859460765,
+      "title": "Skateboard Urban Beige",
+      "variantTitle": "L",
+      "sku": "KC-SK8-BEG-L",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban"
+    },
+    "48862859919517": {
+      "shopifyProductId": 9036316246173,
+      "shopifyVariantId": 48862859919517,
+      "title": "Skateboard Urban Beige",
+      "variantTitle": "XL",
+      "sku": "KC-SK8-BEG-XL",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban"
+    },
+    "48971834196125": {
+      "shopifyProductId": 9058743484573,
+      "shopifyVariantId": 48971834196125,
+      "title": "Skateboard Urban Brown",
+      "variantTitle": "S",
+      "sku": "KC-SK8-TRC-S",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban-beige-copy"
+    },
+    "48971834228893": {
+      "shopifyProductId": 9058743484573,
+      "shopifyVariantId": 48971834228893,
+      "title": "Skateboard Urban Brown",
+      "variantTitle": "M",
+      "sku": "KC-SK8-TRC-M",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban-beige-copy"
+    },
+    "48971834261661": {
+      "shopifyProductId": 9058743484573,
+      "shopifyVariantId": 48971834261661,
+      "title": "Skateboard Urban Brown",
+      "variantTitle": "L",
+      "sku": "KC-SK8-TRC-L",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban-beige-copy"
+    },
+    "48971834294429": {
+      "shopifyProductId": 9058743484573,
+      "shopifyVariantId": 48971834294429,
+      "title": "Skateboard Urban Brown",
+      "variantTitle": "XL",
+      "sku": "KC-SK8-TRC-XL",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban-beige-copy"
+    },
+    "48971981258909": {
+      "shopifyProductId": 9058770321565,
+      "shopifyVariantId": 48971981258909,
+      "title": "Skateboard Urban Dusty Rose",
+      "variantTitle": "S",
+      "sku": "KC-SK8-DSTRS-S",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban-grey-copy"
+    },
+    "48971981291677": {
+      "shopifyProductId": 9058770321565,
+      "shopifyVariantId": 48971981291677,
+      "title": "Skateboard Urban Dusty Rose",
+      "variantTitle": "M",
+      "sku": "KC-SK8-DSTRS-M",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban-grey-copy"
+    },
+    "48971981324445": {
+      "shopifyProductId": 9058770321565,
+      "shopifyVariantId": 48971981324445,
+      "title": "Skateboard Urban Dusty Rose",
+      "variantTitle": "L",
+      "sku": "KC-SK8-DSTRS-L",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban-grey-copy"
+    },
+    "48971981357213": {
+      "shopifyProductId": 9058770321565,
+      "shopifyVariantId": 48971981357213,
+      "title": "Skateboard Urban Dusty Rose",
+      "variantTitle": "XL",
+      "sku": "KC-SK8-DSTRS-XL",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban-grey-copy"
+    },
+    "48971913396381": {
+      "shopifyProductId": 9058748367005,
+      "shopifyVariantId": 48971913396381,
+      "title": "Skateboard Urban Grey",
+      "variantTitle": "S",
+      "sku": "KC-SK8-GRY-S",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban-grey"
+    },
+    "48971913429149": {
+      "shopifyProductId": 9058748367005,
+      "shopifyVariantId": 48971913429149,
+      "title": "Skateboard Urban Grey",
+      "variantTitle": "M",
+      "sku": "KC-SK8-GRY-M",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban-grey"
+    },
+    "48971913461917": {
+      "shopifyProductId": 9058748367005,
+      "shopifyVariantId": 48971913461917,
+      "title": "Skateboard Urban Grey",
+      "variantTitle": "L",
+      "sku": "KC-SK8-GRY-L",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban-grey"
+    },
+    "48971913494685": {
+      "shopifyProductId": 9058748367005,
+      "shopifyVariantId": 48971913494685,
+      "title": "Skateboard Urban Grey",
+      "variantTitle": "XL",
+      "sku": "KC-SK8-GRY-XL",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban-grey"
+    },
+    "48987456274589": {
+      "shopifyProductId": 9061587484829,
+      "shopifyVariantId": 48987456274589,
+      "title": "SWANK",
+      "variantTitle": "S",
+      "sku": "KC-SWANK-WHI-S",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "swank"
+    },
+    "48987456307357": {
+      "shopifyProductId": 9061587484829,
+      "shopifyVariantId": 48987456307357,
+      "title": "SWANK",
+      "variantTitle": "M",
+      "sku": "KC-SWANK-WHI-M",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "swank"
+    },
+    "48987456340125": {
+      "shopifyProductId": 9061587484829,
+      "shopifyVariantId": 48987456340125,
+      "title": "SWANK",
+      "variantTitle": "L",
+      "sku": "KC-SWANK-WHI-L",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "swank"
+    },
+    "48987456372893": {
+      "shopifyProductId": 9061587484829,
+      "shopifyVariantId": 48987456372893,
+      "title": "SWANK",
+      "variantTitle": "XL",
+      "sku": "KC-SWANK-WHI-XL",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "swank"
+    },
+    "48981801074845": {
+      "shopifyProductId": 9060794499229,
+      "shopifyVariantId": 48981801074845,
+      "title": "URBAN NOMAD",
+      "variantTitle": "S",
+      "sku": "KC-URBAN-BEG-S",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "urban-nomad"
+    },
+    "48981801107613": {
+      "shopifyProductId": 9060794499229,
+      "shopifyVariantId": 48981801107613,
+      "title": "URBAN NOMAD",
+      "variantTitle": "M",
+      "sku": "KC-URBAN-BEG-M",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "urban-nomad"
+    },
+    "48981801140381": {
+      "shopifyProductId": 9060794499229,
+      "shopifyVariantId": 48981801140381,
+      "title": "URBAN NOMAD",
+      "variantTitle": "L",
+      "sku": "KC-URBAN-BEG-L",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "urban-nomad"
+    },
+    "48981801173149": {
+      "shopifyProductId": 9060794499229,
+      "shopifyVariantId": 48981801173149,
+      "title": "URBAN NOMAD",
+      "variantTitle": "XL",
+      "sku": "KC-URBAN-BEG-XL",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "urban-nomad"
+    },
+    "48981803860125": {
+      "shopifyProductId": 9036269224093,
+      "shopifyVariantId": 48981803860125,
+      "title": "Vacation Vibe",
+      "variantTitle": "XS",
+      "sku": "KC-HYB-VAC-YL-XS",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "vacation-tee"
+    },
+    "48862447108253": {
+      "shopifyProductId": 9036269224093,
+      "shopifyVariantId": 48862447108253,
+      "title": "Vacation Vibe",
+      "variantTitle": "S",
+      "sku": "KC-HYB-VAC-YL-S",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "vacation-tee"
+    },
+    "48862447567005": {
+      "shopifyProductId": 9036269224093,
+      "shopifyVariantId": 48862447567005,
+      "title": "Vacation Vibe",
+      "variantTitle": "M",
+      "sku": "KC-HYB-VAC-YL-M",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "vacation-tee"
+    },
+    "48862448025757": {
+      "shopifyProductId": 9036269224093,
+      "shopifyVariantId": 48862448025757,
+      "title": "Vacation Vibe",
+      "variantTitle": "L",
+      "sku": "KC-HYB-VAC-YL-L",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "vacation-tee"
+    },
+    "48862448484509": {
+      "shopifyProductId": 9036269224093,
+      "shopifyVariantId": 48862448484509,
+      "title": "Vacation Vibe",
+      "variantTitle": "XL",
+      "sku": "KC-HYB-VAC-YL-XL",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "vacation-tee"
+    }
+  },
+  "bySku": {
+    "KC-SIG-HYB-AIR-MBLU-XS": {
+      "shopifyProductId": 9036245958813,
+      "shopifyVariantId": 48981803663517,
+      "title": "Air Force",
+      "variantTitle": "XS",
+      "sku": "KC-SIG-HYB-AIR-MBLU-XS",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "air-force"
+    },
+    "KC-SIG-HYB-AIR-MBLU-S": {
+      "shopifyProductId": 9036245958813,
+      "shopifyVariantId": 48862344315037,
+      "title": "Air Force",
+      "variantTitle": "S",
+      "sku": "KC-SIG-HYB-AIR-MBLU-S",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "air-force"
+    },
+    "KC-SIG-HYB-AIR-MBLU-M": {
+      "shopifyProductId": 9036245958813,
+      "shopifyVariantId": 48862344773789,
+      "title": "Air Force",
+      "variantTitle": "M",
+      "sku": "KC-SIG-HYB-AIR-MBLU-M",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "air-force"
+    },
+    "KC-SIG-HYB-AIR-MBLU-L": {
+      "shopifyProductId": 9036245958813,
+      "shopifyVariantId": 48862345232541,
+      "title": "Air Force",
+      "variantTitle": "L",
+      "sku": "KC-SIG-HYB-AIR-MBLU-L",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "air-force"
+    },
+    "KC-SIG-HYB-AIR-MBLU-XL": {
+      "shopifyProductId": 9036245958813,
+      "shopifyVariantId": 48862345691293,
+      "title": "Air Force",
+      "variantTitle": "XL",
+      "sku": "KC-SIG-HYB-AIR-MBLU-XL",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "air-force"
+    },
+    "KC-BR-BLK-S": {
+      "shopifyProductId": 9036316901533,
+      "shopifyVariantId": 48862865359005,
+      "title": "Break The Rules Black",
+      "variantTitle": "S",
+      "sku": "KC-BR-BLK-S",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules"
+    },
+    "KC-BR-BLK-M": {
+      "shopifyProductId": 9036316901533,
+      "shopifyVariantId": 48862865817757,
+      "title": "Break The Rules Black",
+      "variantTitle": "M",
+      "sku": "KC-BR-BLK-M",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules"
+    },
+    "KC-BR-BLK-L": {
+      "shopifyProductId": 9036316901533,
+      "shopifyVariantId": 48862866276509,
+      "title": "Break The Rules Black",
+      "variantTitle": "L",
+      "sku": "KC-BR-BLK-L",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules"
+    },
+    "KC-BR-BLK-XL": {
+      "shopifyProductId": 9036316901533,
+      "shopifyVariantId": 48862866735261,
+      "title": "Break The Rules Black",
+      "variantTitle": "XL",
+      "sku": "KC-BR-BLK-XL",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules"
+    },
+    "KC-BR-NB-S": {
+      "shopifyProductId": 9058713862301,
+      "shopifyVariantId": 48971797954717,
+      "title": "Break The Rules Navy",
+      "variantTitle": "S",
+      "sku": "KC-BR-NB-S",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules-navy"
+    },
+    "KC-BR-NB-M": {
+      "shopifyProductId": 9058713862301,
+      "shopifyVariantId": 48971797987485,
+      "title": "Break The Rules Navy",
+      "variantTitle": "M",
+      "sku": "KC-BR-NB-M",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules-navy"
+    },
+    "KC-BR-NB-L": {
+      "shopifyProductId": 9058713862301,
+      "shopifyVariantId": 48971798020253,
+      "title": "Break The Rules Navy",
+      "variantTitle": "L",
+      "sku": "KC-BR-NB-L",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules-navy"
+    },
+    "KC-BR-NB-XL": {
+      "shopifyProductId": 9058713862301,
+      "shopifyVariantId": 48971798053021,
+      "title": "Break The Rules Navy",
+      "variantTitle": "XL",
+      "sku": "KC-BR-NB-XL",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules-navy"
+    },
+    "KC-BR-SGRN-S": {
+      "shopifyProductId": 9058720481437,
+      "shopifyVariantId": 48971799789725,
+      "title": "Break The Rules Sage Green",
+      "variantTitle": "S",
+      "sku": "KC-BR-SGRN-S",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules-pista"
+    },
+    "KC-BR-SGRN-M": {
+      "shopifyProductId": 9058720481437,
+      "shopifyVariantId": 48971799822493,
+      "title": "Break The Rules Sage Green",
+      "variantTitle": "M",
+      "sku": "KC-BR-SGRN-M",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules-pista"
+    },
+    "KC-BR-SGRN-L": {
+      "shopifyProductId": 9058720481437,
+      "shopifyVariantId": 48971799855261,
+      "title": "Break The Rules Sage Green",
+      "variantTitle": "L",
+      "sku": "KC-BR-SGRN-L",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules-pista"
+    },
+    "KC-BR-SGRN-XL": {
+      "shopifyProductId": 9058720481437,
+      "shopifyVariantId": 48971799888029,
+      "title": "Break The Rules Sage Green",
+      "variantTitle": "XL",
+      "sku": "KC-BR-SGRN-XL",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules-pista"
+    },
+    "KC-BR-TRC-S": {
+      "shopifyProductId": 9058701213853,
+      "shopifyVariantId": 48971797266589,
+      "title": "Break The Rules Terracotta",
+      "variantTitle": "S",
+      "sku": "KC-BR-TRC-S",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules-brown"
+    },
+    "KC-BR-TRC-M": {
+      "shopifyProductId": 9058701213853,
+      "shopifyVariantId": 48971797299357,
+      "title": "Break The Rules Terracotta",
+      "variantTitle": "M",
+      "sku": "KC-BR-TRC-M",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules-brown"
+    },
+    "KC-BR-TRC-L": {
+      "shopifyProductId": 9058701213853,
+      "shopifyVariantId": 48971797332125,
+      "title": "Break The Rules Terracotta",
+      "variantTitle": "L",
+      "sku": "KC-BR-TRC-L",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules-brown"
+    },
+    "KC-BR-TRC-XL": {
+      "shopifyProductId": 9058701213853,
+      "shopifyVariantId": 48971797364893,
+      "title": "Break The Rules Terracotta",
+      "variantTitle": "XL",
+      "sku": "KC-BR-TRC-XL",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "break-the-rules-brown"
+    },
+    "KC-CLSIND-BEG-S": {
+      "shopifyProductId": 9036269912221,
+      "shopifyVariantId": 48862453629085,
+      "title": "Classic India Beige",
+      "variantTitle": "S",
+      "sku": "KC-CLSIND-BEG-S",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "india-gate"
+    },
+    "KC-CLSIND-BEG-M": {
+      "shopifyProductId": 9036269912221,
+      "shopifyVariantId": 48862454087837,
+      "title": "Classic India Beige",
+      "variantTitle": "M",
+      "sku": "KC-CLSIND-BEG-M",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "india-gate"
+    },
+    "KC-CLSIND-BEG-L": {
+      "shopifyProductId": 9036269912221,
+      "shopifyVariantId": 48862454546589,
+      "title": "Classic India Beige",
+      "variantTitle": "L",
+      "sku": "KC-CLSIND-BEG-L",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "india-gate"
+    },
+    "KC-CLSIND-BEG-XL": {
+      "shopifyProductId": 9036269912221,
+      "shopifyVariantId": 48862455005341,
+      "title": "Classic India Beige",
+      "variantTitle": "XL",
+      "sku": "KC-CLSIND-BEG-XL",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "india-gate"
+    },
+    "KC-CLSIND-DSTRS-S": {
+      "shopifyProductId": 9058786836637,
+      "shopifyVariantId": 48971992465565,
+      "title": "Classic India Dusty Rose",
+      "variantTitle": "S",
+      "sku": "KC-CLSIND-DSTRS-S",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "classic-india-wine"
+    },
+    "KC-CLSIND-DSTRS-M": {
+      "shopifyProductId": 9058786836637,
+      "shopifyVariantId": 48971992531101,
+      "title": "Classic India Dusty Rose",
+      "variantTitle": "M",
+      "sku": "KC-CLSIND-DSTRS-M",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "classic-india-wine"
+    },
+    "KC-CLSIND-DSTRS-L": {
+      "shopifyProductId": 9058786836637,
+      "shopifyVariantId": 48971992596637,
+      "title": "Classic India Dusty Rose",
+      "variantTitle": "L",
+      "sku": "KC-CLSIND-DSTRS-L",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "classic-india-wine"
+    },
+    "KC-CLSIND-DSTRS-XL": {
+      "shopifyProductId": 9058786836637,
+      "shopifyVariantId": 48971992662173,
+      "title": "Classic India Dusty Rose",
+      "variantTitle": "XL",
+      "sku": "KC-CLSIND-DSTRS-XL",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "classic-india-wine"
+    },
+    "KC-SIG-HYB-CSTM-RD-XS": {
+      "shopifyProductId": 9036225839261,
+      "shopifyVariantId": 48981803499677,
+      "title": "Costal Motions",
+      "variantTitle": "XS",
+      "sku": "KC-SIG-HYB-CSTM-RD-XS",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "costal-monica"
+    },
+    "KC-SIG-HYB-CSTM-RD-S": {
+      "shopifyProductId": 9036225839261,
+      "shopifyVariantId": 48862192631965,
+      "title": "Costal Motions",
+      "variantTitle": "S",
+      "sku": "KC-SIG-HYB-CSTM-RD-S",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "costal-monica"
+    },
+    "KC-SIG-HYB-CSTM-RD-M": {
+      "shopifyProductId": 9036225839261,
+      "shopifyVariantId": 48862192861341,
+      "title": "Costal Motions",
+      "variantTitle": "M",
+      "sku": "KC-SIG-HYB-CSTM-RD-M",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "costal-monica"
+    },
+    "KC-SIG-HYB-CSTM-RD-L": {
+      "shopifyProductId": 9036225839261,
+      "shopifyVariantId": 48862193090717,
+      "title": "Costal Motions",
+      "variantTitle": "L",
+      "sku": "KC-SIG-HYB-CSTM-RD-L",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "costal-monica"
+    },
+    "KC-SIG-HYB-CSTM-RD-XL": {
+      "shopifyProductId": 9036225839261,
+      "shopifyVariantId": 48862193320093,
+      "title": "Costal Motions",
+      "variantTitle": "XL",
+      "sku": "KC-SIG-HYB-CSTM-RD-XL",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "costal-monica"
+    },
+    "KC-SIG-HYB-UNBK-PRP-XS": {
+      "shopifyProductId": 9060794040477,
+      "shopifyVariantId": 48987411873949,
+      "title": "CRACKED BUT UNBROKEN",
+      "variantTitle": "XS",
+      "sku": "KC-SIG-HYB-UNBK-PRP-XS",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "cracked-but-unbroken"
+    },
+    "KC-SIG-HYB-UNBK-PRP-S": {
+      "shopifyProductId": 9060794040477,
+      "shopifyVariantId": 48981790326941,
+      "title": "CRACKED BUT UNBROKEN",
+      "variantTitle": "S",
+      "sku": "KC-SIG-HYB-UNBK-PRP-S",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "cracked-but-unbroken"
+    },
+    "KC-SIG-HYB-UNBK-PRP-M": {
+      "shopifyProductId": 9060794040477,
+      "shopifyVariantId": 48981790359709,
+      "title": "CRACKED BUT UNBROKEN",
+      "variantTitle": "M",
+      "sku": "KC-SIG-HYB-UNBK-PRP-M",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "cracked-but-unbroken"
+    },
+    "KC-SIG-HYB-UNBK-PRP-L": {
+      "shopifyProductId": 9060794040477,
+      "shopifyVariantId": 48981790392477,
+      "title": "CRACKED BUT UNBROKEN",
+      "variantTitle": "L",
+      "sku": "KC-SIG-HYB-UNBK-PRP-L",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "cracked-but-unbroken"
+    },
+    "KC-SIG-HYB-UNBK-PRP-XL": {
+      "shopifyProductId": 9060794040477,
+      "shopifyVariantId": 48981790425245,
+      "title": "CRACKED BUT UNBROKEN",
+      "variantTitle": "XL",
+      "sku": "KC-SIG-HYB-UNBK-PRP-XL",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "cracked-but-unbroken"
+    },
+    "KC-SIG-HYB-DIST-CRM-XS": {
+      "shopifyProductId": 9036218237085,
+      "shopifyVariantId": 48987413610653,
+      "title": "Distorted",
+      "variantTitle": "XS",
+      "sku": "KC-SIG-HYB-DIST-CRM-XS",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "distorted"
+    },
+    "KC-SIG-HYB-DIST-CRM-S": {
+      "shopifyProductId": 9036218237085,
+      "shopifyVariantId": 48862128504989,
+      "title": "Distorted",
+      "variantTitle": "S",
+      "sku": "KC-SIG-HYB-DIST-CRM-S",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "distorted"
+    },
+    "KC-SIG-HYB-DIST-CRM-M": {
+      "shopifyProductId": 9036218237085,
+      "shopifyVariantId": 48862128767133,
+      "title": "Distorted",
+      "variantTitle": "M",
+      "sku": "KC-SIG-HYB-DIST-CRM-M",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "distorted"
+    },
+    "KC-SIG-HYB-DIST-CRM-L": {
+      "shopifyProductId": 9036218237085,
+      "shopifyVariantId": 48862129029277,
+      "title": "Distorted",
+      "variantTitle": "L",
+      "sku": "KC-SIG-HYB-DIST-CRM-L",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "distorted"
+    },
+    "KC-SIG-HYB-DIST-CRM-XL": {
+      "shopifyProductId": 9036218237085,
+      "shopifyVariantId": 48862129291421,
+      "title": "Distorted",
+      "variantTitle": "XL",
+      "sku": "KC-SIG-HYB-DIST-CRM-XL",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "distorted"
+    },
+    "KC-FLY-BLK-S": {
+      "shopifyProductId": 9058771271837,
+      "shopifyVariantId": 48971988140189,
+      "title": "Flyhigh Street Black",
+      "variantTitle": "S",
+      "sku": "KC-FLY-BLK-S",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "flyhigh-street-black"
+    },
+    "KC-FLY-BLK-M": {
+      "shopifyProductId": 9058771271837,
+      "shopifyVariantId": 48971988172957,
+      "title": "Flyhigh Street Black",
+      "variantTitle": "M",
+      "sku": "KC-FLY-BLK-M",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "flyhigh-street-black"
+    },
+    "KC-FLY-BLK-L": {
+      "shopifyProductId": 9058771271837,
+      "shopifyVariantId": 48971988205725,
+      "title": "Flyhigh Street Black",
+      "variantTitle": "L",
+      "sku": "KC-FLY-BLK-L",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "flyhigh-street-black"
+    },
+    "KC-FLY-BLK-XL": {
+      "shopifyProductId": 9058771271837,
+      "shopifyVariantId": 48971988238493,
+      "title": "Flyhigh Street Black",
+      "variantTitle": "XL",
+      "sku": "KC-FLY-BLK-XL",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "flyhigh-street-black"
+    },
+    "KC-FLY-GRY-S": {
+      "shopifyProductId": 9036315623581,
+      "shopifyVariantId": 48862847533213,
+      "title": "Flyhigh Street Gray",
+      "variantTitle": "S",
+      "sku": "KC-FLY-GRY-S",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "flyhigh-1"
+    },
+    "KC-FLY-GRY-M": {
+      "shopifyProductId": 9036315623581,
+      "shopifyVariantId": 48862847991965,
+      "title": "Flyhigh Street Gray",
+      "variantTitle": "M",
+      "sku": "KC-FLY-GRY-M",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "flyhigh-1"
+    },
+    "KC-FLY-GRY-L": {
+      "shopifyProductId": 9036315623581,
+      "shopifyVariantId": 48862848450717,
+      "title": "Flyhigh Street Gray",
+      "variantTitle": "L",
+      "sku": "KC-FLY-GRY-L",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "flyhigh-1"
+    },
+    "KC-FLY-GRY-XL": {
+      "shopifyProductId": 9036315623581,
+      "shopifyVariantId": 48862848909469,
+      "title": "Flyhigh Street Gray",
+      "variantTitle": "XL",
+      "sku": "KC-FLY-GRY-XL",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "flyhigh-1"
+    },
+    "KC-FLY-NB-S": {
+      "shopifyProductId": 9058771075229,
+      "shopifyVariantId": 48971983356061,
+      "title": "Flyhigh Street Navy",
+      "variantTitle": "S",
+      "sku": "KC-FLY-NB-S",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "flyhigh-street-navy"
+    },
+    "KC-FLY-NB-M": {
+      "shopifyProductId": 9058771075229,
+      "shopifyVariantId": 48971983388829,
+      "title": "Flyhigh Street Navy",
+      "variantTitle": "M",
+      "sku": "KC-FLY-NB-M",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "flyhigh-street-navy"
+    },
+    "KC-FLY-NB-L": {
+      "shopifyProductId": 9058771075229,
+      "shopifyVariantId": 48971983421597,
+      "title": "Flyhigh Street Navy",
+      "variantTitle": "L",
+      "sku": "KC-FLY-NB-L",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "flyhigh-street-navy"
+    },
+    "KC-FLY-NB-XL": {
+      "shopifyProductId": 9058771075229,
+      "shopifyVariantId": 48971983454365,
+      "title": "Flyhigh Street Navy",
+      "variantTitle": "XL",
+      "sku": "KC-FLY-NB-XL",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "flyhigh-street-navy"
+    },
+    "KC-SIG-HYB-ERA-ORG-XS": {
+      "shopifyProductId": 9036268798109,
+      "shopifyVariantId": 48981803729053,
+      "title": "In My Era",
+      "variantTitle": "XS",
+      "sku": "KC-SIG-HYB-ERA-ORG-XS",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "in-my-era"
+    },
+    "KC-SIG-HYB-ERA-ORG-S": {
+      "shopifyProductId": 9036268798109,
+      "shopifyVariantId": 48862443700381,
+      "title": "In My Era",
+      "variantTitle": "S",
+      "sku": "KC-SIG-HYB-ERA-ORG-S",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "in-my-era"
+    },
+    "KC-SIG-HYB-ERA-ORG-M": {
+      "shopifyProductId": 9036268798109,
+      "shopifyVariantId": 48862444159133,
+      "title": "In My Era",
+      "variantTitle": "M",
+      "sku": "KC-SIG-HYB-ERA-ORG-M",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "in-my-era"
+    },
+    "KC-SIG-HYB-ERA-ORG-L": {
+      "shopifyProductId": 9036268798109,
+      "shopifyVariantId": 48862444617885,
+      "title": "In My Era",
+      "variantTitle": "L",
+      "sku": "KC-SIG-HYB-ERA-ORG-L",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "in-my-era"
+    },
+    "KC-SIG-HYB-ERA-ORG-XL": {
+      "shopifyProductId": 9036268798109,
+      "shopifyVariantId": 48862445076637,
+      "title": "In My Era",
+      "variantTitle": "XL",
+      "sku": "KC-SIG-HYB-ERA-ORG-XL",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "in-my-era"
+    },
+    "KC-SIG-HYB-INDR-BLK-XS": {
+      "shopifyProductId": 9036205818013,
+      "shopifyVariantId": 48981803958429,
+      "title": "Indian Roacher",
+      "variantTitle": "XS",
+      "sku": "KC-SIG-HYB-INDR-BLK-XS",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "indian-roacher"
+    },
+    "KC-SIG-HYB-INDR-BLK-S": {
+      "shopifyProductId": 9036205818013,
+      "shopifyVariantId": 48862017126557,
+      "title": "Indian Roacher",
+      "variantTitle": "S",
+      "sku": "KC-SIG-HYB-INDR-BLK-S",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "indian-roacher"
+    },
+    "KC-SIG-HYB-INDR-BLK-M": {
+      "shopifyProductId": 9036205818013,
+      "shopifyVariantId": 48862017159325,
+      "title": "Indian Roacher",
+      "variantTitle": "M",
+      "sku": "KC-SIG-HYB-INDR-BLK-M",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "indian-roacher"
+    },
+    "KC-SIG-HYB-INDR-BLK-L": {
+      "shopifyProductId": 9036205818013,
+      "shopifyVariantId": 48862017192093,
+      "title": "Indian Roacher",
+      "variantTitle": "L",
+      "sku": "KC-SIG-HYB-INDR-BLK-L",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "indian-roacher"
+    },
+    "KC-SIG-HYB-INDR-BLK-XL": {
+      "shopifyProductId": 9036205818013,
+      "shopifyVariantId": 48862017224861,
+      "title": "Indian Roacher",
+      "variantTitle": "XL",
+      "sku": "KC-SIG-HYB-INDR-BLK-XL",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "indian-roacher"
+    },
+    "KC-BIKE-BLK-S": {
+      "shopifyProductId": 9031544733853,
+      "shopifyVariantId": 48844404850845,
+      "title": "Memory Tee Black",
+      "variantTitle": "S",
+      "sku": "KC-BIKE-BLK-S",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "memory-tee-black"
+    },
+    "KC-BIKE-BLK-M": {
+      "shopifyProductId": 9031544733853,
+      "shopifyVariantId": 48844404916381,
+      "title": "Memory Tee Black",
+      "variantTitle": "M",
+      "sku": "KC-BIKE-BLK-M",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "memory-tee-black"
+    },
+    "KC-BIKE-BLK-L": {
+      "shopifyProductId": 9031544733853,
+      "shopifyVariantId": 48844404981917,
+      "title": "Memory Tee Black",
+      "variantTitle": "L",
+      "sku": "KC-BIKE-BLK-L",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "memory-tee-black"
+    },
+    "KC-BIKE-BLK-XL": {
+      "shopifyProductId": 9031544733853,
+      "shopifyVariantId": 48844405047453,
+      "title": "Memory Tee Black",
+      "variantTitle": "XL",
+      "sku": "KC-BIKE-BLK-XL",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "memory-tee-black"
+    },
+    "KC-BIKE-NB-S": {
+      "shopifyProductId": 9058795225245,
+      "shopifyVariantId": 48971992924317,
+      "title": "Memory Tee Navy",
+      "variantTitle": "S",
+      "sku": "KC-BIKE-NB-S",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "memory-tee-navy"
+    },
+    "KC-BIKE-NB-M": {
+      "shopifyProductId": 9058795225245,
+      "shopifyVariantId": 48971992957085,
+      "title": "Memory Tee Navy",
+      "variantTitle": "M",
+      "sku": "KC-BIKE-NB-M",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "memory-tee-navy"
+    },
+    "KC-BIKE-NB-L": {
+      "shopifyProductId": 9058795225245,
+      "shopifyVariantId": 48971992989853,
+      "title": "Memory Tee Navy",
+      "variantTitle": "L",
+      "sku": "KC-BIKE-NB-L",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "memory-tee-navy"
+    },
+    "KC-BIKE-NB-XL": {
+      "shopifyProductId": 9058795225245,
+      "shopifyVariantId": 48971993022621,
+      "title": "Memory Tee Navy",
+      "variantTitle": "XL",
+      "sku": "KC-BIKE-NB-XL",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "memory-tee-navy"
+    },
+    "KC-SK8-BEG-S": {
+      "shopifyProductId": 9036316246173,
+      "shopifyVariantId": 48862858543261,
+      "title": "Skateboard Urban Beige",
+      "variantTitle": "S",
+      "sku": "KC-SK8-BEG-S",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban"
+    },
+    "KC-SK8-BEG-M": {
+      "shopifyProductId": 9036316246173,
+      "shopifyVariantId": 48862859002013,
+      "title": "Skateboard Urban Beige",
+      "variantTitle": "M",
+      "sku": "KC-SK8-BEG-M",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban"
+    },
+    "KC-SK8-BEG-L": {
+      "shopifyProductId": 9036316246173,
+      "shopifyVariantId": 48862859460765,
+      "title": "Skateboard Urban Beige",
+      "variantTitle": "L",
+      "sku": "KC-SK8-BEG-L",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban"
+    },
+    "KC-SK8-BEG-XL": {
+      "shopifyProductId": 9036316246173,
+      "shopifyVariantId": 48862859919517,
+      "title": "Skateboard Urban Beige",
+      "variantTitle": "XL",
+      "sku": "KC-SK8-BEG-XL",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban"
+    },
+    "KC-SK8-TRC-S": {
+      "shopifyProductId": 9058743484573,
+      "shopifyVariantId": 48971834196125,
+      "title": "Skateboard Urban Brown",
+      "variantTitle": "S",
+      "sku": "KC-SK8-TRC-S",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban-beige-copy"
+    },
+    "KC-SK8-TRC-M": {
+      "shopifyProductId": 9058743484573,
+      "shopifyVariantId": 48971834228893,
+      "title": "Skateboard Urban Brown",
+      "variantTitle": "M",
+      "sku": "KC-SK8-TRC-M",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban-beige-copy"
+    },
+    "KC-SK8-TRC-L": {
+      "shopifyProductId": 9058743484573,
+      "shopifyVariantId": 48971834261661,
+      "title": "Skateboard Urban Brown",
+      "variantTitle": "L",
+      "sku": "KC-SK8-TRC-L",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban-beige-copy"
+    },
+    "KC-SK8-TRC-XL": {
+      "shopifyProductId": 9058743484573,
+      "shopifyVariantId": 48971834294429,
+      "title": "Skateboard Urban Brown",
+      "variantTitle": "XL",
+      "sku": "KC-SK8-TRC-XL",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban-beige-copy"
+    },
+    "KC-SK8-DSTRS-S": {
+      "shopifyProductId": 9058770321565,
+      "shopifyVariantId": 48971981258909,
+      "title": "Skateboard Urban Dusty Rose",
+      "variantTitle": "S",
+      "sku": "KC-SK8-DSTRS-S",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban-grey-copy"
+    },
+    "KC-SK8-DSTRS-M": {
+      "shopifyProductId": 9058770321565,
+      "shopifyVariantId": 48971981291677,
+      "title": "Skateboard Urban Dusty Rose",
+      "variantTitle": "M",
+      "sku": "KC-SK8-DSTRS-M",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban-grey-copy"
+    },
+    "KC-SK8-DSTRS-L": {
+      "shopifyProductId": 9058770321565,
+      "shopifyVariantId": 48971981324445,
+      "title": "Skateboard Urban Dusty Rose",
+      "variantTitle": "L",
+      "sku": "KC-SK8-DSTRS-L",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban-grey-copy"
+    },
+    "KC-SK8-DSTRS-XL": {
+      "shopifyProductId": 9058770321565,
+      "shopifyVariantId": 48971981357213,
+      "title": "Skateboard Urban Dusty Rose",
+      "variantTitle": "XL",
+      "sku": "KC-SK8-DSTRS-XL",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban-grey-copy"
+    },
+    "KC-SK8-GRY-S": {
+      "shopifyProductId": 9058748367005,
+      "shopifyVariantId": 48971913396381,
+      "title": "Skateboard Urban Grey",
+      "variantTitle": "S",
+      "sku": "KC-SK8-GRY-S",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban-grey"
+    },
+    "KC-SK8-GRY-M": {
+      "shopifyProductId": 9058748367005,
+      "shopifyVariantId": 48971913429149,
+      "title": "Skateboard Urban Grey",
+      "variantTitle": "M",
+      "sku": "KC-SK8-GRY-M",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban-grey"
+    },
+    "KC-SK8-GRY-L": {
+      "shopifyProductId": 9058748367005,
+      "shopifyVariantId": 48971913461917,
+      "title": "Skateboard Urban Grey",
+      "variantTitle": "L",
+      "sku": "KC-SK8-GRY-L",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban-grey"
+    },
+    "KC-SK8-GRY-XL": {
+      "shopifyProductId": 9058748367005,
+      "shopifyVariantId": 48971913494685,
+      "title": "Skateboard Urban Grey",
+      "variantTitle": "XL",
+      "sku": "KC-SK8-GRY-XL",
+      "price": "999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "skateboard-urban-grey"
+    },
+    "KC-SWANK-WHI-S": {
+      "shopifyProductId": 9061587484829,
+      "shopifyVariantId": 48987456274589,
+      "title": "SWANK",
+      "variantTitle": "S",
+      "sku": "KC-SWANK-WHI-S",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "swank"
+    },
+    "KC-SWANK-WHI-M": {
+      "shopifyProductId": 9061587484829,
+      "shopifyVariantId": 48987456307357,
+      "title": "SWANK",
+      "variantTitle": "M",
+      "sku": "KC-SWANK-WHI-M",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "swank"
+    },
+    "KC-SWANK-WHI-L": {
+      "shopifyProductId": 9061587484829,
+      "shopifyVariantId": 48987456340125,
+      "title": "SWANK",
+      "variantTitle": "L",
+      "sku": "KC-SWANK-WHI-L",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "swank"
+    },
+    "KC-SWANK-WHI-XL": {
+      "shopifyProductId": 9061587484829,
+      "shopifyVariantId": 48987456372893,
+      "title": "SWANK",
+      "variantTitle": "XL",
+      "sku": "KC-SWANK-WHI-XL",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "swank"
+    },
+    "KC-URBAN-BEG-S": {
+      "shopifyProductId": 9060794499229,
+      "shopifyVariantId": 48981801074845,
+      "title": "URBAN NOMAD",
+      "variantTitle": "S",
+      "sku": "KC-URBAN-BEG-S",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "urban-nomad"
+    },
+    "KC-URBAN-BEG-M": {
+      "shopifyProductId": 9060794499229,
+      "shopifyVariantId": 48981801107613,
+      "title": "URBAN NOMAD",
+      "variantTitle": "M",
+      "sku": "KC-URBAN-BEG-M",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "urban-nomad"
+    },
+    "KC-URBAN-BEG-L": {
+      "shopifyProductId": 9060794499229,
+      "shopifyVariantId": 48981801140381,
+      "title": "URBAN NOMAD",
+      "variantTitle": "L",
+      "sku": "KC-URBAN-BEG-L",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "urban-nomad"
+    },
+    "KC-URBAN-BEG-XL": {
+      "shopifyProductId": 9060794499229,
+      "shopifyVariantId": 48981801173149,
+      "title": "URBAN NOMAD",
+      "variantTitle": "XL",
+      "sku": "KC-URBAN-BEG-XL",
+      "price": "1499.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "urban-nomad"
+    },
+    "KC-HYB-VAC-YL-XS": {
+      "shopifyProductId": 9036269224093,
+      "shopifyVariantId": 48981803860125,
+      "title": "Vacation Vibe",
+      "variantTitle": "XS",
+      "sku": "KC-HYB-VAC-YL-XS",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "vacation-tee"
+    },
+    "KC-HYB-VAC-YL-S": {
+      "shopifyProductId": 9036269224093,
+      "shopifyVariantId": 48862447108253,
+      "title": "Vacation Vibe",
+      "variantTitle": "S",
+      "sku": "KC-HYB-VAC-YL-S",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "vacation-tee"
+    },
+    "KC-HYB-VAC-YL-M": {
+      "shopifyProductId": 9036269224093,
+      "shopifyVariantId": 48862447567005,
+      "title": "Vacation Vibe",
+      "variantTitle": "M",
+      "sku": "KC-HYB-VAC-YL-M",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "vacation-tee"
+    },
+    "KC-HYB-VAC-YL-L": {
+      "shopifyProductId": 9036269224093,
+      "shopifyVariantId": 48862448025757,
+      "title": "Vacation Vibe",
+      "variantTitle": "L",
+      "sku": "KC-HYB-VAC-YL-L",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "vacation-tee"
+    },
+    "KC-HYB-VAC-YL-XL": {
+      "shopifyProductId": 9036269224093,
+      "shopifyVariantId": 48862448484509,
+      "title": "Vacation Vibe",
+      "variantTitle": "XL",
+      "sku": "KC-HYB-VAC-YL-XL",
+      "price": "1999.00",
+      "hsn": null,
+      "gst": null,
+      "productType": "",
+      "handle": "vacation-tee"
+    }
+  }
+}

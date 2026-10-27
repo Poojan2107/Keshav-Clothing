@@ -1,0 +1,27 @@
+{
+  "name": "miracle-cloud-erp-shopify-integration",
+  "version": "2.1.0",
+  "description": "Keshav Clothing — Shopify → Miracle Cloud ERP Sales Bill (SS) — TPA Guide v1.3",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test:auth": "node scripts/test_auth.js",
+    "test:order": "node scripts/test_order.js",
+    "safe-e2e": "node scripts/safe_e2e.js",
+    "dry-run": "node scripts/dry_run_when_ready.js",
+    "verify": "node scripts/verify_stack.js",
+    "preflight": "node scripts/preflight.js",
+    "sync:products": "node scripts/sync_products.js",
+    "sync:products:pull": "node scripts/sync_products.js --pull-only",
+    "tunnel": "cloudflared tunnel --url http://localhost:3001"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.14.0",
+    "axios": "^1.6.8",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

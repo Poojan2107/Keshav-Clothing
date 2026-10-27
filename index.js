@@ -11,6 +11,7 @@ const inbox = require('./lib/inbox');
 const { notify } = require('./lib/orders-notify');
 const { createReturnRequest, loadReturns } = require('./lib/returns');
 const { maskPhone, normalizePhone } = require('./lib/phone');
+const miracleSync = require('./lib/miracle_sync');
 
 const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
@@ -74,14 +75,21 @@ function verifyShopifyHmac(req) {
   return { ok: true };
 }
 
+// Warm Miracle bridge once (no Miracle API call until an order arrives)
+if (miracleSync.isEnabled()) {
+  miracleSync.loadMiracle();
+}
+
 app.get('/health', (_req, res) => {
   res.json({
     status: 'online',
     service: 'Keshav Clothing Customer Ops',
-    version: '1.1.0',
+    version: '1.2.0',
     whatsappConfigured: wa.isConfigured(),
     shopifyConfigured: Boolean(config.shopify.shop && config.shopify.adminToken),
     inboxEnabled: Boolean(config.inbox.enabled && config.inbox.password && config.inbox.allowedEmails.length),
+    miracleSyncEnabled: miracleSync.isEnabled(),
+    miracleLoaded: Boolean(miracleSync.isEnabled() && miracleSync.loadMiracle()),
     returnWindowDays: config.returnWindowDays,
     timestamp: new Date().toISOString()
   });
@@ -583,13 +591,15 @@ app.get('/api/returns', async (_req, res) => {
   }
 });
 
-// ----- Shopify webhooks → WhatsApp -----
+// ----- Shopify webhooks → WhatsApp (+ optional Miracle Sales Bill) -----
 async function handleOrderCreate(req, res) {
   const auth = verifyShopifyHmac(req);
   if (!auth.ok) return res.status(401).json({ error: auth.error });
   try {
-    const result = await notify('order_confirmed', req.body);
-    return res.status(200).json(result);
+    const whatsapp = await notify('order_confirmed', req.body);
+    // Miracle after WA — failures are logged; do not 500 (avoids duplicate WA on Shopify retry)
+    const miracle = await miracleSync.syncOrderToMiracle(req.body);
+    return res.status(200).json({ whatsapp, miracle });
   } catch (err) {
     console.error('[orders-create WA]', err.message);
     return res.status(500).json({ error: err.message });
@@ -598,6 +608,19 @@ async function handleOrderCreate(req, res) {
 
 app.post('/webhooks/shopify/orders-create', handleOrderCreate);
 app.post('/webhooks/shopify/orders-paid', handleOrderCreate);
+
+// Miracle replay (manual) — only when MIRACLE_SYNC_ENABLED=1
+app.post('/miracle/replay-order', async (req, res) => {
+  if (!miracleSync.isEnabled()) {
+    return res.status(404).json({ error: 'Miracle sync disabled' });
+  }
+  try {
+    const result = await miracleSync.syncOrderToMiracle(req.body);
+    return res.status(result.success || result.duplicate || result.skipped ? 200 : 422).json(result);
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+});
 
 app.post('/webhooks/shopify/fulfillments-create', async (req, res) => {
   const auth = verifyShopifyHmac(req);

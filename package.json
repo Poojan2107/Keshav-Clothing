@@ -4,6 +4,7 @@
   "description": "Keshav Clothing — WhatsApp order updates (Meta Cloud API), OTP, returns/exchanges",
   "main": "index.js",
   "scripts": {
+    "postinstall": "npm install --omit=dev --prefix miracle-erp",
     "start": "node index.js",
     "test:wa": "node scripts/test_whatsapp.js",
     "templates:create": "node scripts/create_wa_templates.js",

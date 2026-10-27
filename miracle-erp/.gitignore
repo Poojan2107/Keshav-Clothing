@@ -1,0 +1,21 @@
+node_modules/
+.env
+*.log
+.DS_Store
+_extract_*.js
+_tmp*
+scripts/_tmp*
+scripts/_out_*
+scripts/_vars_*
+scripts/_audit_*
+scripts/_live_*
+scripts/_check_*
+scripts/_gql_*
+scripts/_verify_*
+scripts/_discounts_*
+scripts/_prices_*
+scripts/_active_*
+scripts/_variants_*
+
+# Persist locally / on Render disk — do not commit live maps
+data/id-map.json

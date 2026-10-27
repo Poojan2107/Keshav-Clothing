@@ -1,0 +1,15 @@
+{
+  "KC-TEE-01": {
+    "hsn": "61091000",
+    "gst": 5,
+    "prdnm": "KC-TEE-01",
+    "slab": "GST 5%",
+    "group": "Tshirts",
+    "unit": "NOS"
+  },
+  "var:1234567890": {
+    "hsn": "6109",
+    "gst": 12,
+    "slab": "GST 12%"
+  }
+}
