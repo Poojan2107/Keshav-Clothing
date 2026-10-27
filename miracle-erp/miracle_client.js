@@ -159,7 +159,7 @@ class MiracleERPClient {
         action: 'E',
         uniqueId: productData.uniqueId,
         prdnm,
-        ...(productData.alias ? { prdalinm: String(productData.alias).slice(0, 25) } : {}),
+        ...(productData.alias ? { prdalinm: String(productData.alias).slice(0, 15) } : {}),
         salrate: Number(productData.price || 0)
       });
     }
@@ -167,7 +167,7 @@ class MiracleERPClient {
     return await this.post('TPA/M2/V1/Product', {
       action: 'A',
       prdnm,
-      ...(productData.alias ? { prdalinm: String(productData.alias).slice(0, 25) } : {}),
+      ...(productData.alias ? { prdalinm: String(productData.alias).slice(0, 15) } : {}),
       grpnm: String(productData.group || config.defaultProductGroup).slice(0, 25),
       slabnm: productData.slabName || config.defaultSlab,
       commnm: hsn.slice(0, 8),

@@ -107,7 +107,7 @@ async function ensureOneProduct(item) {
 
   const productResult = await miracleClient.upsertProduct({
     name: prdnm,
-    alias: (item.title || item.name || prdnm).slice(0, 25),
+    alias: (item.title || item.name || prdnm).slice(0, 15),
     price: parseFloat(item.price),
     gstRate: tax.gst,
     hsnCode: tax.hsn,

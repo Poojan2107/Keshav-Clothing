@@ -66,7 +66,7 @@ async function syncProductsFromShopify({ dryRun = false } = {}) {
         const editRes = await client.upsertProduct({
           uniqueId,
           name: prdnm,
-          alias: p.title.slice(0, 25),
+          alias: p.title.slice(0, 15),
           price: parseFloat(v.price)
         });
         results.push({ key, prdnm, uniqueId, action: 'E', ok: !editRes.IsError, message: editRes.Message });
@@ -75,7 +75,7 @@ async function syncProductsFromShopify({ dryRun = false } = {}) {
 
       const addRes = await client.upsertProduct({
         name: prdnm,
-        alias: p.title.slice(0, 25),
+        alias: p.title.slice(0, 15),
         price: parseFloat(v.price),
         gstRate: tax.gst,
         hsnCode: tax.hsn,
