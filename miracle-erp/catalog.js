@@ -23,6 +23,7 @@ function saveCatalog(products) {
   if (!fs.existsSync(config.dataDir)) fs.mkdirSync(config.dataDir, { recursive: true });
   const byVariant = {};
   const bySku = {};
+  const byBarcode = {};
   for (const p of products) {
     for (const v of p.variants || []) {
       const entry = {
@@ -31,6 +32,7 @@ function saveCatalog(products) {
         title: p.title,
         variantTitle: v.title,
         sku: v.sku,
+        barcode: v.barcode || '',
         price: v.price,
         hsn: p.hsn,
         gst: p.gst,
@@ -39,6 +41,7 @@ function saveCatalog(products) {
       };
       byVariant[String(v.shopifyVariantId)] = entry;
       if (v.sku) bySku[String(v.sku).trim()] = entry;
+      if (v.barcode) byBarcode[String(v.barcode).trim()] = entry;
     }
   }
   const payload = {
@@ -46,7 +49,8 @@ function saveCatalog(products) {
     count: products.length,
     products,
     byVariant,
-    bySku
+    bySku,
+    byBarcode
   };
   fs.writeFileSync(CATALOG_FILE, JSON.stringify(payload, null, 2));
   return payload;

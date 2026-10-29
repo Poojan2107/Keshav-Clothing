@@ -13,6 +13,8 @@
     "preflight": "node scripts/preflight.js",
     "sync:products": "node scripts/sync_products.js",
     "sync:products:pull": "node scripts/sync_products.js --pull-only",
+    "sync:articles": "node scripts/sync_article_barcodes.js",
+    "import:articles": "node scripts/import_article_map.js",
     "tunnel": "cloudflared tunnel --url http://localhost:3001"
   },
   "dependencies": {

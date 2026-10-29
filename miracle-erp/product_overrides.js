@@ -57,7 +57,8 @@ function resolveProductTax(item, catalogEntry) {
     gst: Number(gst),
     slab: o.slab || (gst === 18 ? 'GST 18%' : gst === 12 ? 'GST 12%' : config.defaultSlab),
     group: o.group || config.defaultProductGroup,
-    prdnm: o.prdnm || null,
+    prdnm: o.prdnm || o.article || null,
+    article: o.article || null,
     unit: o.unit || config.defaultUom
   };
 }

@@ -2,6 +2,7 @@ const MiracleERPClient = require('./miracle_client');
 const IdStore = require('./id_store');
 const { resolveProductTax } = require('./product_overrides');
 const { lookupCatalog } = require('./catalog');
+const { resolveArticleNo } = require('./article_map');
 const config = require('./config');
 
 const miracleClient = new MiracleERPClient();
@@ -89,25 +90,45 @@ async function ensureAccount(shopifyOrder) {
 
 async function ensureOneProduct(item) {
   const key = productKeyFromItem(item);
-  const cached = idStore.getProduct(key);
-  if (cached && cached.uniqueId) return cached.uniqueId;
+  const catalogEntry = lookupCatalog(item);
+  const tax = resolveProductTax(item, catalogEntry);
+  const article = resolveArticleNo(item, catalogEntry, tax);
 
-  // also try sku key
+  // Prefer hangtag Article No identity (e.g. 411003) over legacy SKU mapping
+  if (article) {
+    const byArticle = idStore.getProduct(`article:${article}`);
+    if (byArticle && byArticle.uniqueId) {
+      idStore.setProduct(key, byArticle.uniqueId, { linkedFrom: `article:${article}`, article });
+      if (item.sku) idStore.setProduct(`sku:${item.sku}`, byArticle.uniqueId, { article });
+      return byArticle.uniqueId;
+    }
+  }
+
+  const cached = idStore.getProduct(key);
+  if (cached && cached.uniqueId) {
+    if (article) idStore.setProduct(`article:${article}`, cached.uniqueId, { sku: item.sku });
+    return cached.uniqueId;
+  }
+
   if (item.sku) {
     const bySku = idStore.getProduct(`sku:${item.sku}`);
     if (bySku && bySku.uniqueId) {
       idStore.setProduct(key, bySku.uniqueId, { linkedFrom: `sku:${item.sku}` });
+      if (article) idStore.setProduct(`article:${article}`, bySku.uniqueId, { sku: item.sku });
       return bySku.uniqueId;
     }
   }
 
-  const catalogEntry = lookupCatalog(item);
-  const tax = resolveProductTax(item, catalogEntry);
-  const prdnm = MiracleERPClient.productNameFromShopify(item, tax.prdnm);
+  // Miracle product code = hangtag Article No when mapped (e.g. 411003)
+  const prdnm = MiracleERPClient.productNameFromShopify(
+    { ...item, barcode: article || item.barcode },
+    article || tax.prdnm
+  );
+  const alias = String(item.sku || item.title || item.name || prdnm).slice(0, 15);
 
   const productResult = await miracleClient.upsertProduct({
     name: prdnm,
-    alias: (item.title || item.name || prdnm).slice(0, 15),
+    alias,
     price: parseFloat(item.price),
     gstRate: tax.gst,
     hsnCode: tax.hsn,
@@ -118,8 +139,9 @@ async function ensureOneProduct(item) {
 
   const uniqueId = extractUniqueId(productResult);
   if (uniqueId) {
-    idStore.setProduct(key, uniqueId, { prdnm, sku: item.sku, shopify: item.name });
-    if (item.sku) idStore.setProduct(`sku:${item.sku}`, uniqueId, { prdnm });
+    idStore.setProduct(key, uniqueId, { prdnm, sku: item.sku, article, shopify: item.name });
+    if (item.sku) idStore.setProduct(`sku:${item.sku}`, uniqueId, { prdnm, article });
+    if (article) idStore.setProduct(`article:${article}`, uniqueId, { prdnm, sku: item.sku });
     return uniqueId;
   }
   if (looksLikeDuplicate(productResult)) {

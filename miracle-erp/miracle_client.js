@@ -101,7 +101,10 @@ class MiracleERPClient {
   }
 
   static productNameFromShopify(item, overridePrdnm) {
+    // Prefer MRP hangtag Article No (barcode) so Stock Report matches label
     if (overridePrdnm) return String(overridePrdnm).slice(0, 15);
+    const article = String(item.barcode || item.article_no || '').trim();
+    if (article) return article.slice(0, 15);
     const sku = (item.sku || '').trim();
     if (sku) return sku.slice(0, 15);
     const raw = (item.name || item.title || 'ITEM').replace(/\s+/g, ' ').trim();

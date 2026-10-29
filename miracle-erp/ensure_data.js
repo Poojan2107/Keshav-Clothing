@@ -45,6 +45,17 @@ function ensureDataDir() {
     fs.writeFileSync(idMap, JSON.stringify({ accounts: {}, products: {}, orders: {}, meta: {} }, null, 2));
   }
 
+  const articleMap = path.join(config.dataDir, 'article-map.json');
+  if (!fs.existsSync(articleMap)) {
+    const bundled = path.join(__dirname, 'data', 'article-map.json');
+    if (fs.existsSync(bundled)) {
+      fs.copyFileSync(bundled, articleMap);
+    } else {
+      fs.writeFileSync(articleMap, '{}\n');
+    }
+    console.log(`[KC Miracle] Seeded article-map.json`);
+  }
+
   return config.dataDir;
 }
 
