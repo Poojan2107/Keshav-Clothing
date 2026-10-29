@@ -38,7 +38,8 @@ module.exports = {
   defaultUom: process.env.MIRACLE_DEFAULT_UOM || 'NOS',
   defaultSlab: process.env.MIRACLE_DEFAULT_SLAB || 'GST 5%',
   defaultProductGroup: process.env.MIRACLE_PRODUCT_GROUP || 'Shopify',
-  stockRequired: envBool('MIRACLE_STOCK_REQUIRED', false) ? 'Y' : 'N',
+  // Y = Sales Bill SS deducts stock (client expects Stock Report to move)
+  stockRequired: envBool('MIRACLE_STOCK_REQUIRED', true) ? 'Y' : 'N',
   defaultLocation: process.env.MIRACLE_DEFAULT_LOCATION || '',
   defaultBatch: process.env.MIRACLE_DEFAULT_BATCH || '',
 
